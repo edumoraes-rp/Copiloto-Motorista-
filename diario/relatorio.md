@@ -15,13 +15,13 @@ Período: **01/11/2026 a 02/11/2026**, 2 dia(s) trabalhado(s)
 | Indicador | Valor |
 |---|---:|
 | Km rodados | 356 km (média 178 km/dia) |
-| Horas trabalhadas | — (informe hora de início e fim) |
+| Horas trabalhadas | 6h40 (média 3h20/dia) |
 | Corridas | 13 (ticket médio R$ 29,60) |
 | Ganho por km | R$ 1,08 |
 | Custo por km | R$ 1,29 |
 | Lucro por km | R$ -0,21 |
-| Ganho por hora | — |
-| Lucro por hora | — |
+| Ganho por hora | R$ 57,71 |
+| Lucro por hora | R$ -11,32 |
 | Receita média por dia | R$ 192,38 |
 | Lucro real médio por dia | R$ -37,72 |
 | Melhor dia | seg 02/11/2026: R$ 15,51 |
@@ -67,15 +67,12 @@ Pagamentos lançados (o que saiu do bolso):
 
 | Dia | Km | Horas | Corridas | Receita | Custo real | Lucro real | R$/km | Lucro/hora | Caixa |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| dom 01/11/2026 | 167 | — | 2 | R$ 134,20 | R$ 225,15 | R$ -90,95 | R$ 0,80 | — | R$ -87,90 |
-| seg 02/11/2026 | 189 | — | 11 | R$ 250,56 | R$ 235,05 | R$ 15,51 | R$ 1,33 | — | R$ 250,56 |
+| dom 01/11/2026 | 167 | 2h00 | 2 | R$ 134,20 | R$ 225,15 | R$ -90,95 | R$ 0,80 | R$ -45,47 | R$ -87,90 |
+| seg 02/11/2026 | 189 | 4h40 | 11 | R$ 250,56 | R$ 235,05 | R$ 15,51 | R$ 1,33 | R$ 3,32 | R$ 250,56 |
 
 ## Alertas
 
-- 01/11/2026: Falta a hora de início ou de fim: sem ganho por hora.
 - 01/11/2026: Dia com prejuízo real: a receita não cobriu os custos.
-- 01/11/2026: Abastecimento sem litros ou sem km do hodômetro: não entra na medição do consumo real.
-- 02/11/2026: Falta a hora de início ou de fim: sem ganho por hora.
 - Consumo real ainda não medido: anote litros, km do hodômetro e 'CHEIO' em pelo menos dois abastecimentos de tanque cheio.
 - Receita média de R$ 192,38/dia está abaixo da meta de R$ 700,00/dia (faltam R$ 507,62).
 

@@ -137,7 +137,7 @@ class GestorDeFrota(private val perfil: PerfilVeiculo) {
             if (jornada.kmFinal == null) add("Falta o km final do dia.")
             if (km != null && km < 0) add("Km final (${jornada.kmFinal}) menor que o inicial (${jornada.kmInicial}).")
             if (km != null && km > 700) add("Km rodado muito alto ($km km): confira o hodômetro.")
-            if (jornada.inicio == null || jornada.fim == null) add("Falta a hora de início ou de fim: sem ganho por hora.")
+            if (jornada.minutosTrabalhados == null) add("Falta a hora de início ou de fim: sem ganho por hora.")
             if (receita == 0.0) add("Nenhuma receita lançada.")
             if (receita > 0 && lucroReal < 0) add("Dia com prejuízo real: a receita não cobriu os custos.")
             jornada.abastecimentos.filter { it.litros == null || it.kmHodometro == null }.takeIf { it.isNotEmpty() }?.let {

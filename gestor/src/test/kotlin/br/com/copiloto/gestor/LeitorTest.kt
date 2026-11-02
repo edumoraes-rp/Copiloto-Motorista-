@@ -43,6 +43,7 @@ class LeitorTest {
             02/11/2026;DESPESA;alimentação;28,00;Almoço
             02/11/2026;FIM;45410;15:10;40
             03/11/2026;INICIO;45415;07:00
+            03/11/2026;HORAS;2:00
             """.trimIndent()
         )
         assertEquals(2, dias.size)
@@ -58,6 +59,7 @@ class LeitorTest {
         assertTrue(abast.tanqueCheio)
         assertEquals(Categoria.ALIMENTACAO, d.despesas.last().categoria)
         assertEquals(null, dias[1].kmFinal)
+        assertEquals(120, dias[1].minutosTrabalhados)
     }
 
     @Test

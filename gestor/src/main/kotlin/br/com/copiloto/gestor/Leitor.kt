@@ -56,6 +56,7 @@ object Leitor {
             var inicio: LocalTime? = null
             var fim: LocalTime? = null
             var pausa = 0
+            var minutos: Int? = null
             val receitas = mutableListOf<Receita>()
             val despesas = mutableListOf<Despesa>()
         }
@@ -80,6 +81,7 @@ object Leitor {
                         dia.fim = campo(3)?.let(LocalTime::parse)
                         dia.pausa = campo(4)?.toInt() ?: 0
                     }
+                    "HORAS" -> dia.minutos = LocalTime.parse(campo(2)?.padStart(5, '0') ?: erro("falta o tempo (HH:MM)")).let { it.hour * 60 + it.minute }
                     "RECEITA" -> dia.receitas += Receita(
                         app = campo(2) ?: erro("falta o app"),
                         valor = Formato.lerNumero(campo(3) ?: erro("falta o valor")),
@@ -97,7 +99,7 @@ object Leitor {
                         kmHodometro = campo(4)?.toInt(),
                         tanqueCheio = campo(5)?.uppercase() == "CHEIO",
                     )
-                    else -> erro("tipo deve ser INICIO, FIM, RECEITA, DESPESA ou ABASTECIMENTO")
+                    else -> erro("tipo deve ser INICIO, FIM, HORAS, RECEITA, DESPESA ou ABASTECIMENTO")
                 }
             } catch (e: Exception) {
                 if (e.message?.startsWith("lancamentos.csv") == true) throw e
@@ -113,6 +115,7 @@ object Leitor {
                 inicio = r.inicio,
                 fim = r.fim,
                 pausaMinutos = r.pausa,
+                minutosInformados = r.minutos,
                 receitas = r.receitas,
                 despesas = r.despesas,
             )

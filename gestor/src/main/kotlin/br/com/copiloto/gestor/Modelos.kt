@@ -121,6 +121,8 @@ data class Jornada(
     val fim: LocalTime? = null,
     /** Minutos parados que não contam como trabalho (almoço, descanso). */
     val pausaMinutos: Int = 0,
+    /** Tempo trabalhado informado direto (quando o motorista não anotou início e fim). */
+    val minutosInformados: Int? = null,
     val receitas: List<Receita> = emptyList(),
     val despesas: List<Despesa> = emptyList(),
 ) {
@@ -129,6 +131,7 @@ data class Jornada(
     /** Minutos trabalhados; se o fim for menor que o início, a jornada virou a meia-noite. */
     val minutosTrabalhados: Int?
         get() {
+            if (minutosInformados != null) return minutosInformados
             if (inicio == null || fim == null) return null
             var minutos = fim.toSecondOfDay() / 60 - inicio.toSecondOfDay() / 60
             if (minutos < 0) minutos += 24 * 60
