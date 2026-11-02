@@ -1,10 +1,18 @@
-# SEU PERFIL: troque os valores pelos do seu carro (o Claude atualiza conforme você contar)
-nome = Meu carro (AJUSTAR)
+# Perfil do carro do Eduardo (atualizado em 02/11/2026)
+nome = HB20S 1.0 TGDI 2025/2026 flex (Movida)
 posse = ALUGADO
-preco_combustivel = 6,19
-consumo_km_l = 11,5
-manutencao_por_km = 0,12
-dias_trabalhados_mes = 26
-meta_lucro_mensal = 4000
-fixo.semanal = Aluguel da locadora ; 750
-fixo.mensal = Plano de celular ; 60
+
+# Combustível: etanol (R$ 3,42) compensa mais que gasolina (R$ 5,74): 3,42 ÷ 5,74 = 60%, abaixo dos 70%.
+# Consumo ESTIMADO para etanol na cidade; será trocado pelo consumo real medido nos tanques cheios.
+preco_combustivel = 3,42
+consumo_km_l = 9,0
+
+# Movida: aluguel mensal, pago todo dia 12 (no dia 12 lançar DESPESA;ALUGUEL;3300,00).
+fixo.mensal = Aluguel Movida ; 3300,00
+
+# Manutenção do carro alugado é da Movida (CONFIRMAR); por enquanto sem reserva por km.
+manutencao_por_km = 0
+
+# 5 dias por semana ≈ 22 dias por mês (5 × 52 ÷ 12 = 21,7)
+dias_trabalhados_mes = 22
+meta_receita_dia = 700,00

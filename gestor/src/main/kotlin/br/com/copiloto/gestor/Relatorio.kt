@@ -118,6 +118,10 @@ object Relatorio {
         p.receitaNecessariaParaMetaDia?.let {
             appendLine("- Meta de lucro ${f.reais(perfil.metaLucroMensal)}/mês: faturar **${f.reais(it)} por dia** (${f.reais(if (p.kmMedioPorDia > 0) it / p.kmMedioPorDia else null)}/km)")
         }
+        if (perfil.metaReceitaDiaria > 0) {
+            appendLine("- **Meta de receita ${f.reais(perfil.metaReceitaDiaria)}/dia:** média atual ${f.reais(p.receitaMediaPorDia)} (${f.pct(p.receitaMediaPorDia / perfil.metaReceitaDiaria)} da meta); ${p.diasNaMetaDeReceita} de ${p.diasTrabalhados} dia(s) bateram a meta")
+            appendLine("- Batendo a meta todo dia, com o custo médio atual: lucro real de ${f.reais(p.lucroRealNaMetaDia)}/dia, **${f.reais(p.lucroRealNaMetaDia!! * perfil.diasTrabalhadosPorMes)}/mês**")
+        }
         appendLine("- Projeção do mês no ritmo atual: receita ${f.reais(p.projecaoReceitaMensal)}, lucro real **${f.reais(p.projecaoLucroMensal)}**")
         appendLine()
 

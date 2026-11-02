@@ -99,6 +99,10 @@ data class ResumoPeriodo(
     /** Custo total por km: abaixo disso a corrida dá prejuízo. */
     val valorMinimoPorKm: Double?,
     val projecaoLucroMensal: Double,
+    /** Dias em que a receita bruta bateu a meta diária (null = sem meta). */
+    val diasNaMetaDeReceita: Int?,
+    /** Lucro real por dia se a meta de receita for batida, com o custo médio dos dias do período. */
+    val lucroRealNaMetaDia: Double?,
     val projecaoReceitaMensal: Double,
     val alertas: List<String>,
 )
@@ -235,6 +239,7 @@ class GestorDeFrota(private val perfil: PerfilVeiculo) {
         val equilibrio = perfil.custoFixoPorDia + operacionaisMedias + kmMedio * custoKmVariavel
         val paraMeta = if (perfil.metaLucroMensal > 0) equilibrio + perfil.metaLucroMensal / perfil.diasTrabalhadosPorMes else null
         val lucroMedio = lucroReal / n
+        val metaReceita = perfil.metaReceitaDiaria
 
         val alertas = buildList {
             dias.filter { it.alertas.isNotEmpty() }.forEach { d ->
@@ -244,6 +249,8 @@ class GestorDeFrota(private val perfil: PerfilVeiculo) {
             if (consumo == null) add("Consumo real ainda não medido: anote litros, km do hodômetro e 'CHEIO' em pelo menos dois abastecimentos de tanque cheio.")
             else if (kotlin.math.abs(consumo.kmPorLitro - perfil.consumoKmPorLitro) / perfil.consumoKmPorLitro > 0.10)
                 add("Consumo real (${Formato.num(consumo.kmPorLitro)} km/L) está mais de 10% diferente do cadastrado (${Formato.num(perfil.consumoKmPorLitro)} km/L): atualize o perfil.")
+            if (metaReceita > 0 && receita / n < metaReceita)
+                add("Receita média de ${Formato.reais(receita / n)}/dia está abaixo da meta de ${Formato.reais(metaReceita)}/dia (faltam ${Formato.reais(metaReceita - receita / n)}).")
             if (paraMeta != null && receita / n < paraMeta)
                 add("No ritmo atual a meta de ${Formato.reais(perfil.metaLucroMensal)}/mês não é atingida: faltam ${Formato.reais(paraMeta - receita / n)} de receita por dia.")
         }
@@ -290,6 +297,8 @@ class GestorDeFrota(private val perfil: PerfilVeiculo) {
             receitaNecessariaParaMetaDia = paraMeta,
             valorMinimoPorKm = if (kmMedio > 0) equilibrio / kmMedio else null,
             projecaoLucroMensal = lucroMedio * perfil.diasTrabalhadosPorMes,
+            diasNaMetaDeReceita = if (metaReceita > 0) dias.count { it.receitaBruta >= metaReceita } else null,
+            lucroRealNaMetaDia = if (metaReceita > 0) metaReceita - custoTotal / n else null,
             projecaoReceitaMensal = receita / n * perfil.diasTrabalhadosPorMes,
             alertas = alertas,
         )

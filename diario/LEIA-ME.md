@@ -11,7 +11,7 @@ Durante estes dias de teste, você me manda os dados de cada dia pelo chat. Eu o
 - Combustível: tipo, preço que você costuma pagar por litro, consumo médio (km/L), se souber
 - Custos fixos com o valor e a frequência: aluguel semanal, parcela, seguro, IPVA, rastreador, plano de celular...
 - Quantos dias você trabalha por mês, mais ou menos
-- Meta de lucro no mês (opcional)
+- Meta de lucro no mês ou de receita por dia (opcional)
 - Reserva de manutenção por km, se tiver ideia. Se não tiver, eu calculo com você (troca de óleo, pneus, freios ÷ km de cada um)
 
 ### Todo dia (pode ser mensagem curta)

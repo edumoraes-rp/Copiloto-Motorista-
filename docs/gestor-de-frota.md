@@ -58,6 +58,7 @@ Se o consumo real diferir mais de 10% do cadastrado, o relatório avisa.
 - **Valor mínimo por km** = ponto de equilíbrio ÷ km médio por dia. Esse número vai alimentar o semáforo da calculadora.
 - **Receita por dia para a meta** = ponto de equilíbrio + meta mensal ÷ dias trabalhados
 - **Projeção do mês** = lucro real médio por dia × dias trabalhados no mês
+- **Meta de receita por dia** (`meta_receita_dia`): receita média comparada à meta, quantos dias bateram a meta e o lucro real por dia e por mês se a meta for batida (meta − custo médio por dia)
 
 ## Alertas
 

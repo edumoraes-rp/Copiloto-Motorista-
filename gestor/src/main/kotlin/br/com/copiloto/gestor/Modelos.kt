@@ -40,6 +40,8 @@ data class PerfilVeiculo(
     val diasTrabalhadosPorMes: Int = 26,
     /** Quanto o motorista quer de lucro real no mês (0 = sem meta). */
     val metaLucroMensal: Double = 0.0,
+    /** Meta de receita bruta por dia trabalhado (0 = sem meta). */
+    val metaReceitaDiaria: Double = 0.0,
 ) {
     init {
         require(precoCombustivel >= 0) { "Preço do combustível não pode ser negativo" }

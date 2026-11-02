@@ -129,6 +129,8 @@ class GestorDeFrotaTest {
         assertEquals(405.0, p.receitaNecessariaParaMetaDia!!, delta)
         assertEquals(95.0 * 26, p.projecaoLucroMensal, delta)
         assertTrue(p.alertas.any { "fora do expediente" in it })
+        assertNull(p.diasNaMetaDeReceita) // perfil sem meta de receita
+
         assertTrue(p.alertas.any { "meta" in it })
     }
 
@@ -136,5 +138,15 @@ class GestorDeFrotaTest {
     fun `aluguel semanal vira custo mensal`() {
         assertEquals(700.0 * 52 / 12, CustoFixo.semanal("Aluguel", 700.0).valorMensal, delta)
         assertEquals(150.0, CustoFixo.anual("IPVA", 1800.0).valorMensal, delta)
+    }
+
+    @Test
+    fun `meta de receita diaria conta dias na meta e lucro ao bater a meta`() {
+        val comMeta = GestorDeFrota(perfil.copy(metaReceitaDiaria = 350.0))
+        val dia2 = Jornada(LocalDate.of(2026, 11, 3), 1200, 1300, receitas = listOf(Receita("Uber", 200.0)))
+        val p = comMeta.resumoDoPeriodo(listOf(dia1, dia2))
+        assertEquals(1, p.diasNaMetaDeReceita) // só o dia 1 (R$ 400)
+        assertEquals(350.0 - 410.0 / 2, p.lucroRealNaMetaDia!!, delta)
+        assertTrue(p.alertas.any { "abaixo da meta" in it })
     }
 }

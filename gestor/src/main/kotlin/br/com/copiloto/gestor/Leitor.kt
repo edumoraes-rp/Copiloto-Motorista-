@@ -45,6 +45,7 @@ object Leitor {
             manutencaoPorKm = valores["manutencao_por_km"]?.let(Formato::lerNumero) ?: 0.0,
             diasTrabalhadosPorMes = valores["dias_trabalhados_mes"]?.toInt() ?: 26,
             metaLucroMensal = valores["meta_lucro_mensal"]?.let(Formato::lerNumero) ?: 0.0,
+            metaReceitaDiaria = valores["meta_receita_dia"]?.let(Formato::lerNumero) ?: 0.0,
         )
     }
 
