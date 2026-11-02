@@ -82,3 +82,9 @@ Sugestão: o motor de cálculo e a lógica do diário podem ser desenvolvidos e 
 
 - Referências e MVP: https://claude.ai/code/artifact/ac9e34ad-aa17-437d-9943-edc460ff1229
 - Arquitetura técnica: https://claude.ai/code/artifact/4a48c2cf-5d50-4798-acea-e15ffd3e2efd
+
+## Gestor de frota (módulo `gestor`, já implementado)
+
+- Motor de cálculo do diário em Kotlin puro: `gestor/src/main/kotlin/br/com/copiloto/gestor/` (testes: `gradle :gestor:test`).
+- Fase de testes: o Eduardo manda os dados do dia pelo chat; lançar em `diario/lancamentos.csv` (formato em `diario/LEIA-ME.md`) e rodar `gradle :gestor:run --args="diario diario/relatorio.md"`.
+- Contas explicadas em `docs/gestor-de-frota.md` (lucro de caixa × lucro real, consumo real por tanque cheio, ponto de equilíbrio, valor mínimo por km).

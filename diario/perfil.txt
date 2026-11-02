@@ -1,0 +1,10 @@
+# SEU PERFIL: troque os valores pelos do seu carro (o Claude atualiza conforme você contar)
+nome = Meu carro (AJUSTAR)
+posse = ALUGADO
+preco_combustivel = 6,19
+consumo_km_l = 11,5
+manutencao_por_km = 0,12
+dias_trabalhados_mes = 26
+meta_lucro_mensal = 4000
+fixo.semanal = Aluguel da locadora ; 750
+fixo.mensal = Plano de celular ; 60
