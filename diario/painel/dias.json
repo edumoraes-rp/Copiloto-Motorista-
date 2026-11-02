@@ -1,0 +1,4 @@
+[
+  {"data": "2026-11-01", "dia": "dom 01/11", "parcial": false, "km": 167, "horas": 2.00, "corridas": 2, "receita": 134.20, "combustivel": 75.15, "despesas_dia": 0.00, "aluguel": 150.00, "custo_real": 225.15, "lucro_real": -90.95, "lucro_caixa": -87.90, "pago_combustivel": 222.10, "ganho_km": 0.80, "ganho_hora": 67.10, "lucro_hora": -45.47},
+  {"data": "2026-11-02", "dia": "seg 02/11", "parcial": true, "km": 189, "horas": 4.67, "corridas": 11, "receita": 250.56, "combustivel": 85.05, "despesas_dia": 0.00, "aluguel": 150.00, "custo_real": 235.05, "lucro_real": 15.51, "lucro_caixa": 250.56, "pago_combustivel": 0.00, "ganho_km": 1.33, "ganho_hora": 53.69, "lucro_hora": 3.32}
+]

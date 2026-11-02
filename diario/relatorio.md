@@ -68,7 +68,7 @@ Pagamentos lançados (o que saiu do bolso):
 | Dia | Km | Horas | Corridas | Receita | Custo real | Lucro real | R$/km | Lucro/hora | Caixa |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
 | dom 01/11/2026 | 167 | 2h00 | 2 | R$ 134,20 | R$ 225,15 | R$ -90,95 | R$ 0,80 | R$ -45,47 | R$ -87,90 |
-| seg 02/11/2026 | 189 | 4h40 | 11 | R$ 250,56 | R$ 235,05 | R$ 15,51 | R$ 1,33 | R$ 3,32 | R$ 250,56 |
+| seg 02/11/2026 *(parcial)* | 189 | 4h40 | 11 | R$ 250,56 | R$ 235,05 | R$ 15,51 | R$ 1,33 | R$ 3,32 | R$ 250,56 |
 
 ## Alertas
 

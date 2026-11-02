@@ -7,6 +7,7 @@ data;tipo;campo1;campo2;campo3;campo4
 01/11/2026;RECEITA;Atentiva;134,20;2
 01/11/2026;FIM;33701
 # 02/11 (seg): PARCIAL, dia ainda aberto (189 km até agora)
+02/11/2026;PARCIAL
 02/11/2026;INICIO;33701;05:10
 02/11/2026;RECEITA;Uber;211,61;10
 02/11/2026;RECEITA;99;38,95;1

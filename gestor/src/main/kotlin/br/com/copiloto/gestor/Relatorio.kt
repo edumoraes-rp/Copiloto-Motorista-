@@ -20,7 +20,9 @@ fun main(args: Array<String>) {
             println("Nenhum lançamento em ${pasta.path}/lancamentos.csv ainda.")
             return
         }
-        val texto = Relatorio.gerar(perfil, GestorDeFrota(perfil).resumoDoPeriodo(jornadas))
+        val resumo = GestorDeFrota(perfil).resumoDoPeriodo(jornadas)
+        val texto = Relatorio.gerar(perfil, resumo)
+        Exportar.paraPasta(perfil, resumo, File(pasta, "painel"))
         println(texto)
         args.getOrNull(1)?.let { File(it).writeText(texto); println("\nRelatório salvo em $it") }
     } catch (e: Exception) {
@@ -130,7 +132,7 @@ object Relatorio {
         appendLine("| Dia | Km | Horas | Corridas | Receita | Custo real | Lucro real | R$/km | Lucro/hora | Caixa |")
         appendLine("|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|")
         p.dias.forEach { d ->
-            appendLine("| ${f.dataComDia(d.data)} | ${d.kmRodado ?: "—"} | ${f.horas(d.horasTrabalhadas)} | ${d.corridas} | ${f.reais(d.receitaBruta)} | ${f.reais(d.custoTotal)} | ${f.reais(d.lucroReal)} | ${f.reais(d.ganhoPorKm)} | ${f.reais(d.lucroPorHora)} | ${f.reais(d.lucroCaixa)} |")
+            appendLine("| ${f.dataComDia(d.data)}${if (d.parcial) " *(parcial)*" else ""} | ${d.kmRodado ?: "—"} | ${f.horas(d.horasTrabalhadas)} | ${d.corridas} | ${f.reais(d.receitaBruta)} | ${f.reais(d.custoTotal)} | ${f.reais(d.lucroReal)} | ${f.reais(d.ganhoPorKm)} | ${f.reais(d.lucroPorHora)} | ${f.reais(d.lucroCaixa)} |")
         }
         appendLine()
 

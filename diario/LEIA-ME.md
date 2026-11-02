@@ -42,6 +42,7 @@ Dicas:
 | `INICIO` | km inicial ; hora (HH:MM) |
 | `FIM` | km final ; hora ; minutos de pausa (opcional) |
 | `HORAS` | tempo trabalhado (HH:MM), quando não houver hora de início e fim |
+| `PARCIAL` | (sem campos) marca o dia como ainda aberto |
 | `RECEITA` | app ; valor ; nº de corridas (opcional) |
 | `DESPESA` | categoria ; valor ; descrição (opcional) |
 | `ABASTECIMENTO` | valor ; litros ; km do hodômetro ; `CHEIO` ou `PARCIAL` |

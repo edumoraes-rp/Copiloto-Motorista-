@@ -1,0 +1,318 @@
+<meta name="dash-one-writer">
+<style>
+  .pm { display: flex; flex-direction: column; gap: var(--cds-gap-xl); font-family: var(--font-anthropic-sans); }
+  .pm-head { display: flex; flex-direction: column; gap: var(--cds-gap-xs); }
+  .pm-title { font-family: var(--font-anthropic-serif); font-weight: 400; font-size: var(--cds-font-size-title); margin: 0; text-wrap: balance; }
+  .pm-sub { color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); margin: 0; }
+  .pm-take { margin: 0; font-size: var(--cds-font-size-body); max-width: 70ch; }
+  .pm .pm-take b { font-weight: 600; }
+  .pm-tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 9.5rem), 1fr)); gap: var(--cds-gap-md); }
+  .pm-tile { background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); padding: var(--cds-pad-md) var(--cds-pad-lg); display: flex; flex-direction: column; gap: var(--cds-gap-xs); min-width: 0; }
+  .pm-tile-label { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); }
+  .pm-tile-value { font-family: var(--font-anthropic-serif); font-weight: 400; font-size: var(--cds-font-size-title); font-variant-numeric: tabular-nums; line-height: 1.15; }
+  .pm-tile-note { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); font-variant-numeric: tabular-nums; }
+  .pm-good { color: var(--color-ok); }
+  .pm-bad { color: var(--color-bad); }
+  .pm-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr)); gap: var(--cds-gap-md); }
+  .pm-card { background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); padding: var(--cds-pad-lg); display: flex; flex-direction: column; gap: var(--cds-gap-sm); min-width: 0; }
+  .pm-card h2 { font-size: var(--cds-font-size-heading); font-weight: var(--cds-font-weight-medium); margin: 0; }
+  .pm-note { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); margin: 0; }
+  .pm-chart { position: relative; min-height: 240px; }
+  .pm-chart svg { display: block; }
+  .pm-tip { position: absolute; background: var(--cds-surface-popover); border: 1px solid var(--cds-border); border-radius: var(--cds-radius); box-shadow: var(--cds-shadow-popover); padding: var(--cds-pad-xs) var(--cds-pad-sm); font-size: var(--cds-font-size-caption); pointer-events: none; white-space: nowrap; font-variant-numeric: tabular-nums; z-index: 2; }
+  .pm-tip .pm-tip-h { color: var(--cds-text-secondary); }
+  .pm-apps { display: flex; flex-direction: column; gap: var(--cds-gap-sm); min-height: 7rem; }
+  .pm-app { display: grid; grid-template-columns: 5.5rem 1fr auto; align-items: center; gap: var(--cds-gap-sm); font-size: var(--cds-font-size-body); font-variant-numeric: tabular-nums; }
+  .pm-app-bar { height: 14px; border-radius: var(--cds-radius); }
+  .pm-app-track { background: var(--cds-chart-grid); border-radius: var(--cds-radius); overflow: hidden; }
+  .pm-list { display: grid; grid-template-columns: 1fr auto; gap: var(--cds-gap-xs) var(--cds-gap-md); margin: 0; font-size: var(--cds-font-size-body); font-variant-numeric: tabular-nums; }
+  .pm-list dt { color: var(--color-fg-muted); }
+  .pm-list dd { margin: 0; text-align: right; }
+  .pm-table-wrap { overflow-x: auto; }
+  .pm-table { width: 100%; border-collapse: collapse; font-size: var(--cds-font-size-body); font-variant-numeric: tabular-nums; }
+  .pm-table th { text-align: right; font-weight: var(--cds-font-weight-medium); color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); padding: var(--cds-pad-xs) var(--cds-pad-sm); border-bottom: 1px solid var(--color-border-line); white-space: nowrap; }
+  .pm-table td { text-align: right; padding: var(--cds-pad-xs) var(--cds-pad-sm); border-bottom: 1px solid var(--color-border-line); white-space: nowrap; }
+  .pm-table th:first-child, .pm-table td:first-child { text-align: left; }
+  .pm-pill { display: inline-block; margin-left: var(--cds-gap-xs); padding: 0 var(--cds-pad-xs); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); font-size: var(--cds-font-size-caption); color: var(--color-warn); }
+  [data-dash-source-state=refreshing] { opacity: .5; transition: opacity var(--cds-dur-slow); }
+  [data-dash-source-state=empty] { color: transparent; }
+</style>
+
+<div class="pm">
+  <header class="pm-head">
+    <h1 class="pm-title">Painel do Motorista · Novembro</h1>
+    <p class="pm-sub">HB20S alugado da Movida · dados até <span data-draw="ate" data-source="perfil" data-field="atualizado_ate">—</span></p>
+    <p class="pm-take">Receita média de <b data-draw="t-media" data-source="totais" data-field="receita_media">—</b> por dia, <b data-draw="t-pct" data-source="totais" data-field="pct_meta">—</b> da meta de <b data-draw="t-meta" data-source="perfil" data-field="meta_receita_dia">—</b>. Lucro real no mês até agora: <b data-draw="t-lucro" data-source="totais" data-field="lucro_real">—</b>.</p>
+  </header>
+
+  <section class="pm-tiles" aria-label="Resumo do mês">
+    <div class="pm-tile">
+      <span class="pm-tile-label">Receita bruta</span>
+      <span class="pm-tile-value" data-draw="k-receita" data-source="totais" data-field="receita">—</span>
+      <span class="pm-tile-note"><span data-draw="k-corridas" data-source="totais" data-field="corridas">—</span> corridas</span>
+    </div>
+    <div class="pm-tile">
+      <span class="pm-tile-label">Lucro real</span>
+      <span class="pm-tile-value" data-draw="k-lucro" data-source="totais" data-field="lucro_real">—</span>
+      <span class="pm-tile-note">receita − combustível − aluguel − gastos</span>
+    </div>
+    <div class="pm-tile">
+      <span class="pm-tile-label">Lucro de caixa</span>
+      <span class="pm-tile-value" data-draw="k-caixa" data-source="totais" data-field="lucro_caixa">—</span>
+      <span class="pm-tile-note">o que sobrou na mão</span>
+    </div>
+    <div class="pm-tile">
+      <span class="pm-tile-label">Km rodados</span>
+      <span class="pm-tile-value" data-draw="k-km" data-source="totais" data-field="km">—</span>
+      <span class="pm-tile-note"><span data-draw="k-dias" data-source="totais" data-field="dias">—</span> dia(s) trabalhado(s)</span>
+    </div>
+    <div class="pm-tile">
+      <span class="pm-tile-label">Ganho por km</span>
+      <span class="pm-tile-value" data-draw="k-gkm" data-source="totais" data-field="ganho_km">—</span>
+      <span class="pm-tile-note">custo real: <span data-draw="k-ckm" data-source="totais" data-field="custo_km">—</span>/km</span>
+    </div>
+    <div class="pm-tile">
+      <span class="pm-tile-label">Ganho por hora</span>
+      <span class="pm-tile-value" data-draw="k-gh" data-source="totais" data-field="ganho_hora">—</span>
+      <span class="pm-tile-note"><span data-draw="k-horas" data-source="totais" data-field="horas">—</span> trabalhadas</span>
+    </div>
+  </section>
+
+  <section class="pm-grid">
+    <div class="pm-card" id="receita-dia">
+      <h2>Receita por dia × meta</h2>
+      <p class="pm-note">Barra: receita bruta. Traço escuro: custo real do dia (combustível + aluguel + gastos). Linha tracejada: meta diária.</p>
+      <div class="pm-chart" data-draw="g-receita" data-source="dias perfil">—</div>
+    </div>
+    <div class="pm-card" id="lucro-dia">
+      <h2>Lucro real por dia</h2>
+      <p class="pm-note">Receita menos o custo real do dia. Abaixo de zero, o dia não pagou o carro e o combustível.</p>
+      <div class="pm-chart" data-draw="g-lucro" data-source="dias">—</div>
+    </div>
+  </section>
+
+  <section class="pm-grid">
+    <div class="pm-card" id="apps">
+      <h2>Receita por app</h2>
+      <p class="pm-note">Soma do mês e participação na receita.</p>
+      <div class="pm-apps" data-draw="g-apps" data-source="porApp">—</div>
+    </div>
+    <div class="pm-card" id="combustivel">
+      <h2>Combustível</h2>
+      <p class="pm-note" data-draw="c-fonte" data-source="perfil" data-field="consumo_medido">—</p>
+      <dl class="pm-list">
+        <dt>Consumo</dt><dd><span data-draw="c-consumo" data-source="perfil" data-field="consumo_km_l">—</span> km/L</dd>
+        <dt>Preço do litro</dt><dd data-draw="c-preco" data-source="perfil" data-field="preco_litro">—</dd>
+        <dt>Custo por km</dt><dd data-draw="c-km" data-source="perfil" data-field="custo_comb_km">—</dd>
+        <dt>Consumido no mês</dt><dd data-draw="c-consumido" data-source="totais" data-field="combustivel">—</dd>
+        <dt>Pago na bomba</dt><dd data-draw="c-pago" data-source="totais" data-field="pago_combustivel">—</dd>
+        <dt>Ainda no tanque</dt><dd data-draw="c-sobra" data-source="totais" data-field="sobra_tanque">—</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section class="pm-card" id="dia-a-dia">
+    <h2>Dia a dia</h2>
+    <p class="pm-note">Aluguel da Movida rateado em <span data-draw="n-aluguel" data-source="perfil" data-field="aluguel_dia">—</span> por dia trabalhado.</p>
+    <div class="pm-table-wrap">
+      <table class="pm-table" data-source="dias" data-row-key="data">
+        <thead>
+          <tr>
+            <th data-field="data">Dia</th>
+            <th data-field="km">Km</th>
+            <th data-field="horas">Horas</th>
+            <th data-field="corridas">Corridas</th>
+            <th data-field="receita">Receita</th>
+            <th data-field="custo_real">Custo real</th>
+            <th data-field="lucro_real">Lucro real</th>
+            <th data-field="ganho_km">R$/km</th>
+            <th data-field="ganho_hora">R$/hora</th>
+            <th data-field="lucro_caixa">Caixa</th>
+          </tr>
+        </thead>
+        <tbody data-draw="tabela"></tbody>
+      </table>
+    </div>
+  </section>
+</div>
+
+<script>
+  const brl = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
+  const num = new Intl.NumberFormat('pt-BR', { maximumFractionDigits: 1 });
+  const int = new Intl.NumberFormat('pt-BR', { maximumFractionDigits: 0 });
+  const pct = new Intl.NumberFormat('pt-BR', { style: 'percent', maximumFractionDigits: 0 });
+  const n = (v) => (v === null || v === undefined || v === '' ? null : Number(v));
+  const horas = (h) => { if (h == null) return '—'; const m = Math.round(h * 60); return Math.floor(m / 60) + 'h' + String(m % 60).padStart(2, '0'); };
+  window.pm = { brl, num, int, pct, n, horas,
+    money: (v) => (n(v) == null ? '—' : brl.format(n(v))),
+    rows: (id) => { const d = dash.data(id); return d.status === 'ok' ? (d.data || []) : null; },
+  };
+
+  dash.calc('totais', {
+    title: 'Totais do mês',
+    description: 'Soma dos dias e médias: receita, lucro, km, horas, ganho por km e por hora, distância da meta.',
+    inputs: ['dias', 'perfil'],
+    fn: (dias, perfil) => {
+      const s = (k) => dias.reduce((a, r) => a + (Number(r[k]) || 0), 0);
+      const receita = s('receita'), km = s('km'), horas = s('horas'), custo = s('custo_real');
+      const meta = Number(perfil[0]?.meta_receita_dia) || 0;
+      const media = dias.length ? receita / dias.length : 0;
+      return [{
+        dias: dias.length, receita, corridas: s('corridas'), km, horas,
+        custo_real: custo, lucro_real: s('lucro_real'), lucro_caixa: s('lucro_caixa'),
+        combustivel: s('combustivel'), pago_combustivel: s('pago_combustivel'),
+        sobra_tanque: s('pago_combustivel') - s('combustivel'),
+        ganho_km: km ? receita / km : null, custo_km: km ? custo / km : null,
+        ganho_hora: horas ? receita / horas : null,
+        receita_media: media, pct_meta: meta ? media / meta : null,
+      }];
+    },
+  });
+
+  dash.calc('porApp', {
+    title: 'Receita por app',
+    description: 'Receita somada por app no mês e a parte de cada um no total.',
+    inputs: ['apps'],
+    fn: (apps) => {
+      const t = {};
+      apps.forEach((r) => { t[r.app] = (t[r.app] || 0) + Number(r.receita); });
+      const total = Object.values(t).reduce((a, b) => a + b, 0);
+      return Object.entries(t).map(([app, receita]) => ({ app, receita, parte: total ? receita / total : 0 })).sort((a, b) => b.receita - a.receita);
+    },
+  });
+</script>
+
+<script>
+  const P = window.pm;
+  const one = (id) => { const r = P.rows(id); return r && r.length ? r[0] : null; };
+  const field = (name, id, key, fmt, tone) => dash.draw(name, (el) => {
+    const r = one(id);
+    if (!r) { el.textContent = '—'; el.classList.remove('pm-good', 'pm-bad'); return; }
+    el.textContent = fmt(r[key]);
+    if (tone) { const v = P.n(r[key]); el.classList.toggle('pm-good', v > 0); el.classList.toggle('pm-bad', v < 0); }
+  });
+  const dataBr = (s) => (s ? s.slice(8, 10) + '/' + s.slice(5, 7) + '/' + s.slice(0, 4) : '—');
+
+  field('ate', 'perfil', 'atualizado_ate', dataBr);
+  field('t-media', 'totais', 'receita_media', P.money);
+  field('t-pct', 'totais', 'pct_meta', (v) => (P.n(v) == null ? '—' : P.pct.format(v)));
+  field('t-meta', 'perfil', 'meta_receita_dia', P.money);
+  field('t-lucro', 'totais', 'lucro_real', P.money, true);
+  field('k-receita', 'totais', 'receita', P.money);
+  field('k-corridas', 'totais', 'corridas', (v) => P.int.format(v));
+  field('k-lucro', 'totais', 'lucro_real', P.money, true);
+  field('k-caixa', 'totais', 'lucro_caixa', P.money, true);
+  field('k-km', 'totais', 'km', (v) => P.int.format(v) + ' km');
+  field('k-dias', 'totais', 'dias', (v) => P.int.format(v));
+  field('k-gkm', 'totais', 'ganho_km', P.money);
+  field('k-ckm', 'totais', 'custo_km', P.money);
+  field('k-gh', 'totais', 'ganho_hora', P.money);
+  field('k-horas', 'totais', 'horas', P.horas);
+  field('c-fonte', 'perfil', 'consumo_medido', (v) => (v === true || v === 'true' ? 'Consumo medido no seu carro (método do tanque cheio).' : 'Consumo estimado. Será trocado pelo medido depois de dois abastecimentos de tanque cheio.'));
+  field('c-consumo', 'perfil', 'consumo_km_l', (v) => P.num.format(v));
+  field('c-preco', 'perfil', 'preco_litro', P.money);
+  field('c-km', 'perfil', 'custo_comb_km', P.money);
+  field('c-consumido', 'totais', 'combustivel', P.money);
+  field('c-pago', 'totais', 'pago_combustivel', P.money);
+  field('c-sobra', 'totais', 'sobra_tanque', P.money);
+  field('n-aluguel', 'perfil', 'aluguel_dia', P.money);
+</script>
+
+<script>
+  const P = window.pm;
+  const css = (el, v) => getComputedStyle(el).getPropertyValue(v).trim();
+
+  function barras(el, rows, opt) {
+    el.replaceChildren();
+    const W = Math.max(280, el.clientWidth || 320), H = 240;
+    const valores = rows.map((r) => P.n(r[opt.valor]) || 0);
+    const extras = rows.map((r) => (opt.marca ? P.n(r[opt.marca]) || 0 : 0));
+    let hi = Math.max(0, ...valores, ...extras, opt.meta || 0), lo = Math.min(0, ...valores);
+    const svg = d3.select(el).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`);
+    const y0 = d3.scaleLinear([lo, hi * 1.08 || 1], [H - 28, 10]).nice();
+    const ticks = y0.ticks(4);
+    const probe = svg.append('text').attr('font-size', 11);
+    const left = 8 + d3.max(ticks, (t) => { probe.text(P.brl.format(t).replace(',00', '')); return probe.node().getComputedTextLength(); });
+    probe.remove();
+    const x = d3.scaleBand(rows.map((r) => r.data), [left, W - 8]).padding(0.35);
+    const y = y0;
+    const g = svg.append('g');
+    ticks.forEach((t) => {
+      g.append('line').attr('x1', left).attr('x2', W - 8).attr('y1', y(t)).attr('y2', y(t)).attr('stroke', 'var(--cds-chart-grid)');
+      g.append('text').attr('x', left - 6).attr('y', y(t)).attr('dy', '0.32em').attr('text-anchor', 'end').attr('font-size', 11).attr('fill', 'var(--color-fg-muted)').text(P.brl.format(t).replace(',00', ''));
+    });
+    g.append('line').attr('x1', left).attr('x2', W - 8).attr('y1', y(0)).attr('y2', y(0)).attr('stroke', 'var(--cds-chart-axis)');
+    const bw = Math.min(32, x.bandwidth());
+    rows.forEach((r, i) => {
+      const v = valores[i], cx = x(r.data) + x.bandwidth() / 2;
+      const cor = opt.cor(v, r);
+      svg.append('rect').attr('x', cx - bw / 2).attr('width', bw).attr('y', Math.min(y(v), y(0))).attr('height', Math.max(1, Math.abs(y(v) - y(0)))).attr('rx', 3).attr('fill', cor).attr('opacity', r.parcial === true || r.parcial === 'true' ? 0.55 : 1);
+      if (opt.marca) svg.append('line').attr('x1', cx - bw / 2 - 4).attr('x2', cx + bw / 2 + 4).attr('y1', y(extras[i])).attr('y2', y(extras[i])).attr('stroke', 'var(--color-fg)').attr('stroke-width', 2.5).attr('stroke-linecap', 'round');
+      svg.append('text').attr('x', cx).attr('y', H - 10).attr('text-anchor', 'middle').attr('font-size', 11).attr('fill', 'var(--color-fg-muted)').text(r.dia + (r.parcial === true || r.parcial === 'true' ? '*' : ''));
+      svg.append('rect').attr('x', x(r.data) - x.step() * x.paddingOuter() / 2).attr('width', x.step()).attr('y', 0).attr('height', H - 22).attr('fill', 'transparent')
+        .on('mousemove', (ev) => mostrar(ev, r)).on('mouseleave', esconder);
+    });
+    if (opt.meta) {
+      svg.append('line').attr('x1', left).attr('x2', W - 8).attr('y1', y(opt.meta)).attr('y2', y(opt.meta)).attr('stroke', 'var(--cds-chart-reference)').attr('stroke-dasharray', '5 4').attr('stroke-width', 1.5);
+      svg.append('text').attr('x', W - 10).attr('y', y(opt.meta) - 5).attr('text-anchor', 'end').attr('font-size', 11).attr('fill', 'var(--color-fg-muted)').text('meta ' + P.brl.format(opt.meta).replace(',00', ''));
+    }
+    const tip = d3.select(el).append('div').attr('class', 'pm-tip').style('display', 'none');
+    function mostrar(ev, r) {
+      tip.style('display', null).html('');
+      tip.append('div').attr('class', 'pm-tip-h').text(r.dia + (r.parcial === true || r.parcial === 'true' ? ' (parcial)' : ''));
+      opt.tip(r).forEach(([k, v]) => tip.append('div').text(k + ': ' + v));
+      const [mx, my] = d3.pointer(ev, el);
+      const tw = tip.node().offsetWidth;
+      tip.style('left', Math.max(0, Math.min(mx + 12, el.clientWidth - tw)) + 'px').style('top', Math.max(0, my - 40) + 'px');
+    }
+    function esconder() { tip.style('display', 'none'); }
+  }
+
+  dash.draw('g-receita', (el) => {
+    const dias = P.rows('dias'), perfil = P.rows('perfil');
+    if (!dias || !perfil) { el.replaceChildren(); el.textContent = '—'; return; }
+    barras(el, dias, {
+      valor: 'receita', marca: 'custo_real', meta: P.n(perfil[0]?.meta_receita_dia),
+      cor: () => dash.colors[0],
+      tip: (r) => [['Receita', P.money(r.receita)], ['Custo real', P.money(r.custo_real)], ['Corridas', r.corridas]],
+    });
+  });
+
+  dash.draw('g-lucro', (el) => {
+    const dias = P.rows('dias');
+    if (!dias) { el.replaceChildren(); el.textContent = '—'; return; }
+    barras(el, dias, {
+      valor: 'lucro_real',
+      cor: (v) => (v < 0 ? css(el, '--cds-chart-status-critical') || 'var(--color-bad)' : dash.colors[1]),
+      tip: (r) => [['Lucro real', P.money(r.lucro_real)], ['Lucro por hora', P.money(r.lucro_hora)], ['R$/km', P.money(r.ganho_km)]],
+    });
+  });
+
+  dash.draw('g-apps', (el) => {
+    const apps = P.rows('porApp');
+    if (!apps) { el.replaceChildren(); el.textContent = '—'; return; }
+    el.replaceChildren();
+    const max = d3.max(apps, (a) => a.receita) || 1;
+    apps.forEach((a, i) => {
+      const row = d3.select(el).append('div').attr('class', 'pm-app');
+      row.append('span').text(a.app);
+      row.append('div').attr('class', 'pm-app-track').append('div').attr('class', 'pm-app-bar').style('width', (a.receita / max) * 100 + '%').style('background', dash.colors[i % dash.colors.length]);
+      row.append('span').text(P.money(a.receita) + ' · ' + P.pct.format(a.parte));
+    });
+  });
+
+  dash.draw('tabela', (el) => {
+    const dias = P.rows('dias');
+    el.replaceChildren();
+    if (!dias) return;
+    dias.forEach((r) => {
+      const tr = d3.select(el).append('tr').attr('data-key', r.data);
+      const c0 = tr.append('td');
+      c0.append('span').text(r.dia);
+      if (r.parcial === true || r.parcial === 'true') c0.append('span').attr('class', 'pm-pill').text('parcial');
+      const lucro = P.n(r.lucro_real);
+      [P.int.format(r.km), P.horas(P.n(r.horas)), r.corridas, P.money(r.receita), P.money(r.custo_real), P.money(r.lucro_real), P.money(r.ganho_km), P.money(r.ganho_hora), P.money(r.lucro_caixa)]
+        .forEach((v, i) => { const td = tr.append('td').text(v); if (i === 5) td.attr('class', lucro < 0 ? 'pm-bad' : 'pm-good'); });
+    });
+  });
+</script>

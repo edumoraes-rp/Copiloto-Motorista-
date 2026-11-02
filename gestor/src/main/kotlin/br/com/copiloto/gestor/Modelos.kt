@@ -123,6 +123,8 @@ data class Jornada(
     val pausaMinutos: Int = 0,
     /** Tempo trabalhado informado direto (quando o motorista não anotou início e fim). */
     val minutosInformados: Int? = null,
+    /** Dia ainda aberto: os números são parciais. */
+    val parcial: Boolean = false,
     val receitas: List<Receita> = emptyList(),
     val despesas: List<Despesa> = emptyList(),
 ) {

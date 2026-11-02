@@ -8,6 +8,7 @@ import java.time.LocalDate
 
 data class ResumoDia(
     val data: LocalDate,
+    val parcial: Boolean = false,
     val kmRodado: Int?,
     val horasTrabalhadas: Double?,
     val corridas: Int,
@@ -147,6 +148,7 @@ class GestorDeFrota(private val perfil: PerfilVeiculo) {
 
         return ResumoDia(
             data = jornada.data,
+            parcial = jornada.parcial,
             kmRodado = km,
             horasTrabalhadas = horas,
             corridas = corridas,

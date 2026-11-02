@@ -57,6 +57,7 @@ object Leitor {
             var fim: LocalTime? = null
             var pausa = 0
             var minutos: Int? = null
+            var parcial = false
             val receitas = mutableListOf<Receita>()
             val despesas = mutableListOf<Despesa>()
         }
@@ -81,6 +82,7 @@ object Leitor {
                         dia.fim = campo(3)?.let(LocalTime::parse)
                         dia.pausa = campo(4)?.toInt() ?: 0
                     }
+                    "PARCIAL" -> dia.parcial = true
                     "HORAS" -> dia.minutos = LocalTime.parse(campo(2)?.padStart(5, '0') ?: erro("falta o tempo (HH:MM)")).let { it.hour * 60 + it.minute }
                     "RECEITA" -> dia.receitas += Receita(
                         app = campo(2) ?: erro("falta o app"),
@@ -116,6 +118,7 @@ object Leitor {
                 fim = r.fim,
                 pausaMinutos = r.pausa,
                 minutosInformados = r.minutos,
+                parcial = r.parcial,
                 receitas = r.receitas,
                 despesas = r.despesas,
             )
