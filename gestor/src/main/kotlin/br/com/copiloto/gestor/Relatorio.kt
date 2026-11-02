@@ -50,7 +50,7 @@ object Relatorio {
         appendLine("| Indicador | Valor |")
         appendLine("|---|---:|")
         appendLine("| Km rodados | ${p.kmRodado} km (média ${f.num(p.kmMedioPorDia)} km/dia) |")
-        appendLine("| Horas trabalhadas | ${f.horas(p.horasTrabalhadas)} (média ${f.horas(p.horasMediasPorDia)}/dia) |")
+        appendLine("| Horas trabalhadas | " + (if (p.horasTrabalhadas > 0) "${f.horas(p.horasTrabalhadas)} (média ${f.horas(p.horasMediasPorDia)}/dia)" else "— (informe hora de início e fim)") + " |")
         appendLine("| Corridas | ${p.corridas} (ticket médio ${f.reais(p.ticketMedio)}) |")
         appendLine("| Ganho por km | ${f.reais(p.ganhoPorKm)} |")
         appendLine("| Custo por km | ${f.reais(p.custoPorKm)} |")
@@ -80,7 +80,7 @@ object Relatorio {
             appendLine("| $nome | ${f.reais(v)} | ${f.reais(if (p.kmRodado > 0) v / p.kmRodado else null)} |")
         linhaCusto("Combustível consumido (${f.reais(p.custoCombustivelPorKmUsado)}/km)", p.custoCombustivel)
         linhaCusto("Despesas do dia a dia", p.despesasOperacionais)
-        linhaCusto("Reserva de manutenção (${f.reais(perfil.manutencaoPorKm)}/km)", p.reservaManutencao)
+        if (perfil.manutencaoPorKm > 0) linhaCusto("Reserva de manutenção (${f.reais(perfil.manutencaoPorKm)}/km)", p.reservaManutencao)
         linhaCusto("Custos fixos rateados (${f.reais(perfil.custoFixoPorDia)}/dia)", p.custoFixoRateado)
         appendLine()
         if (p.despesasPorCategoria.isNotEmpty()) {
@@ -94,7 +94,7 @@ object Relatorio {
             appendLine()
         }
 
-        appendLine("## Combustível e manutenção")
+        appendLine(if (perfil.manutencaoPorKm > 0) "## Combustível e manutenção" else "## Combustível")
         appendLine()
         val c = p.consumoReal
         if (c != null) {
@@ -106,7 +106,7 @@ object Relatorio {
         val dif = p.diferencaCombustivel
         appendLine("- Combustível consumido ${f.reais(p.custoCombustivel)} × pago na bomba ${f.reais(p.despesasPorCategoria[Categoria.COMBUSTIVEL] ?: 0.0)}: " +
             if (dif >= 0) "o tanque gastou ${f.reais(dif)} a mais do que foi reposto." else "sobrou ${f.reais(-dif)} de combustível no tanque para os próximos dias.")
-        appendLine("- Reserva de manutenção: acumulou ${f.reais(p.reservaManutencao)}, saldo ${f.reais(p.saldoReservaManutencao)} (separe esse valor; ele paga óleo, pneus e freios).")
+        if (perfil.manutencaoPorKm > 0) appendLine("- Reserva de manutenção: acumulou ${f.reais(p.reservaManutencao)}, saldo ${f.reais(p.saldoReservaManutencao)} (separe esse valor; ele paga óleo, pneus e freios).")
         if (p.kmForaDoTrabalho > 0) appendLine("- Km fora do expediente: ${p.kmForaDoTrabalho} km (custo ${f.reais(p.custoKmForaDoTrabalho)}), não entram no lucro do trabalho.")
         appendLine()
 

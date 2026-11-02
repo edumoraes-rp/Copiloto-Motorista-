@@ -1,2 +1,12 @@
 data;tipo;campo1;campo2;campo3;campo4
-# Os seus dias entram aqui (um lançamento por linha). Veja diario/LEIA-ME.md
+# Diário do Eduardo: novembro/2026. Formato em diario/LEIA-ME.md
+# 01/11 (dom): 167 km (356 km nos dois dias − 189 km de hoje)
+01/11/2026;INICIO;33534
+01/11/2026;ABASTECIMENTO;222,10;38,56;;PARCIAL
+01/11/2026;RECEITA;Atentiva;134,20;2
+01/11/2026;FIM;33701
+# 02/11 (seg): PARCIAL, dia ainda aberto (189 km até agora)
+02/11/2026;INICIO;33701
+02/11/2026;RECEITA;Uber;211,61;10
+02/11/2026;RECEITA;99;38,95;1
+02/11/2026;FIM;33890
