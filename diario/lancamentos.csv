@@ -6,11 +6,11 @@ data;tipo;campo1;campo2;campo3;campo4
 01/11/2026;ABASTECIMENTO;222,10;38,56;33534;CHEIO
 01/11/2026;RECEITA;Atentiva;134,20;2
 01/11/2026;FIM;33701
-# 02/11 (seg): 189 km de Uber/99 de manhã + 660 km do atendimento Atentiva Ribeirão → São Paulo. Hora de fim não informada.
+# 02/11 (seg): 189 km de Uber/99 de manhã + 660 km do atendimento Atentiva Ribeirão → São Paulo. Encerrado às 22:00, pausas não informadas.
 02/11/2026;INICIO;33701;05:10
 02/11/2026;RECEITA;Uber;211,61;10
 02/11/2026;RECEITA;99;38,95;1
 02/11/2026;RECEITA;Atentiva;733,70;1
-# Tanque cheio, mas sem km do hodômetro: não entra na medição do consumo real.
-02/11/2026;ABASTECIMENTO;150,80;26,27;;CHEIO
-02/11/2026;FIM;34556
+# Tanque cheio em Ribeirão antes da viagem; km 33.890 suposto (fim da manhã), A CONFIRMAR.
+02/11/2026;ABASTECIMENTO;150,80;26,27;33890;CHEIO
+02/11/2026;FIM;34556;22:00

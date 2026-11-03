@@ -1,4 +1,4 @@
 [
-  {"data": "2026-11-01", "dia": "dom 01/11", "parcial": false, "km": 167, "horas": 2.00, "corridas": 2, "receita": 134.20, "combustivel": 75.15, "despesas_dia": 0.00, "aluguel": 150.00, "custo_real": 225.15, "lucro_real": -90.95, "lucro_caixa": -87.90, "pago_combustivel": 222.10, "ganho_km": 0.80, "ganho_hora": 67.10, "lucro_hora": -45.47},
-  {"data": "2026-11-02", "dia": "seg 02/11", "parcial": false, "km": 855, "horas": null, "corridas": 12, "receita": 984.26, "combustivel": 384.75, "despesas_dia": 0.00, "aluguel": 150.00, "custo_real": 534.75, "lucro_real": 449.51, "lucro_caixa": 833.46, "pago_combustivel": 150.80, "ganho_km": 1.15, "ganho_hora": null, "lucro_hora": null}
+  {"data": "2026-11-01", "dia": "dom 01/11", "parcial": false, "km": 167, "horas": 2.00, "corridas": 2, "receita": 134.20, "combustivel": 70.88, "despesas_dia": 0.00, "aluguel": 150.00, "custo_real": 220.88, "lucro_real": -86.68, "lucro_caixa": -87.90, "pago_combustivel": 222.10, "ganho_km": 0.80, "ganho_hora": 67.10, "lucro_hora": -43.34},
+  {"data": "2026-11-02", "dia": "seg 02/11", "parcial": false, "km": 855, "horas": 16.83, "corridas": 12, "receita": 984.26, "combustivel": 362.90, "despesas_dia": 0.00, "aluguel": 150.00, "custo_real": 512.90, "lucro_real": 471.36, "lucro_caixa": 833.46, "pago_combustivel": 150.80, "ganho_km": 1.15, "ganho_hora": 58.47, "lucro_hora": 28.00}
 ]
