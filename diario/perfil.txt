@@ -2,11 +2,12 @@
 nome = HB20S 1.0 TGDI 2025/2026 flex (Movida)
 posse = ALUGADO
 
-# Combustível no tanque: GASOLINA (último abastecimento em 02/11 a R$ 5,74/L).
-# Etanol a R$ 3,42 é 60% da gasolina (R$ 5,74): abaixo de 70%, o etanol compensa.
-# Consumo ESTIMADO (gasolina, cidade); será trocado pelo consumo real medido nos tanques cheios.
-preco_combustivel = 5,74
-consumo_km_l = 12,8
+# Combustível no tanque: ETANOL (tanque cheio em 03/11, R$ 3,52/L).
+# Etanol R$ 3,52 ÷ gasolina R$ 5,74 = 61%: abaixo de 70%, o etanol compensa.
+# Consumo do etanol ESTIMADO em 9,5 km/L (≈ 70% dos 13,55 km/L medidos na gasolina na cidade);
+# vale só até o próximo tanque cheio, quando o consumo real do etanol for medido.
+preco_combustivel = 3,52
+consumo_km_l = 9,5
 
 # Movida: aluguel mensal, pago todo dia 12 (no dia 12 lançar DESPESA;ALUGUEL;3300,00).
 fixo.mensal = Aluguel Movida ; 3300,00

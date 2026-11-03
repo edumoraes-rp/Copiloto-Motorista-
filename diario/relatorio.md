@@ -7,10 +7,10 @@ Período: **01/11/2026 a 03/11/2026**, 3 dia(s) trabalhado(s)
 | | Valor |
 |---|---:|
 | Receita bruta | R$ 1.118,46 |
-| Custo real (combustível + operacionais + manutenção + fixos) | R$ 882,91 |
-| **Lucro real** | **R$ 235,55** |
-| Margem (lucro ÷ receita) | 21,06% |
-| Lucro de caixa (receita − tudo que foi pago) | R$ 967,66 |
+| Custo real (combustível + operacionais + manutenção + fixos) | R$ 827,95 |
+| **Lucro real** | **R$ 290,51** |
+| Margem (lucro ÷ receita) | 25,97% |
+| Lucro de caixa (receita − tudo que foi pago) | R$ 827,86 |
 
 | Indicador | Valor |
 |---|---:|
@@ -18,13 +18,13 @@ Período: **01/11/2026 a 03/11/2026**, 3 dia(s) trabalhado(s)
 | Horas trabalhadas | 18h50 (média 9h25/dia) |
 | Corridas | 14 (ticket médio R$ 79,89) |
 | Ganho por km | R$ 1,09 |
-| Custo por km | R$ 0,86 |
-| Lucro por km | R$ 0,23 |
+| Custo por km | R$ 0,81 |
+| Lucro por km | R$ 0,28 |
 | Ganho por hora | R$ 59,39 |
-| Lucro por hora | R$ 20,47 |
+| Lucro por hora | R$ 23,39 |
 | Receita média por dia | R$ 372,82 |
-| Lucro real médio por dia | R$ 78,52 |
-| Melhor dia | seg 02/11/2026: R$ 472,09 |
+| Lucro real médio por dia | R$ 96,84 |
+| Melhor dia | seg 02/11/2026: R$ 527,29 |
 | Pior dia | ter 03/11/2026: R$ -150,00 |
 
 ## Receita por app
@@ -39,7 +39,7 @@ Período: **01/11/2026 a 03/11/2026**, 3 dia(s) trabalhado(s)
 
 | Custo | Valor | Por km |
 |---|---:|---:|
-| Combustível consumido (R$ 0,42/km) | R$ 432,91 | R$ 0,42 |
+| Combustível consumido (R$ 0,37/km) | R$ 377,95 | R$ 0,37 |
 | Despesas do dia a dia | R$ 0,00 | R$ 0,00 |
 | Custos fixos rateados (R$ 150,00/dia) | R$ 450,00 | R$ 0,44 |
 
@@ -47,30 +47,36 @@ Pagamentos lançados (o que saiu do bolso):
 
 | Categoria | Pago |
 |---|---:|
-| Combustível | R$ 150,80 |
+| Combustível | R$ 290,60 |
 
 ## Combustível
 
-- Consumo real medido: **13,55 km/L** (356 km com 26,27 L; cadastrado: 12,8 km/L)
-- Preço médio pago: R$ 5,74/L → custo real de R$ 0,42 por km
-- Combustível consumido R$ 432,91 × pago na bomba R$ 150,80: o tanque gastou R$ 282,11 a mais do que foi reposto.
+Consumo medido entre tanques cheios (cada trecho paga o combustível que estava no tanque):
+
+| Trecho (km) | Combustível | Km | Litros | Km/L | R$/L | Custo | R$/km |
+|---|---|---:|---:|---:|---:|---:|---:|
+| 33.534 → 33.890 | gasolina | 356 | 26,27 | 13,55 | R$ 5,76 | R$ 151,32 | R$ 0,43 |
+| 33.890 → 34.560 | gasolina | 670 | 39,72 | 16,87 | R$ 5,74 | R$ 228,00 | R$ 0,34 |
+
+- Km depois do último tanque cheio usam o consumo do perfil (9,5 km/L) até a próxima medição
+- Combustível consumido R$ 377,95 × pago na bomba R$ 290,60: o tanque gastou R$ 87,35 a mais do que foi reposto.
 
 ## Planejamento
 
 - Custos fixos: R$ 3.300,00/mês = R$ 150,00 por dia trabalhado (22 dias/mês)
-- **Ponto de equilíbrio:** faturar pelo menos **R$ 294,30 por dia** (rodando ~340,67 km) para não ter prejuízo
-- **Valor mínimo por km:** R$ 0,86. Abaixo disso, na média, o dia dá prejuízo
+- **Ponto de equilíbrio:** faturar pelo menos **R$ 275,98 por dia** (rodando ~340,67 km) para não ter prejuízo
+- **Valor mínimo por km:** R$ 0,81. Abaixo disso, na média, o dia dá prejuízo
 - **Meta de receita R$ 700,00/dia:** média atual R$ 372,82 (53,26% da meta); 1 de 3 dia(s) bateram a meta
-- Batendo a meta todo dia, com o custo médio atual: lucro real de R$ 405,70/dia, **R$ 8.925,29/mês**
-- Projeção do mês no ritmo atual: receita R$ 8.202,04, lucro real **R$ 1.727,33**
+- Batendo a meta todo dia, com o custo médio atual: lucro real de R$ 424,02/dia, **R$ 9.328,36/mês**
+- Projeção do mês no ritmo atual: receita R$ 8.202,04, lucro real **R$ 2.130,40**
 
 ## Dia a dia
 
 | Dia | Km | Horas | Corridas | Receita | Custo real | Lucro real | R$/km | Lucro/hora | Caixa |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| dom 01/11/2026 | 167 | 2h00 | 2 | R$ 134,20 | R$ 220,74 | R$ -86,54 | R$ 0,80 | R$ -43,27 | R$ 134,20 |
-| seg 02/11/2026 | 855 | 16h50 | 12 | R$ 984,26 | R$ 512,17 | R$ 472,09 | R$ 1,15 | R$ 28,04 | R$ 833,46 |
-| ter 03/11/2026 *(parcial)* | — | — | 0 | R$ 0,00 | R$ 150,00 | R$ -150,00 | — | — | R$ 0,00 |
+| dom 01/11/2026 | 167 | 2h00 | 2 | R$ 134,20 | R$ 220,98 | R$ -86,78 | R$ 0,80 | R$ -43,39 | R$ 134,20 |
+| seg 02/11/2026 | 855 | 16h50 | 12 | R$ 984,26 | R$ 456,97 | R$ 527,29 | R$ 1,15 | R$ 31,32 | R$ 833,46 |
+| ter 03/11/2026 *(parcial)* | — | — | 0 | R$ 0,00 | R$ 150,00 | R$ -150,00 | — | — | R$ -139,80 |
 
 ## Alertas
 

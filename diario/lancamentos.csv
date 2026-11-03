@@ -3,8 +3,8 @@ data;tipo;campo1;campo2;campo3;campo4
 # 01/11 (dom): 167 km (356 km em 01 e 02/11 − 189 km da manhã de 02/11)
 01/11/2026;INICIO;33534
 01/11/2026;HORAS;2:00
-# Tanque cheio desde 31/10 (abastecimento de R$ 222,10 é de outubro, fora de novembro).
-01/11/2026;TANQUE_CHEIO;33534
+# Tanque cheio desde 31/10 com gasolina a R$ 5,76 (abastecimento de R$ 222,10 é de outubro, fora de novembro).
+01/11/2026;TANQUE_CHEIO;33534;5,76;GASOLINA
 01/11/2026;RECEITA;Atentiva;134,20;2
 01/11/2026;FIM;33701
 # 02/11 (seg): 189 km de Uber/99 de manhã + 660 km do atendimento Atentiva Ribeirão → São Paulo. Encerrado às 22:00, pausas não informadas.
@@ -14,8 +14,9 @@ data;tipo;campo1;campo2;campo3;campo4
 02/11/2026;RECEITA;Atentiva;733,70;1
 # Pedágios da viagem: reembolsados pela Atentiva, sem custo para o motorista.
 # Tanque cheio em Ribeirão antes de sair para São Paulo (confirmado); km 33.890 = fim da manhã.
-02/11/2026;ABASTECIMENTO;150,80;26,27;33890;CHEIO
+02/11/2026;ABASTECIMENTO;150,80;26,27;33890;CHEIO;GASOLINA
 02/11/2026;FIM;34556;22:00
 # 03/11 (ter): km inicial = km final de 02/11 (a confirmar). Dia aberto.
 03/11/2026;INICIO;34556;05:26
+03/11/2026;ABASTECIMENTO;139,80;39,718;34560;CHEIO;ETANOL
 03/11/2026;PARCIAL

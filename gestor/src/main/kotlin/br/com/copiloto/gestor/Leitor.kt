@@ -58,7 +58,7 @@ object Leitor {
             var pausa = 0
             var minutos: Int? = null
             var parcial = false
-            val tanqueCheio = mutableListOf<Int>()
+            val tanqueCheio = mutableListOf<TanqueCheio>()
             val receitas = mutableListOf<Receita>()
             val despesas = mutableListOf<Despesa>()
         }
@@ -84,7 +84,11 @@ object Leitor {
                         dia.pausa = campo(4)?.toInt() ?: 0
                     }
                     "PARCIAL" -> dia.parcial = true
-                    "TANQUE_CHEIO" -> dia.tanqueCheio += (campo(2)?.toInt() ?: erro("falta o km do hodômetro"))
+                    "TANQUE_CHEIO" -> dia.tanqueCheio += TanqueCheio(
+                        km = campo(2)?.toInt() ?: erro("falta o km do hodômetro"),
+                        precoLitro = campo(3)?.let(Formato::lerNumero),
+                        combustivel = campo(4)?.uppercase(),
+                    )
                     "HORAS" -> dia.minutos = LocalTime.parse(campo(2)?.padStart(5, '0') ?: erro("falta o tempo (HH:MM)")).let { it.hour * 60 + it.minute }
                     "RECEITA" -> dia.receitas += Receita(
                         app = campo(2) ?: erro("falta o app"),
@@ -102,6 +106,7 @@ object Leitor {
                         litros = campo(3)?.let(Formato::lerNumero),
                         kmHodometro = campo(4)?.toInt(),
                         tanqueCheio = campo(5)?.uppercase() == "CHEIO",
+                        combustivel = campo(6)?.uppercase(),
                     )
                     else -> erro("tipo deve ser INICIO, FIM, HORAS, PARCIAL, TANQUE_CHEIO, RECEITA, DESPESA ou ABASTECIMENTO")
                 }

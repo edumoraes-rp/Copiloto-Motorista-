@@ -111,7 +111,12 @@ data class Despesa(
     val kmHodometro: Int? = null,
     /** Só para combustível: completou o tanque? (necessário para medir consumo real) */
     val tanqueCheio: Boolean = false,
+    /** Só para combustível: ETANOL, GASOLINA, GNV... (opcional). */
+    val combustivel: String? = null,
 )
+
+/** Tanque cheio sem compra no período (ex.: abastecido no mês anterior): ponto de partida do consumo. */
+data class TanqueCheio(val km: Int, val precoLitro: Double? = null, val combustivel: String? = null)
 
 data class Jornada(
     val data: LocalDate,
@@ -129,7 +134,7 @@ data class Jornada(
      * Km em que o tanque estava cheio sem compra neste período (ex.: abastecido no mês anterior).
      * Serve de ponto de partida para medir o consumo real, sem entrar como despesa.
      */
-    val tanqueCheioNoKm: List<Int> = emptyList(),
+    val tanqueCheioNoKm: List<TanqueCheio> = emptyList(),
     val receitas: List<Receita> = emptyList(),
     val despesas: List<Despesa> = emptyList(),
 ) {

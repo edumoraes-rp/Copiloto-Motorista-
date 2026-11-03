@@ -1,0 +1,4 @@
+[
+  {"trecho": "33534-33890", "km_inicio": 33534, "km_fim": 33890, "combustivel": "gasolina", "km": 356, "litros": 26.27, "km_por_litro": 13.55, "preco_litro": 5.76, "custo": 151.32, "custo_km": 0.43},
+  {"trecho": "33890-34560", "km_inicio": 33890, "km_fim": 34560, "combustivel": "gasolina", "km": 670, "litros": 39.72, "km_por_litro": 16.87, "preco_litro": 5.74, "custo": 228.00, "custo_km": 0.34}
+]

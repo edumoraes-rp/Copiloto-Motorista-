@@ -38,14 +38,33 @@ data class ResumoDia(
     val alertas: List<String>,
 )
 
-data class ConsumoReal(
-    val kmPorLitro: Double,
-    val precoMedioLitro: Double,
-    val kmMedidos: Int,
-    val litrosMedidos: Double,
+/**
+ * Trecho entre dois tanques cheios: os litros colocados no fim repõem o que foi queimado,
+ * e o que foi queimado é o combustível colocado no início (preço e tipo do tanque de partida).
+ */
+data class TrechoConsumo(
+    val kmInicio: Int,
+    val kmFim: Int,
+    val litros: Double,
+    val precoLitro: Double,
+    val combustivel: String?,
 ) {
-    val custoPorKm: Double get() = precoMedioLitro / kmPorLitro
+    val km: Int get() = kmFim - kmInicio
+    val kmPorLitro: Double get() = km / litros
+    val custo: Double get() = litros * precoLitro
+    val custoPorKm: Double get() = custo / km
 }
+
+data class ConsumoReal(val trechos: List<TrechoConsumo>) {
+    val kmMedidos: Int get() = trechos.sumOf { it.km }
+    val litrosMedidos: Double get() = trechos.sumOf { it.litros }
+    val kmPorLitro: Double get() = kmMedidos / litrosMedidos
+    val precoMedioLitro: Double get() = trechos.sumOf { it.custo } / litrosMedidos
+    val custoPorKm: Double get() = trechos.sumOf { it.custo } / kmMedidos
+}
+
+/** Um tanque cheio conhecido (pago no período ou de referência). */
+data class PontoTanqueCheio(val km: Int, val precoLitro: Double?, val combustivel: String?)
 
 data class ResumoPeriodo(
     val inicio: LocalDate,
@@ -117,6 +136,8 @@ class GestorDeFrota(private val perfil: PerfilVeiculo) {
     fun resumoDoDia(
         jornada: Jornada,
         custoCombustivelPorKm: Double = perfil.custoCombustivelPorKm,
+        /** Custo de combustível já calculado trecho a trecho (usado pelo resumo do período). */
+        combustivelCalculado: Double? = null,
     ): ResumoDia {
         val km = jornada.kmRodado
         val horas = jornada.minutosTrabalhados?.let { it / 60.0 }
@@ -127,7 +148,7 @@ class GestorDeFrota(private val perfil: PerfilVeiculo) {
         val pagas = jornada.despesas.sumOf { it.valor }
 
         val kmConta = (km ?: 0).coerceAtLeast(0)
-        val combustivel = kmConta * custoCombustivelPorKm
+        val combustivel = combustivelCalculado ?: (kmConta * custoCombustivelPorKm)
         val operacionais = jornada.despesas.filter { it.categoria.natureza == Natureza.OPERACIONAL }.sumOf { it.valor }
         val manutencao = kmConta * perfil.manutencaoPorKm
         val fixo = perfil.custoFixoPorDia
@@ -174,43 +195,75 @@ class GestorDeFrota(private val perfil: PerfilVeiculo) {
         )
     }
 
+    private class Ponto(val km: Int, val litros: Double, val cheio: Boolean, val preco: Double?, val combustivel: String?)
+
+    private fun pontos(abastecimentos: List<Despesa>, referencias: List<TanqueCheio>): List<Ponto> =
+        (abastecimentos
+            .filter { it.categoria == Categoria.COMBUSTIVEL && it.litros != null && it.litros > 0 && it.kmHodometro != null }
+            .map { Ponto(it.kmHodometro!!, it.litros!!, it.tanqueCheio, it.valor / it.litros, it.combustivel) } +
+            referencias.map { Ponto(it.km, 0.0, true, it.precoLitro, it.combustivel) })
+            .sortedBy { it.km }
+
     /**
-     * Consumo real pelo método do tanque cheio: entre dois abastecimentos de tanque cheio,
+     * Consumo real pelo método do tanque cheio, trecho a trecho: entre dois tanques cheios,
      * km rodados ÷ litros colocados depois do primeiro (incluindo o segundo).
+     * O custo do trecho usa o preço do combustível do tanque de partida (o que foi queimado).
      */
-    fun consumoReal(abastecimentos: List<Despesa>): ConsumoReal? {
-        val validos = abastecimentos
-            .filter { it.categoria == Categoria.COMBUSTIVEL && it.litros != null && (it.litros > 0 || it.tanqueCheio) && it.kmHodometro != null }
-            .sortedBy { it.kmHodometro }
-        var ultimoCheio: Despesa? = null
-        var litrosDesdeCheio = 0.0
-        var kmTotal = 0
-        var litrosTotal = 0.0
-        for (a in validos) {
-            if (ultimoCheio != null) litrosDesdeCheio += a.litros!!
-            if (a.tanqueCheio) {
-                if (ultimoCheio != null) {
-                    kmTotal += a.kmHodometro!! - ultimoCheio.kmHodometro!!
-                    litrosTotal += litrosDesdeCheio
+    fun consumoReal(abastecimentos: List<Despesa>, referencias: List<TanqueCheio> = emptyList()): ConsumoReal? {
+        val trechos = mutableListOf<TrechoConsumo>()
+        var ultimo: Ponto? = null
+        var litros = 0.0
+        for (p in pontos(abastecimentos, referencias)) {
+            if (ultimo != null) litros += p.litros
+            if (p.cheio) {
+                if (ultimo != null && litros > 0 && p.km > ultimo.km) {
+                    val preco = ultimo.preco ?: p.preco ?: perfil.precoCombustivel
+                    trechos += TrechoConsumo(ultimo.km, p.km, litros, preco, ultimo.combustivel ?: p.combustivel)
                 }
-                ultimoCheio = a
-                litrosDesdeCheio = 0.0
+                ultimo = p
+                litros = 0.0
             }
         }
-        if (litrosTotal <= 0 || kmTotal <= 0) return null
-        val precoMedio = validos.sumOf { it.valor } / validos.sumOf { it.litros!! }
-        return ConsumoReal(kmTotal / litrosTotal, precoMedio, kmTotal, litrosTotal)
+        return if (trechos.isEmpty()) null else ConsumoReal(trechos)
+    }
+
+    /** Último tanque cheio conhecido: define o combustível que está no tanque agora. */
+    fun ultimoTanqueCheio(abastecimentos: List<Despesa>, referencias: List<TanqueCheio> = emptyList()): PontoTanqueCheio? =
+        pontos(abastecimentos, referencias).lastOrNull { it.cheio }?.let { PontoTanqueCheio(it.km, it.preco, it.combustivel) }
+
+    /**
+     * Custo do combustível de um intervalo de km: km dentro de trechos medidos pagam o custo real do trecho;
+     * km depois do último tanque cheio usam o preço desse tanque e o consumo do perfil; o resto usa o perfil.
+     */
+    fun custoCombustivel(kmInicio: Int, kmFim: Int, consumo: ConsumoReal?, ultimo: PontoTanqueCheio?): Double {
+        if (kmFim <= kmInicio) return 0.0
+        var custo = 0.0
+        var coberto = 0
+        consumo?.trechos?.forEach { t ->
+            val sobreposto = (minOf(kmFim, t.kmFim) - maxOf(kmInicio, t.kmInicio)).coerceAtLeast(0)
+            custo += sobreposto * t.custoPorKm
+            coberto += sobreposto
+        }
+        val fimMedido = consumo?.trechos?.maxOf { it.kmFim }
+        val depois = if (ultimo?.precoLitro != null) (kmFim - maxOf(kmInicio, ultimo.km, fimMedido ?: ultimo.km)).coerceAtLeast(0) else 0
+        custo += depois * (ultimo?.precoLitro ?: 0.0) / perfil.consumoKmPorLitro
+        custo += (kmFim - kmInicio - coberto - depois).coerceAtLeast(0) * perfil.custoCombustivelPorKm
+        return custo
     }
 
     fun resumoDoPeriodo(jornadas: List<Jornada>): ResumoPeriodo {
         require(jornadas.isNotEmpty()) { "Nenhuma jornada no período" }
         val ordenadas = jornadas.sortedBy { it.data }
-        val referencias = ordenadas.flatMap { j ->
-            j.tanqueCheioNoKm.map { km -> Despesa(Categoria.COMBUSTIVEL, 0.0, "tanque cheio de referência", litros = 0.0, kmHodometro = km, tanqueCheio = true) }
+        val referencias = ordenadas.flatMap { it.tanqueCheioNoKm }
+        val abastecimentos = ordenadas.flatMap { it.abastecimentos }
+        val consumo = consumoReal(abastecimentos, referencias)
+        val ultimoCheio = ultimoTanqueCheio(abastecimentos, referencias)
+        val dias = ordenadas.map { j ->
+            val fim = j.kmFinal
+            resumoDoDia(j, combustivelCalculado = if (fim != null) custoCombustivel(j.kmInicial, fim, consumo, ultimoCheio) else null)
         }
-        val consumo = consumoReal(ordenadas.flatMap { it.abastecimentos } + referencias)
-        val custoCombKm = consumo?.custoPorKm ?: perfil.custoCombustivelPorKm
-        val dias = ordenadas.map { resumoDoDia(it, custoCombKm) }
+        val kmComFim = dias.sumOf { (it.kmRodado ?: 0).coerceAtLeast(0) }
+        val custoCombKm = if (kmComFim > 0) dias.sumOf { it.custoCombustivel } / kmComFim else perfil.custoCombustivelPorKm
 
         val n = dias.size
         val km = dias.sumOf { (it.kmRodado ?: 0).coerceAtLeast(0) }
@@ -252,8 +305,6 @@ class GestorDeFrota(private val perfil: PerfilVeiculo) {
             }
             if (kmFora > 0) add("$kmFora km rodados fora do expediente (entre um dia e outro): custo de ${Formato.reais(kmFora * custoKmVariavel)} que não é do trabalho.")
             if (consumo == null) add("Consumo real ainda não medido: anote litros, km do hodômetro e 'CHEIO' em pelo menos dois abastecimentos de tanque cheio.")
-            else if (kotlin.math.abs(consumo.kmPorLitro - perfil.consumoKmPorLitro) / perfil.consumoKmPorLitro > 0.10)
-                add("Consumo real (${Formato.num(consumo.kmPorLitro)} km/L) está mais de 10% diferente do cadastrado (${Formato.num(perfil.consumoKmPorLitro)} km/L): atualize o perfil.")
             if (metaReceita > 0 && receita / n < metaReceita)
                 add("Receita média de ${Formato.reais(receita / n)}/dia está abaixo da meta de ${Formato.reais(metaReceita)}/dia (faltam ${Formato.reais(metaReceita - receita / n)}).")
             if (paraMeta != null && receita / n < paraMeta)

@@ -17,6 +17,7 @@ object Exportar {
         File(pasta, "dias.json").writeText(dias(p))
         File(pasta, "apps.json").writeText(apps(p))
         File(pasta, "perfil.json").writeText(perfil(perfil, p))
+        File(pasta, "trechos.json").writeText(trechos(p))
     }
 
     fun dias(p: ResumoPeriodo): String = lista(p.dias.map { d ->
@@ -43,6 +44,16 @@ object Exportar {
 
     fun apps(p: ResumoPeriodo): String = lista(p.dias.flatMap { d ->
         d.receitaPorApp.map { (app, valor) -> linkedMapOf<String, Any?>("data" to d.data.toString(), "app" to app, "receita" to valor) }
+    })
+
+    fun trechos(p: ResumoPeriodo): String = lista(p.consumoReal?.trechos.orEmpty().map { t ->
+        linkedMapOf<String, Any?>(
+            "trecho" to "${t.kmInicio}-${t.kmFim}",
+            "km_inicio" to t.kmInicio, "km_fim" to t.kmFim,
+            "combustivel" to (t.combustivel?.lowercase() ?: "—"),
+            "km" to t.km, "litros" to t.litros, "km_por_litro" to t.kmPorLitro,
+            "preco_litro" to t.precoLitro, "custo" to t.custo, "custo_km" to t.custoPorKm,
+        )
     })
 
     fun perfil(perfil: PerfilVeiculo, p: ResumoPeriodo): String = lista(listOf(linkedMapOf(

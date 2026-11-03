@@ -152,7 +152,7 @@ class GestorDeFrotaTest {
 
     @Test
     fun `tanque cheio de referencia mede consumo sem entrar como despesa`() {
-        val a = Jornada(LocalDate.of(2026, 11, 1), 1000, 1300, tanqueCheioNoKm = listOf(1000))
+        val a = Jornada(LocalDate.of(2026, 11, 1), 1000, 1300, tanqueCheioNoKm = listOf(TanqueCheio(1000)))
         val b = Jornada(
             LocalDate.of(2026, 11, 2), 1300, 1400,
             despesas = listOf(Despesa(Categoria.COMBUSTIVEL, 120.0, litros = 20.0, kmHodometro = 1300, tanqueCheio = true)),
@@ -162,5 +162,21 @@ class GestorDeFrotaTest {
         assertEquals(15.0, c.kmPorLitro, delta) // 300 km ÷ 20 L
         assertEquals(6.0, c.precoMedioLitro, delta) // só o abastecimento pago
         assertEquals(120.0, p.despesasPagas, delta)
+    }
+
+    @Test
+    fun `cada trecho paga o combustivel que estava no tanque`() {
+        // Gasolina a R$ 6,00 cheia no km 1000; etanol R$ 4,00 cheio no km 1300 (repôs 20 L); depois roda 100 km no etanol.
+        val a = Jornada(LocalDate.of(2026, 11, 1), 1000, 1300, tanqueCheioNoKm = listOf(TanqueCheio(1000, 6.0, "GASOLINA")))
+        val b = Jornada(
+            LocalDate.of(2026, 11, 2), 1300, 1400,
+            despesas = listOf(Despesa(Categoria.COMBUSTIVEL, 80.0, litros = 20.0, kmHodometro = 1300, tanqueCheio = true, combustivel = "ETANOL")),
+        )
+        val p = gestor.resumoDoPeriodo(listOf(a, b))
+        val t = p.consumoReal!!.trechos.single()
+        assertEquals(15.0, t.kmPorLitro, delta)
+        assertEquals("GASOLINA", t.combustivel)
+        assertEquals(120.0, p.dias[0].custoCombustivel, delta) // 20 L de gasolina × 6,00
+        assertEquals(100 * 4.0 / 12.0, p.dias[1].custoCombustivel, delta) // etanol 4,00 ÷ consumo do perfil (12 km/L)
     }
 }
