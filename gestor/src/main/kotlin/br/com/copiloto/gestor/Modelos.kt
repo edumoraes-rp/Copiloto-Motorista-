@@ -125,6 +125,11 @@ data class Jornada(
     val minutosInformados: Int? = null,
     /** Dia ainda aberto: os números são parciais. */
     val parcial: Boolean = false,
+    /**
+     * Km em que o tanque estava cheio sem compra neste período (ex.: abastecido no mês anterior).
+     * Serve de ponto de partida para medir o consumo real, sem entrar como despesa.
+     */
+    val tanqueCheioNoKm: List<Int> = emptyList(),
     val receitas: List<Receita> = emptyList(),
     val despesas: List<Despesa> = emptyList(),
 ) {

@@ -43,6 +43,7 @@ Dicas:
 | `FIM` | km final ; hora ; minutos de pausa (opcional) |
 | `HORAS` | tempo trabalhado (HH:MM), quando não houver hora de início e fim |
 | `PARCIAL` | (sem campos) marca o dia como ainda aberto |
+| `TANQUE_CHEIO` | km do hodômetro em que o tanque estava cheio sem compra no período (ponto de partida do consumo) |
 | `RECEITA` | app ; valor ; nº de corridas (opcional) |
 | `DESPESA` | categoria ; valor ; descrição (opcional) |
 | `ABASTECIMENTO` | valor ; litros ; km do hodômetro ; `CHEIO` ou `PARCIAL` |

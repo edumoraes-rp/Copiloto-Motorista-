@@ -180,7 +180,7 @@ class GestorDeFrota(private val perfil: PerfilVeiculo) {
      */
     fun consumoReal(abastecimentos: List<Despesa>): ConsumoReal? {
         val validos = abastecimentos
-            .filter { it.categoria == Categoria.COMBUSTIVEL && it.litros != null && it.litros > 0 && it.kmHodometro != null }
+            .filter { it.categoria == Categoria.COMBUSTIVEL && it.litros != null && (it.litros > 0 || it.tanqueCheio) && it.kmHodometro != null }
             .sortedBy { it.kmHodometro }
         var ultimoCheio: Despesa? = null
         var litrosDesdeCheio = 0.0
@@ -205,7 +205,10 @@ class GestorDeFrota(private val perfil: PerfilVeiculo) {
     fun resumoDoPeriodo(jornadas: List<Jornada>): ResumoPeriodo {
         require(jornadas.isNotEmpty()) { "Nenhuma jornada no período" }
         val ordenadas = jornadas.sortedBy { it.data }
-        val consumo = consumoReal(ordenadas.flatMap { it.abastecimentos })
+        val referencias = ordenadas.flatMap { j ->
+            j.tanqueCheioNoKm.map { km -> Despesa(Categoria.COMBUSTIVEL, 0.0, "tanque cheio de referência", litros = 0.0, kmHodometro = km, tanqueCheio = true) }
+        }
+        val consumo = consumoReal(ordenadas.flatMap { it.abastecimentos } + referencias)
         val custoCombKm = consumo?.custoPorKm ?: perfil.custoCombustivelPorKm
         val dias = ordenadas.map { resumoDoDia(it, custoCombKm) }
 

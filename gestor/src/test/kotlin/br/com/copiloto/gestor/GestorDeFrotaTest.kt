@@ -149,4 +149,18 @@ class GestorDeFrotaTest {
         assertEquals(350.0 - 410.0 / 2, p.lucroRealNaMetaDia!!, delta)
         assertTrue(p.alertas.any { "abaixo da meta" in it })
     }
+
+    @Test
+    fun `tanque cheio de referencia mede consumo sem entrar como despesa`() {
+        val a = Jornada(LocalDate.of(2026, 11, 1), 1000, 1300, tanqueCheioNoKm = listOf(1000))
+        val b = Jornada(
+            LocalDate.of(2026, 11, 2), 1300, 1400,
+            despesas = listOf(Despesa(Categoria.COMBUSTIVEL, 120.0, litros = 20.0, kmHodometro = 1300, tanqueCheio = true)),
+        )
+        val p = gestor.resumoDoPeriodo(listOf(a, b))
+        val c = assertNotNull(p.consumoReal)
+        assertEquals(15.0, c.kmPorLitro, delta) // 300 km ÷ 20 L
+        assertEquals(6.0, c.precoMedioLitro, delta) // só o abastecimento pago
+        assertEquals(120.0, p.despesasPagas, delta)
+    }
 }
