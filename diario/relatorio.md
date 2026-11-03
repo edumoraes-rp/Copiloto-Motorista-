@@ -6,34 +6,34 @@ Período: **01/11/2026 a 03/11/2026**, 3 dia(s) trabalhado(s)
 
 | | Valor |
 |---|---:|
-| Receita bruta | R$ 1.118,46 |
+| Receita bruta | R$ 1.506,28 |
 | Custo real (combustível + operacionais + manutenção + fixos) | R$ 827,95 |
-| **Lucro real** | **R$ 290,51** |
-| Margem (lucro ÷ receita) | 25,97% |
-| Lucro de caixa (receita − tudo que foi pago) | R$ 827,86 |
+| **Lucro real** | **R$ 678,33** |
+| Margem (lucro ÷ receita) | 45,03% |
+| Lucro de caixa (receita − tudo que foi pago) | R$ 1.215,68 |
 
 | Indicador | Valor |
 |---|---:|
 | Km rodados | 1022 km (média 340,67 km/dia) |
 | Horas trabalhadas | 18h50 (média 9h25/dia) |
-| Corridas | 14 (ticket médio R$ 79,89) |
-| Ganho por km | R$ 1,09 |
+| Corridas | 44 (ticket médio R$ 34,23) |
+| Ganho por km | R$ 1,47 |
 | Custo por km | R$ 0,81 |
-| Lucro por km | R$ 0,28 |
+| Lucro por km | R$ 0,66 |
 | Ganho por hora | R$ 59,39 |
 | Lucro por hora | R$ 23,39 |
-| Receita média por dia | R$ 372,82 |
-| Lucro real médio por dia | R$ 96,84 |
+| Receita média por dia | R$ 502,09 |
+| Lucro real médio por dia | R$ 226,11 |
 | Melhor dia | seg 02/11/2026: R$ 527,29 |
-| Pior dia | ter 03/11/2026: R$ -150,00 |
+| Pior dia | dom 01/11/2026: R$ -86,78 |
 
 ## Receita por app
 
 | App | Receita | % |
 |---|---:|---:|
-| Atentiva | R$ 867,90 | 77,6% |
-| Uber | R$ 211,61 | 18,92% |
-| 99 | R$ 38,95 | 3,48% |
+| Atentiva | R$ 867,90 | 57,62% |
+| Uber | R$ 599,43 | 39,8% |
+| 99 | R$ 38,95 | 2,59% |
 
 ## Para onde foi o dinheiro (custo real)
 
@@ -66,9 +66,9 @@ Consumo medido entre tanques cheios (cada trecho paga o combustível que estava 
 - Custos fixos: R$ 3.300,00/mês = R$ 150,00 por dia trabalhado (22 dias/mês)
 - **Ponto de equilíbrio:** faturar pelo menos **R$ 275,98 por dia** (rodando ~340,67 km) para não ter prejuízo
 - **Valor mínimo por km:** R$ 0,81. Abaixo disso, na média, o dia dá prejuízo
-- **Meta de receita R$ 700,00/dia:** média atual R$ 372,82 (53,26% da meta); 1 de 3 dia(s) bateram a meta
+- **Meta de receita R$ 700,00/dia:** média atual R$ 502,09 (71,73% da meta); 1 de 3 dia(s) bateram a meta
 - Batendo a meta todo dia, com o custo médio atual: lucro real de R$ 424,02/dia, **R$ 9.328,36/mês**
-- Projeção do mês no ritmo atual: receita R$ 8.202,04, lucro real **R$ 2.130,40**
+- Projeção do mês no ritmo atual: receita R$ 11.046,05, lucro real **R$ 4.974,41**
 
 ## Dia a dia
 
@@ -76,7 +76,7 @@ Consumo medido entre tanques cheios (cada trecho paga o combustível que estava 
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
 | dom 01/11/2026 | 167 | 2h00 | 2 | R$ 134,20 | R$ 220,98 | R$ -86,78 | R$ 0,80 | R$ -43,39 | R$ 134,20 |
 | seg 02/11/2026 | 855 | 16h50 | 12 | R$ 984,26 | R$ 456,97 | R$ 527,29 | R$ 1,15 | R$ 31,32 | R$ 833,46 |
-| ter 03/11/2026 *(parcial)* | — | — | 0 | R$ 0,00 | R$ 150,00 | R$ -150,00 | — | — | R$ -139,80 |
+| ter 03/11/2026 *(parcial)* | — | — | 30 | R$ 387,82 | R$ 150,00 | R$ 237,82 | — | — | R$ 248,02 |
 
 ## Alertas
 
@@ -84,6 +84,5 @@ Consumo medido entre tanques cheios (cada trecho paga o combustível que estava 
 - 02/11/2026: Km rodado muito alto (855 km): confira o hodômetro.
 - 03/11/2026: Falta o km final do dia.
 - 03/11/2026: Falta a hora de início ou de fim: sem ganho por hora.
-- 03/11/2026: Nenhuma receita lançada.
-- Receita média de R$ 372,82/dia está abaixo da meta de R$ 700,00/dia (faltam R$ 327,18).
+- Receita média de R$ 502,09/dia está abaixo da meta de R$ 700,00/dia (faltam R$ 197,91).
 
