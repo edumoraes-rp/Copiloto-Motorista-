@@ -11,7 +11,7 @@ data;tipo;campo1;campo2;campo3;campo4
 02/11/2026;RECEITA;Uber;211,61;10
 02/11/2026;RECEITA;99;38,95;1
 02/11/2026;RECEITA;Atentiva;733,70;1
-# Pedágios da viagem: sem custo para o motorista (informado em 02/11).
-# Tanque cheio em Ribeirão antes da viagem; km 33.890 suposto (fim da manhã), A CONFIRMAR.
+# Pedágios da viagem: reembolsados pela Atentiva, sem custo para o motorista.
+# Tanque cheio em Ribeirão antes de sair para São Paulo (confirmado); km 33.890 = fim da manhã.
 02/11/2026;ABASTECIMENTO;150,80;26,27;33890;CHEIO
 02/11/2026;FIM;34556;22:00
