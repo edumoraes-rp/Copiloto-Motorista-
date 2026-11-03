@@ -62,9 +62,11 @@ object Exportar {
         "aluguel_dia" to perfil.custoFixoPorDia,
         "dias_mes" to perfil.diasTrabalhadosPorMes,
         "meta_receita_dia" to perfil.metaReceitaDiaria,
-        "preco_litro" to (p.consumoReal?.precoMedioLitro ?: perfil.precoCombustivel),
-        "consumo_km_l" to (p.consumoReal?.kmPorLitro ?: perfil.consumoKmPorLitro),
-        "consumo_medido" to (p.consumoReal != null),
+        // Combustível que está no tanque agora (o consumo medido de cada trecho vai em trechos.json)
+        "combustivel_atual" to (p.combustivelAtual?.lowercase() ?: "—"),
+        "preco_litro" to perfil.precoCombustivel,
+        "consumo_km_l" to perfil.consumoKmPorLitro,
+        "consumo_medido" to false,
         "custo_comb_km" to p.custoCombustivelPorKmUsado,
         "atualizado_ate" to p.fim.toString(),
     )))

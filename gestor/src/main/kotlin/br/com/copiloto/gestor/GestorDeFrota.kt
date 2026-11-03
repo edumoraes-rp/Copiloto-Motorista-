@@ -103,6 +103,8 @@ data class ResumoPeriodo(
     val consumoReal: ConsumoReal?,
     /** Custo de combustível por km usado nas contas (real, se medido; senão o do perfil). */
     val custoCombustivelPorKmUsado: Double,
+    /** Combustível do último tanque cheio (o que está no tanque agora). */
+    val combustivelAtual: String? = null,
     // conciliações
     /** Reserva de manutenção acumulada menos o que foi gasto em manutenção. */
     val saldoReservaManutencao: Double,
@@ -345,6 +347,7 @@ class GestorDeFrota(private val perfil: PerfilVeiculo) {
             piorDia = dias.minByOrNull { it.lucroReal },
             consumoReal = consumo,
             custoCombustivelPorKmUsado = custoCombKm,
+            combustivelAtual = ultimoCheio?.combustivel,
             saldoReservaManutencao = manutencao - manutencaoPaga,
             diferencaCombustivel = combustivel - combustivelPago,
             kmForaDoTrabalho = kmFora,

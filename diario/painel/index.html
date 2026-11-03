@@ -99,15 +99,35 @@
     </div>
     <div class="pm-card" id="combustivel">
       <h2>Combustível</h2>
-      <p class="pm-note" data-draw="c-fonte" data-source="perfil" data-field="consumo_medido">—</p>
+      <p class="pm-note">No tanque agora: <b data-draw="c-atual" data-source="perfil" data-field="combustivel_atual">—</b> a <span data-draw="c-preco" data-source="perfil" data-field="preco_litro">—</span>/L, com consumo estimado de <span data-draw="c-consumo" data-source="perfil" data-field="consumo_km_l">—</span> km/L até o próximo tanque cheio.</p>
       <dl class="pm-list">
-        <dt>Consumo</dt><dd><span data-draw="c-consumo" data-source="perfil" data-field="consumo_km_l">—</span> km/L</dd>
-        <dt>Preço do litro</dt><dd data-draw="c-preco" data-source="perfil" data-field="preco_litro">—</dd>
-        <dt>Custo por km</dt><dd data-draw="c-km" data-source="perfil" data-field="custo_comb_km">—</dd>
+        <dt>Custo médio por km no mês</dt><dd data-draw="c-km" data-source="perfil" data-field="custo_comb_km">—</dd>
         <dt>Consumido no mês</dt><dd data-draw="c-consumido" data-source="totais" data-field="combustivel">—</dd>
         <dt>Pago na bomba</dt><dd data-draw="c-pago" data-source="totais" data-field="pago_combustivel">—</dd>
-        <dt>Ainda no tanque</dt><dd data-draw="c-sobra" data-source="totais" data-field="sobra_tanque">—</dd>
+        <dt>Pago − consumido</dt><dd data-draw="c-sobra" data-source="totais" data-field="sobra_tanque">—</dd>
       </dl>
+      <p class="pm-note">Negativo: o carro queimou combustível comprado antes de novembro ou que ainda vai ser reposto.</p>
+    </div>
+  </section>
+
+  <section class="pm-card" id="consumo">
+    <h2>Consumo medido por trecho</h2>
+    <p class="pm-note">Entre dois tanques cheios: km rodados ÷ litros repostos. Cada trecho paga o combustível que estava no tanque.</p>
+    <div class="pm-table-wrap">
+      <table class="pm-table" data-source="trechos" data-row-key="trecho">
+        <thead>
+          <tr>
+            <th data-field="trecho">Trecho (km)</th>
+            <th data-field="combustivel">Combustível</th>
+            <th data-field="km">Km</th>
+            <th data-field="litros">Litros</th>
+            <th data-field="km_por_litro">Km/L</th>
+            <th data-field="preco_litro">R$/L</th>
+            <th data-field="custo_km">R$/km</th>
+          </tr>
+        </thead>
+        <tbody data-draw="tabela-trechos"></tbody>
+      </table>
     </div>
   </section>
 
@@ -208,7 +228,7 @@
   field('k-ckm', 'totais', 'custo_km', P.money);
   field('k-gh', 'totais', 'ganho_hora', P.money);
   field('k-horas', 'totais', 'horas', P.horas);
-  field('c-fonte', 'perfil', 'consumo_medido', (v) => (v === true || v === 'true' ? 'Consumo medido no seu carro (método do tanque cheio).' : 'Consumo estimado. Será trocado pelo medido depois de dois abastecimentos de tanque cheio.'));
+  field('c-atual', 'perfil', 'combustivel_atual', (v) => String(v ?? '—'));
   field('c-consumo', 'perfil', 'consumo_km_l', (v) => P.num.format(v));
   field('c-preco', 'perfil', 'preco_litro', P.money);
   field('c-km', 'perfil', 'custo_comb_km', P.money);
@@ -298,6 +318,17 @@
       row.append('span').text(a.app);
       row.append('div').attr('class', 'pm-app-track').append('div').attr('class', 'pm-app-bar').style('width', (a.receita / max) * 100 + '%').style('background', dash.colors[i % dash.colors.length]);
       row.append('span').text(P.money(a.receita) + ' · ' + P.pct.format(a.parte));
+    });
+  });
+
+  dash.draw('tabela-trechos', (el) => {
+    const rows = P.rows('trechos');
+    el.replaceChildren();
+    if (!rows) return;
+    rows.forEach((r) => {
+      const tr = d3.select(el).append('tr').attr('data-key', r.trecho);
+      [P.int.format(r.km_inicio) + ' → ' + P.int.format(r.km_fim), r.combustivel, P.int.format(r.km), P.num.format(r.litros), P.num.format(r.km_por_litro), P.money(r.preco_litro), P.money(r.custo_km)]
+        .forEach((v) => tr.append('td').text(v));
     });
   });
 

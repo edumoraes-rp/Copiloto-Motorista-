@@ -16,10 +16,11 @@ data;tipo;campo1;campo2;campo3;campo4
 # Tanque cheio em Ribeirão antes de sair para São Paulo (confirmado); km 33.890 = fim da manhã.
 02/11/2026;ABASTECIMENTO;150,80;26,27;33890;CHEIO;GASOLINA
 02/11/2026;FIM;34556;22:00
-# 03/11 (ter): km inicial = km final de 02/11 (a confirmar). Dia aberto.
+# 03/11 (ter): saída 05:26 no km 34.556 (km final de 02/11); 11h40 trabalhadas; 347 km.
 03/11/2026;INICIO;34556;05:26
 03/11/2026;ABASTECIMENTO;139,80;39,718;34560;CHEIO;ETANOL
 03/11/2026;RECEITA;Uber;387,82;30
 03/11/2026;RECEITA;99;21,35;2
 03/11/2026;RECEITA;Atentiva;118,20;2
-03/11/2026;PARCIAL
+03/11/2026;HORAS;11:40
+03/11/2026;FIM;34903
