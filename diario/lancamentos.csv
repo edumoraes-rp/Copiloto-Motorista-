@@ -31,10 +31,7 @@ data;tipo;campo1;campo2;campo3;campo4
 04/11/2026;RECEITA;Uber;154,09;24
 04/11/2026;RECEITA;99;280,69;16
 04/11/2026;RECEITA;Particular;15,00;1
+04/11/2026;RECEITA;Atentiva;51,70;1
 04/11/2026;DESPESA;TAXA_APP;52,99;99 - plano Taxa 0%
 04/11/2026;HORAS;11:00
 04/11/2026;FIM;35223
-# 05/11 (qui): km inicial = km final de 04/11 (a confirmar); hora de saída não informada. Dia aberto.
-05/11/2026;INICIO;35223
-05/11/2026;RECEITA;Atentiva;51,70;1
-05/11/2026;PARCIAL
