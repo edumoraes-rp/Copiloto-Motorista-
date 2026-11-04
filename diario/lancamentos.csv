@@ -26,6 +26,6 @@ data;tipo;campo1;campo2;campo3;campo4
 03/11/2026;FIM;34903
 # 04/11 (qua): saída 05:24 no km 34.903. Dia aberto.
 04/11/2026;INICIO;34903;05:24
-# Etanol 46,46 L a R$ 3,87 com desconto de R$ 16,26 (NFC-e 156166, 09:55). Tanque cheio: a confirmar.
+# Etanol 46,46 L a R$ 3,87 com desconto de R$ 16,26 (NFC-e 156166, 09:55). Tanque cheio (confirmado).
 04/11/2026;ABASTECIMENTO;163,54;46,46;35009;CHEIO;ETANOL
 04/11/2026;PARCIAL
