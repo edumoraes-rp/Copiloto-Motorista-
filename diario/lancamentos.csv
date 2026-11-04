@@ -24,7 +24,7 @@ data;tipo;campo1;campo2;campo3;campo4
 03/11/2026;RECEITA;Atentiva;118,20;2
 03/11/2026;HORAS;11:40
 03/11/2026;FIM;34903
-# 04/11 (qua): saída 05:24 no km 34.903; 11h trabalhadas; fim no km 35.223.
+# 04/11 (qua): saída 05:24 no km 34.903; 11h trabalhadas (antes do atendimento Atentiva da noite); fim no km 35.268.
 04/11/2026;INICIO;34903;05:24
 # Etanol 46,46 L a R$ 3,87 com desconto de R$ 16,26 (NFC-e 156166, 09:55). Tanque cheio (confirmado).
 04/11/2026;ABASTECIMENTO;163,54;46,46;35009;CHEIO;ETANOL
@@ -34,4 +34,4 @@ data;tipo;campo1;campo2;campo3;campo4
 04/11/2026;RECEITA;Atentiva;51,70;1
 04/11/2026;DESPESA;TAXA_APP;52,99;99 - plano Taxa 0%
 04/11/2026;HORAS;11:00
-04/11/2026;FIM;35223
+04/11/2026;FIM;35268
