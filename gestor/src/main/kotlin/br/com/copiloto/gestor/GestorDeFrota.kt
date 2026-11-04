@@ -22,6 +22,8 @@ data class ResumoDia(
     // --- visão de gestor (custo real do dia) ---
     val custoCombustivel: Double,
     val despesasOperacionais: Double,
+    /** Taxas de app proporcionais à receita do dia (ex.: 8,83% da receita da 99). */
+    val taxasApp: Double,
     val reservaManutencao: Double,
     val custoFixoRateado: Double,
     val custoTotal: Double,
@@ -81,6 +83,9 @@ data class ResumoPeriodo(
     val lucroCaixa: Double,
     val custoCombustivel: Double,
     val despesasOperacionais: Double,
+    val taxasApp: Double,
+    /** Taxas de app provisionadas menos as debitadas: negativo = já foi debitado mais do que gerou. */
+    val saldoTaxasApp: Double,
     val reservaManutencao: Double,
     val custoFixoRateado: Double,
     val custoTotal: Double,
@@ -154,10 +159,13 @@ class GestorDeFrota(private val perfil: PerfilVeiculo) {
 
         val kmConta = (km ?: 0).coerceAtLeast(0)
         val combustivel = combustivelCalculado ?: (kmConta * custoCombustivelPorKm)
-        val operacionais = jornada.despesas.filter { it.categoria.natureza == Natureza.OPERACIONAL }.sumOf { it.valor }
+        val operacionais = jornada.despesas.filter {
+            it.categoria.natureza == Natureza.OPERACIONAL || (it.categoria.natureza == Natureza.TAXA_APP && perfil.taxasPorReceita.isEmpty())
+        }.sumOf { it.valor }
+        val taxas = porApp.entries.sumOf { (app, valor) -> valor * (perfil.taxasPorReceita[app] ?: 0.0) }
         val manutencao = kmConta * perfil.manutencaoPorKm
         val fixo = perfil.custoFixoPorDia
-        val custoTotal = combustivel + operacionais + manutencao + fixo
+        val custoTotal = combustivel + operacionais + taxas + manutencao + fixo
         val lucroReal = receita - custoTotal
 
         val alertas = buildList {
@@ -185,6 +193,7 @@ class GestorDeFrota(private val perfil: PerfilVeiculo) {
             lucroCaixa = receita - pagas,
             custoCombustivel = combustivel,
             despesasOperacionais = operacionais,
+            taxasApp = taxas,
             reservaManutencao = manutencao,
             custoFixoRateado = fixo,
             custoTotal = custoTotal,
@@ -285,6 +294,7 @@ class GestorDeFrota(private val perfil: PerfilVeiculo) {
         val pagas = dias.sumOf { it.despesasPagas }
         val combustivel = dias.sumOf { it.custoCombustivel }
         val operacionais = dias.sumOf { it.despesasOperacionais }
+        val taxasApp = dias.sumOf { it.taxasApp }
         val manutencao = dias.sumOf { it.reservaManutencao }
         val fixo = dias.sumOf { it.custoFixoRateado }
         val custoTotal = dias.sumOf { it.custoTotal }
@@ -304,7 +314,7 @@ class GestorDeFrota(private val perfil: PerfilVeiculo) {
 
         // Ponto de equilíbrio com o dia médio do período.
         val kmMedio = km.toDouble() / n
-        val operacionaisMedias = operacionais / n
+        val operacionaisMedias = (operacionais + taxasApp) / n
         val equilibrio = perfil.custoFixoPorDia + operacionaisMedias + kmMedio * custoKmVariavel
         val paraMeta = if (perfil.metaLucroMensal > 0) equilibrio + perfil.metaLucroMensal / perfil.diasTrabalhadosPorMes else null
         val lucroMedio = lucroReal / n
@@ -337,6 +347,8 @@ class GestorDeFrota(private val perfil: PerfilVeiculo) {
             lucroCaixa = receita - pagas,
             custoCombustivel = combustivel,
             despesasOperacionais = operacionais,
+            taxasApp = taxasApp,
+            saldoTaxasApp = if (perfil.taxasPorReceita.isEmpty()) 0.0 else taxasApp - (porCategoria[Categoria.TAXA_APP] ?: 0.0),
             reservaManutencao = manutencao,
             custoFixoRateado = fixo,
             custoTotal = custoTotal,

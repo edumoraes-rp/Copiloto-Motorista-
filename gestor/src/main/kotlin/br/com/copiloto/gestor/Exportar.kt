@@ -31,6 +31,7 @@ object Exportar {
             "receita" to d.receitaBruta,
             "combustivel" to d.custoCombustivel,
             "despesas_dia" to d.despesasOperacionais,
+            "taxas_app" to d.taxasApp,
             "aluguel" to d.custoFixoRateado,
             "custo_real" to d.custoTotal,
             "lucro_real" to d.lucroReal,

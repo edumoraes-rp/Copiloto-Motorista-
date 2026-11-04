@@ -42,6 +42,11 @@ data class PerfilVeiculo(
     val metaLucroMensal: Double = 0.0,
     /** Meta de receita bruta por dia trabalhado (0 = sem meta). */
     val metaReceitaDiaria: Double = 0.0,
+    /**
+     * Taxas de app cobradas por faixa de receita (ex.: 99 cobra R$ 52,99 a cada R$ 600 de corridas):
+     * app → fração da receita daquele app. No lucro real entra a fração de cada dia, não o débito.
+     */
+    val taxasPorReceita: Map<String, Double> = emptyMap(),
 ) {
     init {
         require(precoCombustivel >= 0) { "Preço do combustível não pode ser negativo" }
@@ -65,8 +70,10 @@ data class PerfilVeiculo(
  * - OPERACIONAL: gasto do próprio dia (alimentação, lavagem, estacionamento, pedágio, multa).
  * - MANUTENCAO: sai da reserva de manutenção por km; no lucro real entra a reserva, não o pagamento.
  * - FIXA: aluguel, parcela, seguro... já entram rateados por dia; o pagamento não é custo do dia.
+ * - TAXA_APP: taxa cobrada por faixa de receita; no lucro real entra a fração da receita do dia
+ *   (se o perfil tiver a taxa daquele app); sem taxa no perfil, o débito conta no dia.
  */
-enum class Natureza { COMBUSTIVEL, OPERACIONAL, MANUTENCAO, FIXA }
+enum class Natureza { COMBUSTIVEL, OPERACIONAL, MANUTENCAO, FIXA, TAXA_APP }
 
 enum class Categoria(val rotulo: String, val natureza: Natureza) {
     COMBUSTIVEL("Combustível", Natureza.COMBUSTIVEL),
@@ -75,7 +82,7 @@ enum class Categoria(val rotulo: String, val natureza: Natureza) {
     ESTACIONAMENTO("Estacionamento", Natureza.OPERACIONAL),
     PEDAGIO("Pedágio", Natureza.OPERACIONAL),
     MULTA("Multa", Natureza.OPERACIONAL),
-    TAXA_APP("Taxa de app", Natureza.OPERACIONAL),
+    TAXA_APP("Taxa de app", Natureza.TAXA_APP),
     OUTROS("Outros", Natureza.OPERACIONAL),
     MANUTENCAO("Manutenção", Natureza.MANUTENCAO),
     ALUGUEL("Aluguel do carro", Natureza.FIXA),

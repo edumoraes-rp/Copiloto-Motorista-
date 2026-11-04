@@ -179,4 +179,19 @@ class GestorDeFrotaTest {
         assertEquals(120.0, p.dias[0].custoCombustivel, delta) // 20 L de gasolina × 6,00
         assertEquals(100 * 4.0 / 12.0, p.dias[1].custoCombustivel, delta) // etanol 4,00 ÷ consumo do perfil (12 km/L)
     }
+
+    @Test
+    fun `taxa da 99 entra proporcional a receita e o debito fica so no caixa`() {
+        val g = GestorDeFrota(perfil.copy(taxasPorReceita = mapOf("99" to 52.99 / 600)))
+        val j = Jornada(
+            LocalDate.of(2026, 11, 4), 0, 100,
+            receitas = listOf(Receita("99", 300.0), Receita("Uber", 100.0)),
+            despesas = listOf(Despesa(Categoria.TAXA_APP, 52.99)),
+        )
+        val r = g.resumoDoDia(j)
+        assertEquals(300 * 52.99 / 600, r.taxasApp, delta)
+        assertEquals(0.0, r.despesasOperacionais, delta)
+        assertEquals(400.0 - 52.99, r.lucroCaixa, delta)
+        assertEquals(50.0 + 10.0 + 100.0 + 300 * 52.99 / 600, r.custoTotal, delta)
+    }
 }

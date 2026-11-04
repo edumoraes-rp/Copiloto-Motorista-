@@ -82,6 +82,7 @@ object Relatorio {
             appendLine("| $nome | ${f.reais(v)} | ${f.reais(if (p.kmRodado > 0) v / p.kmRodado else null)} |")
         linhaCusto("Combustível consumido (${f.reais(p.custoCombustivelPorKmUsado)}/km)", p.custoCombustivel)
         linhaCusto("Despesas do dia a dia", p.despesasOperacionais)
+        if (perfil.taxasPorReceita.isNotEmpty()) linhaCusto("Taxas de app (${perfil.taxasPorReceita.entries.joinToString { "${it.key} ${f.pct(it.value)}" }} da receita)", p.taxasApp)
         if (perfil.manutencaoPorKm > 0) linhaCusto("Reserva de manutenção (${f.reais(perfil.manutencaoPorKm)}/km)", p.reservaManutencao)
         linhaCusto("Custos fixos rateados (${f.reais(perfil.custoFixoPorDia)}/dia)", p.custoFixoRateado)
         appendLine()
@@ -116,6 +117,8 @@ object Relatorio {
         appendLine("- Combustível consumido ${f.reais(p.custoCombustivel)} × pago na bomba ${f.reais(p.despesasPorCategoria[Categoria.COMBUSTIVEL] ?: 0.0)}: " +
             if (dif >= 0) "o tanque gastou ${f.reais(dif)} a mais do que foi reposto." else "sobrou ${f.reais(-dif)} de combustível no tanque para os próximos dias.")
         if (perfil.manutencaoPorKm > 0) appendLine("- Reserva de manutenção: acumulou ${f.reais(p.reservaManutencao)}, saldo ${f.reais(p.saldoReservaManutencao)} (separe esse valor; ele paga óleo, pneus e freios).")
+        if (perfil.taxasPorReceita.isNotEmpty()) appendLine("- Taxas de app: geradas pela receita ${f.reais(p.taxasApp)}, debitadas ${f.reais(p.despesasPorCategoria[Categoria.TAXA_APP] ?: 0.0)}" +
+            if (p.saldoTaxasApp < 0) " (já foi debitado ${f.reais(-p.saldoTaxasApp)} adiantado)" else " (${f.reais(p.saldoTaxasApp)} ainda vão ser debitados)")
         if (p.kmForaDoTrabalho > 0) appendLine("- Km fora do expediente: ${p.kmForaDoTrabalho} km (custo ${f.reais(p.custoKmForaDoTrabalho)}), não entram no lucro do trabalho.")
         appendLine()
 

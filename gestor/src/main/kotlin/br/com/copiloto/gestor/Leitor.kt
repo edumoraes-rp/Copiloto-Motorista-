@@ -16,13 +16,19 @@ object Leitor {
     fun lerPerfil(texto: String): PerfilVeiculo {
         val valores = mutableMapOf<String, String>()
         val fixos = mutableListOf<CustoFixo>()
+        val taxas = mutableMapOf<String, Double>()
         texto.lineSequence().forEachIndexed { i, bruta ->
             val linha = bruta.substringBefore('#').trim()
             if (linha.isEmpty()) return@forEachIndexed
             val chave = linha.substringBefore('=').trim().lowercase()
             val valor = linha.substringAfter('=', "").trim()
             require(linha.contains('=')) { "perfil.txt linha ${i + 1}: falta '=' em '$bruta'" }
-            if (chave.startsWith("fixo.")) {
+            if (chave == "taxa_app") {
+                // taxa_app = app ; valor cobrado ; a cada quanto de receita
+                val partes = valor.split(';').map { it.trim() }
+                require(partes.size == 3) { "perfil.txt linha ${i + 1}: use taxa_app = app ; valor ; a cada quanto de receita" }
+                taxas[partes[0]] = Formato.lerNumero(partes[1]) / Formato.lerNumero(partes[2])
+            } else if (chave.startsWith("fixo.")) {
                 val descricao = valor.substringBefore(';').trim()
                 val quantia = Formato.lerNumero(valor.substringAfter(';', ""))
                 fixos += when (chave.removePrefix("fixo.")) {
@@ -46,6 +52,7 @@ object Leitor {
             diasTrabalhadosPorMes = valores["dias_trabalhados_mes"]?.toInt() ?: 26,
             metaLucroMensal = valores["meta_lucro_mensal"]?.let(Formato::lerNumero) ?: 0.0,
             metaReceitaDiaria = valores["meta_receita_dia"]?.let(Formato::lerNumero) ?: 0.0,
+            taxasPorReceita = taxas,
         )
     }
 

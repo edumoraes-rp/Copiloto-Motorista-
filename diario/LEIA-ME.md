@@ -48,6 +48,8 @@ Dicas:
 | `DESPESA` | categoria ; valor ; descrição (opcional) |
 | `ABASTECIMENTO` | valor ; litros ; km do hodômetro ; `CHEIO` ou `PARCIAL` ; combustível (`ETANOL`, `GASOLINA`) |
 
+No perfil, `taxa_app = app ; valor ; a cada quanto de receita` faz a taxa entrar no lucro real como % da receita daquele app.
+
 Categorias: `ALIMENTACAO`, `LAVAGEM`, `ESTACIONAMENTO`, `PEDAGIO`, `MULTA`, `TAXA_APP`, `OUTROS`,
 `MANUTENCAO`, `ALUGUEL`, `PARCELA`, `SEGURO`, `IPVA`, `CELULAR`.
 

@@ -18,3 +18,6 @@ manutencao_por_km = 0
 # 5 dias por semana ≈ 22 dias por mês (5 × 52 ÷ 12 = 21,7)
 dias_trabalhados_mes = 22
 meta_receita_dia = 700,00
+
+# 99, plano Taxa 0%: cobra R$ 52,99 a cada R$ 600 de corridas (= 8,83% da receita da 99).
+taxa_app = 99 ; 52,99 ; 600
