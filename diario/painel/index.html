@@ -1,21 +1,44 @@
 <meta name="dash-one-writer">
 <style>
-  .pm { display: flex; flex-direction: column; gap: var(--cds-gap-xl); font-family: var(--font-anthropic-sans); }
-  .pm-head { display: flex; flex-direction: column; gap: var(--cds-gap-xs); }
-  .pm-title { font-family: var(--font-anthropic-serif); font-weight: 400; font-size: var(--cds-font-size-title); margin: 0; text-wrap: balance; }
-  .pm-sub { color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); margin: 0; }
-  .pm-take { margin: 0; font-size: var(--cds-font-size-body); max-width: 70ch; }
-  .pm .pm-take b { font-weight: 600; }
+  /* Paleta Focca: marinho, dourado, sol, terracota, azul. Cabeçalho em faixa marinha; cartões claros com destaques de cor. */
+  .pm { --pm-navy: #0E1B4A; --pm-gold: #C6891C; --pm-sun: #F2B233; --pm-terra: #C1652E; --pm-blue: #005A96;
+        --pm-ink: #0E1B4A; --pm-line: #005A96; --pm-tint: 10%;
+        display: flex; flex-direction: column; gap: var(--cds-gap-xl); font-family: var(--font-anthropic-sans); }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .pm { --pm-ink: #E9EDF9; --pm-line: #5AA5E6; --pm-blue: #3E8FD6; --pm-navy: #8FA3E8; --pm-tint: 16%; } }
+  :root[data-theme="dark"] .pm { --pm-ink: #E9EDF9; --pm-line: #5AA5E6; --pm-blue: #3E8FD6; --pm-navy: #8FA3E8; --pm-tint: 16%; }
+  .pm-head { display: flex; flex-direction: column; gap: var(--cds-gap-xs); color: #FFFFFF; border-radius: var(--cds-radius); padding: var(--cds-pad-lg) var(--cds-pad-xl);
+             background: linear-gradient(120deg, #0E1B4A 0%, #0E1B4A 55%, #005A96 100%); position: relative; overflow: hidden; }
+  .pm-head::after { content: ""; position: absolute; right: -40px; top: -40px; width: 160px; height: 160px; border-radius: 50%;
+             background: radial-gradient(circle, #F2B233 0%, rgba(242,178,51,.35) 45%, rgba(242,178,51,0) 70%); pointer-events: none; }
+  .pm-eyebrow { font-size: var(--cds-font-size-caption); letter-spacing: .08em; text-transform: uppercase; color: #F2B233; margin: 0; position: relative; }
+  .pm-title { font-family: var(--font-anthropic-serif); font-weight: 400; font-size: var(--cds-font-size-title); margin: 0; text-wrap: balance; color: #FFFFFF; position: relative; }
+  .pm-sub { color: rgba(255,255,255,.75); font-size: var(--cds-font-size-caption); margin: 0; position: relative; }
+  .pm-take { margin: 0; font-size: var(--cds-font-size-body); max-width: 70ch; color: rgba(255,255,255,.92); position: relative; }
+  .pm .pm-take b { font-weight: 600; color: #F2B233; }
+  .pm .pm-take b.pm-good { color: #7FE0A8; }
+  .pm .pm-take b.pm-bad { color: #FF9C86; }
   .pm-tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 9.5rem), 1fr)); gap: var(--cds-gap-md); }
-  .pm-tile { background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); padding: var(--cds-pad-md) var(--cds-pad-lg); display: flex; flex-direction: column; gap: var(--cds-gap-xs); min-width: 0; }
+  .pm-tile { --c: var(--pm-blue); background: color-mix(in srgb, var(--c) var(--pm-tint), var(--color-panel)); border: 1px solid color-mix(in srgb, var(--c) 35%, var(--color-border-line));
+             border-radius: var(--cds-radius); padding: var(--cds-pad-md) var(--cds-pad-lg); display: flex; flex-direction: column; gap: var(--cds-gap-xs); min-width: 0; }
+  .pm-tile.t-sun { --c: var(--pm-sun); } .pm-tile.t-gold { --c: var(--pm-gold); } .pm-tile.t-terra { --c: var(--pm-terra); } .pm-tile.t-navy { --c: var(--pm-navy); } .pm-tile.t-blue { --c: var(--pm-blue); }
   .pm-tile-label { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); }
-  .pm-tile-value { font-family: var(--font-anthropic-serif); font-weight: 400; font-size: var(--cds-font-size-title); font-variant-numeric: tabular-nums; line-height: 1.15; }
+  .pm-tile-value { font-family: var(--font-anthropic-serif); font-weight: 400; font-size: var(--cds-font-size-title); font-variant-numeric: tabular-nums; line-height: 1.15; color: var(--pm-ink); }
   .pm-tile-note { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); font-variant-numeric: tabular-nums; }
+  .pm-section { font-size: var(--cds-font-size-caption); letter-spacing: .08em; text-transform: uppercase; color: var(--pm-gold); margin: 0 0 calc(-1 * var(--cds-gap-sm)); font-weight: var(--cds-font-weight-medium); }
+  .pm-plan { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr)); gap: var(--cds-gap-sm); }
+  .pm-plan div { display: flex; flex-direction: column; gap: 2px; padding: var(--cds-pad-sm) var(--cds-pad-md); border-radius: var(--cds-radius);
+                 background: color-mix(in srgb, var(--pm-sun) var(--pm-tint), var(--color-panel)); }
+  .pm-plan span:first-child { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); }
+  .pm-plan b { font-family: var(--font-anthropic-serif); font-weight: 400; font-size: var(--cds-font-size-heading); color: var(--pm-ink); font-variant-numeric: tabular-nums; }
+  .pm-legend { display: flex; flex-wrap: wrap; gap: var(--cds-gap-xs) var(--cds-gap-md); font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); margin: 0; padding: 0; list-style: none; }
+  .pm-legend li { display: flex; align-items: center; gap: 6px; }
+  .pm-legend i { display: inline-block; width: 18px; height: 0; border-top: 3px solid; }
+  .pm-legend i.dash { border-top-style: dashed; }
   .pm-good { color: var(--color-ok); }
   .pm-bad { color: var(--color-bad); }
   .pm-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr)); gap: var(--cds-gap-md); }
-  .pm-card { background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); padding: var(--cds-pad-lg); display: flex; flex-direction: column; gap: var(--cds-gap-sm); min-width: 0; }
-  .pm-card h2 { font-size: var(--cds-font-size-heading); font-weight: var(--cds-font-weight-medium); margin: 0; }
+  .pm-card { background: var(--color-panel); border: 1px solid var(--color-border-line); border-top: 3px solid var(--pm-gold); border-radius: var(--cds-radius); padding: var(--cds-pad-lg); display: flex; flex-direction: column; gap: var(--cds-gap-sm); min-width: 0; }
+  .pm-card h2 { font-size: var(--cds-font-size-heading); font-weight: var(--cds-font-weight-medium); margin: 0; color: var(--pm-ink); }
   .pm-note { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); margin: 0; }
   .pm-chart { position: relative; min-height: 240px; }
   .pm-chart svg { display: block; }
@@ -24,13 +47,14 @@
   .pm-apps { display: flex; flex-direction: column; gap: var(--cds-gap-sm); min-height: 7rem; }
   .pm-app { display: grid; grid-template-columns: 5.5rem 1fr auto; align-items: center; gap: var(--cds-gap-sm); font-size: var(--cds-font-size-body); font-variant-numeric: tabular-nums; }
   .pm-app-bar { height: 14px; border-radius: var(--cds-radius); }
+  .pm-chart.pm-tall { min-height: 300px; }
   .pm-app-track { background: var(--cds-chart-grid); border-radius: var(--cds-radius); overflow: hidden; }
   .pm-list { display: grid; grid-template-columns: 1fr auto; gap: var(--cds-gap-xs) var(--cds-gap-md); margin: 0; font-size: var(--cds-font-size-body); font-variant-numeric: tabular-nums; }
   .pm-list dt { color: var(--color-fg-muted); }
   .pm-list dd { margin: 0; text-align: right; }
   .pm-table-wrap { overflow-x: auto; }
   .pm-table { width: 100%; border-collapse: collapse; font-size: var(--cds-font-size-body); font-variant-numeric: tabular-nums; }
-  .pm-table th { text-align: right; font-weight: var(--cds-font-weight-medium); color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); padding: var(--cds-pad-xs) var(--cds-pad-sm); border-bottom: 1px solid var(--color-border-line); white-space: nowrap; }
+  .pm-table th { background: color-mix(in srgb, var(--pm-navy) 8%, var(--color-panel)); text-align: right; font-weight: var(--cds-font-weight-medium); color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); padding: var(--cds-pad-xs) var(--cds-pad-sm); border-bottom: 1px solid var(--color-border-line); white-space: nowrap; }
   .pm-table td { text-align: right; padding: var(--cds-pad-xs) var(--cds-pad-sm); border-bottom: 1px solid var(--color-border-line); white-space: nowrap; }
   .pm-table th:first-child, .pm-table td:first-child { text-align: left; }
   .pm-pill { display: inline-block; margin-left: var(--cds-gap-xs); padding: 0 var(--cds-pad-xs); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); font-size: var(--cds-font-size-caption); color: var(--color-warn); }
@@ -40,44 +64,67 @@
 
 <div class="pm">
   <header class="pm-head">
-    <h1 class="pm-title">Painel do Motorista · Novembro</h1>
+    <p class="pm-eyebrow">Gestor de frota · Novembro 2026</p>
+    <h1 class="pm-title">Painel do Motorista</h1>
     <p class="pm-sub">HB20S alugado da Movida · dados até <span data-draw="ate" data-source="perfil" data-field="atualizado_ate">—</span></p>
     <p class="pm-take">Receita média de <b data-draw="t-media" data-source="totais" data-field="receita_media">—</b> por dia, <b data-draw="t-pct" data-source="totais" data-field="pct_meta">—</b> da meta de <b data-draw="t-meta" data-source="perfil" data-field="meta_receita_dia">—</b>. Lucro real no mês até agora: <b data-draw="t-lucro" data-source="totais" data-field="lucro_real">—</b>.</p>
   </header>
 
   <section class="pm-tiles" aria-label="Resumo do mês">
-    <div class="pm-tile">
+    <div class="pm-tile t-sun">
       <span class="pm-tile-label">Receita bruta</span>
       <span class="pm-tile-value" data-draw="k-receita" data-source="totais" data-field="receita">—</span>
       <span class="pm-tile-note"><span data-draw="k-corridas" data-source="totais" data-field="corridas">—</span> corridas</span>
     </div>
-    <div class="pm-tile">
+    <div class="pm-tile t-blue">
       <span class="pm-tile-label">Lucro real</span>
       <span class="pm-tile-value" data-draw="k-lucro" data-source="totais" data-field="lucro_real">—</span>
       <span class="pm-tile-note">receita − combustível − aluguel − gastos</span>
     </div>
-    <div class="pm-tile">
+    <div class="pm-tile t-gold">
       <span class="pm-tile-label">Lucro de caixa</span>
       <span class="pm-tile-value" data-draw="k-caixa" data-source="totais" data-field="lucro_caixa">—</span>
       <span class="pm-tile-note">o que sobrou na mão</span>
     </div>
-    <div class="pm-tile">
+    <div class="pm-tile t-navy">
       <span class="pm-tile-label">Km rodados</span>
       <span class="pm-tile-value" data-draw="k-km" data-source="totais" data-field="km">—</span>
       <span class="pm-tile-note"><span data-draw="k-dias" data-source="totais" data-field="dias">—</span> dia(s) trabalhado(s)</span>
     </div>
-    <div class="pm-tile">
+    <div class="pm-tile t-terra">
       <span class="pm-tile-label">Ganho por km</span>
       <span class="pm-tile-value" data-draw="k-gkm" data-source="totais" data-field="ganho_km">—</span>
       <span class="pm-tile-note">custo real: <span data-draw="k-ckm" data-source="totais" data-field="custo_km">—</span>/km</span>
     </div>
-    <div class="pm-tile">
+    <div class="pm-tile t-gold">
       <span class="pm-tile-label">Ganho por hora</span>
       <span class="pm-tile-value" data-draw="k-gh" data-source="totais" data-field="ganho_hora">—</span>
       <span class="pm-tile-note"><span data-draw="k-horas" data-source="totais" data-field="horas">—</span> trabalhadas</span>
     </div>
   </section>
 
+  <h2 class="pm-section">Tendência do mês</h2>
+  <section class="pm-card" id="tendencia">
+    <h2>Se continuar assim, onde o mês fecha?</h2>
+    <p class="pm-note">Receita acumulada por dia trabalhado. A tendência repete a média atual até o fim do mês; o "necessário" é o ritmo que fecha a meta a partir de hoje.</p>
+    <div class="pm-plan">
+      <div><span>Dias trabalhados</span><b><span data-draw="p-feitos" data-source="plano" data-field="dias_feitos">—</span> de <span data-draw="p-total" data-source="plano" data-field="dias_mes">—</span></b></div>
+      <div><span>Meta do mês</span><b data-draw="p-meta" data-source="plano" data-field="meta_mes">—</b></div>
+      <div><span>Tendência de receita</span><b data-draw="p-proj" data-source="plano" data-field="projecao_receita">—</b></div>
+      <div><span>Tendência de lucro real</span><b data-draw="p-lucro" data-source="plano" data-field="projecao_lucro">—</b></div>
+      <div><span>Necessário por dia daqui pra frente</span><b data-draw="p-nec" data-source="plano" data-field="necessario_dia">—</b></div>
+      <div><span>Lucro do mês batendo a meta</span><b data-draw="p-lmeta" data-source="plano" data-field="lucro_na_meta">—</b></div>
+    </div>
+    <ul class="pm-legend" aria-label="Legenda">
+      <li><i style="border-color: var(--pm-blue)"></i>Realizado</li>
+      <li><i class="dash" style="border-color: var(--pm-terra)"></i>Tendência (média atual)</li>
+      <li><i class="dash" style="border-color: var(--pm-sun)"></i>Necessário para a meta</li>
+      <li><i class="dash" style="border-color: var(--color-fg-muted)"></i>Meta (R$ por dia × dias)</li>
+    </ul>
+    <div class="pm-chart pm-tall" data-draw="g-tendencia" data-source="tendencia">—</div>
+  </section>
+
+  <h2 class="pm-section">Dia a dia</h2>
   <section class="pm-grid">
     <div class="pm-card" id="receita-dia">
       <h2>Receita por dia × meta</h2>
@@ -91,6 +138,7 @@
     </div>
   </section>
 
+  <h2 class="pm-section">Apps e combustível</h2>
   <section class="pm-grid">
     <div class="pm-card" id="apps">
       <h2>Receita por app</h2>
@@ -132,7 +180,7 @@
   </section>
 
   <section class="pm-card" id="dia-a-dia">
-    <h2>Dia a dia</h2>
+    <h2>Diário de bordo</h2>
     <p class="pm-note">Aluguel da Movida rateado em <span data-draw="n-aluguel" data-source="perfil" data-field="aluguel_dia">—</span> por dia trabalhado.</p>
     <div class="pm-table-wrap">
       <table class="pm-table" data-source="dias" data-row-key="data">
@@ -189,6 +237,56 @@
     },
   });
 
+  dash.calc('plano', {
+    title: 'Plano do mês',
+    description: 'Meta do mês (meta diária × dias de trabalho), tendência pela média atual e receita necessária por dia nos dias que faltam.',
+    inputs: ['dias', 'perfil'],
+    fn: (dias, perfil) => {
+      const p = perfil[0] || {};
+      const metaDia = Number(p.meta_receita_dia) || 0, total = Number(p.dias_mes) || 22;
+      const feitos = dias.length;
+      const receita = dias.reduce((a, r) => a + Number(r.receita), 0);
+      const lucro = dias.reduce((a, r) => a + Number(r.lucro_real), 0);
+      const custoMedio = feitos ? dias.reduce((a, r) => a + Number(r.custo_real), 0) / feitos : 0;
+      const faltam = Math.max(0, total - feitos), metaMes = metaDia * total;
+      const necessario = faltam ? Math.max(0, metaMes - receita) / faltam : null;
+      return [{
+        dias_feitos: feitos, dias_mes: total, faltam_dias: faltam, meta_mes: metaMes, receita_feita: receita,
+        media_dia: feitos ? receita / feitos : 0,
+        projecao_receita: feitos ? receita / feitos * total : 0,
+        projecao_lucro: feitos ? lucro / feitos * total : 0,
+        necessario_dia: necessario,
+        lucro_na_meta: lucro + (necessario == null ? 0 : faltam * (necessario - custoMedio)),
+      }];
+    },
+  });
+
+  dash.calc('tendencia', {
+    title: 'Tendência da receita acumulada',
+    description: 'Por dia trabalhado: receita acumulada real, tendência pela média atual, ritmo necessário para a meta e a linha da meta.',
+    inputs: ['dias', 'perfil'],
+    fn: (dias, perfil) => {
+      const p = perfil[0] || {};
+      const metaDia = Number(p.meta_receita_dia) || 0, total = Math.max(Number(p.dias_mes) || 22, dias.length);
+      const feitos = dias.length;
+      let acum = 0;
+      const real = dias.map((r) => (acum += Number(r.receita)));
+      const media = feitos ? acum / feitos : 0;
+      const nec = feitos < total ? Math.max(0, metaDia * total - acum) / (total - feitos) : 0;
+      const linhas = [{ n: 0, realizado: 0, tendencia: 0, necessario: 0, meta: 0 }];
+      for (let n = 1; n <= total; n++) {
+        linhas.push({
+          n,
+          realizado: n <= feitos ? real[n - 1] : null,
+          tendencia: n >= feitos ? acum + media * (n - feitos) : null,
+          necessario: n >= feitos ? acum + nec * (n - feitos) : null,
+          meta: metaDia * n,
+        });
+      }
+      return linhas;
+    },
+  });
+
   dash.calc('porApp', {
     title: 'Receita por app',
     description: 'Receita somada por app no mês e a parte de cada um no total.',
@@ -236,11 +334,19 @@
   field('c-pago', 'totais', 'pago_combustivel', P.money);
   field('c-sobra', 'totais', 'sobra_tanque', P.money);
   field('n-aluguel', 'perfil', 'aluguel_dia', P.money);
+  field('p-feitos', 'plano', 'dias_feitos', (v) => P.int.format(v));
+  field('p-total', 'plano', 'dias_mes', (v) => P.int.format(v));
+  field('p-meta', 'plano', 'meta_mes', P.money);
+  field('p-proj', 'plano', 'projecao_receita', P.money);
+  field('p-lucro', 'plano', 'projecao_lucro', P.money, true);
+  field('p-nec', 'plano', 'necessario_dia', P.money);
+  field('p-lmeta', 'plano', 'lucro_na_meta', P.money, true);
 </script>
 
 <script>
   const P = window.pm;
   const css = (el, v) => getComputedStyle(el).getPropertyValue(v).trim();
+  const cor = (el, nome) => css(el, nome) || '#C6891C';
 
   function barras(el, rows, opt) {
     el.replaceChildren();
@@ -267,7 +373,7 @@
       const v = valores[i], cx = x(r.data) + x.bandwidth() / 2;
       const cor = opt.cor(v, r);
       svg.append('rect').attr('x', cx - bw / 2).attr('width', bw).attr('y', Math.min(y(v), y(0))).attr('height', Math.max(1, Math.abs(y(v) - y(0)))).attr('rx', 3).attr('fill', cor).attr('opacity', r.parcial === true || r.parcial === 'true' ? 0.55 : 1);
-      if (opt.marca) svg.append('line').attr('x1', cx - bw / 2 - 4).attr('x2', cx + bw / 2 + 4).attr('y1', y(extras[i])).attr('y2', y(extras[i])).attr('stroke', 'var(--color-fg)').attr('stroke-width', 2.5).attr('stroke-linecap', 'round');
+      if (opt.marca) svg.append('line').attr('x1', cx - bw / 2 - 4).attr('x2', cx + bw / 2 + 4).attr('y1', y(extras[i])).attr('y2', y(extras[i])).attr('stroke', 'var(--pm-ink)').attr('stroke-width', 2.5).attr('stroke-linecap', 'round');
       svg.append('text').attr('x', cx).attr('y', H - 10).attr('text-anchor', 'middle').attr('font-size', 11).attr('fill', 'var(--color-fg-muted)').text(r.dia + (r.parcial === true || r.parcial === 'true' ? '*' : ''));
       svg.append('rect').attr('x', x(r.data) - x.step() * x.paddingOuter() / 2).attr('width', x.step()).attr('y', 0).attr('height', H - 22).attr('fill', 'transparent')
         .on('mousemove', (ev) => mostrar(ev, r)).on('mouseleave', esconder);
@@ -293,7 +399,7 @@
     if (!dias || !perfil) { el.replaceChildren(); el.textContent = '—'; return; }
     barras(el, dias, {
       valor: 'receita', marca: 'custo_real', meta: P.n(perfil[0]?.meta_receita_dia),
-      cor: () => dash.colors[0],
+      cor: () => cor(el, '--pm-sun'),
       tip: (r) => [['Receita', P.money(r.receita)], ['Custo real', P.money(r.custo_real)], ['Corridas', r.corridas]],
     });
   });
@@ -303,9 +409,75 @@
     if (!dias) { el.replaceChildren(); el.textContent = '—'; return; }
     barras(el, dias, {
       valor: 'lucro_real',
-      cor: (v) => (v < 0 ? css(el, '--cds-chart-status-critical') || 'var(--color-bad)' : dash.colors[1]),
+      cor: (v) => (v < 0 ? cor(el, '--pm-terra') : cor(el, '--pm-blue')),
       tip: (r) => [['Lucro real', P.money(r.lucro_real)], ['Lucro por hora', P.money(r.lucro_hora)], ['R$/km', P.money(r.ganho_km)]],
     });
+  });
+
+  dash.draw('g-tendencia', (el) => {
+    const rows = P.rows('tendencia');
+    if (!rows || rows.length < 2) { el.replaceChildren(); el.textContent = '—'; return; }
+    el.replaceChildren();
+    const W = Math.max(300, el.clientWidth || 340), H = 300, top = 16, bottom = 30;
+    const svg = d3.select(el).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`);
+    const hi = d3.max(rows, (r) => Math.max(r.meta || 0, r.tendencia || 0, r.necessario || 0, r.realizado || 0)) || 1;
+    const y = d3.scaleLinear([0, hi * 1.05], [H - bottom, top]).nice();
+    const fmtK = (v) => (v >= 1000 ? 'R$ ' + P.num.format(v / 1000) + ' mil' : P.brl.format(v).replace(',00', ''));
+    const ticks = y.ticks(5);
+    const probe = svg.append('text').attr('font-size', 11);
+    const left = 10 + d3.max(ticks, (t) => { probe.text(fmtK(t)); return probe.node().getComputedTextLength(); });
+    probe.text(fmtK(rows[rows.length - 1].meta)); const endW = probe.node().getComputedTextLength() + 8; probe.remove();
+    const right = W - Math.min(endW, W * 0.28);
+    const last = rows[rows.length - 1].n;
+    const x = d3.scaleLinear([0, last], [left, right]);
+    ticks.forEach((t) => {
+      svg.append('line').attr('x1', left).attr('x2', right).attr('y1', y(t)).attr('y2', y(t)).attr('stroke', 'var(--cds-chart-grid)');
+      svg.append('text').attr('x', left - 6).attr('y', y(t)).attr('dy', '0.32em').attr('text-anchor', 'end').attr('font-size', 11).attr('fill', 'var(--color-fg-muted)').text(fmtK(t));
+    });
+    const passo = last > 12 ? 5 : 1;
+    d3.range(0, last + 1, passo).concat(last % passo ? [last] : []).forEach((n) => {
+      svg.append('text').attr('x', x(n)).attr('y', H - 10).attr('text-anchor', 'middle').attr('font-size', 11).attr('fill', 'var(--color-fg-muted)').text(n === 0 ? 'dia 0' : n);
+    });
+    const linha = (k) => d3.line().defined((r) => r[k] != null).x((r) => x(r.n)).y((r) => y(r[k]));
+    const desenha = (k, c, dash, w) => svg.append('path').datum(rows).attr('fill', 'none').attr('stroke', c).attr('stroke-width', w).attr('stroke-linecap', 'round').attr('stroke-linejoin', 'round').attr('stroke-dasharray', dash).attr('d', linha(k));
+    const cMeta = css(el, '--color-fg-muted') || '#888', cTend = cor(el, '--pm-terra'), cNec = cor(el, '--pm-sun'), cReal = cor(el, '--pm-blue');
+    // área do realizado
+    const grad = 'pmGrad' + Math.round(Math.random() * 1e6);
+    const lg = svg.append('defs').append('linearGradient').attr('id', grad).attr('x1', 0).attr('x2', 0).attr('y1', 0).attr('y2', 1);
+    [[0, .26], [.25, .16], [.5, .08], [.75, .03], [1, 0]].forEach(([o, a]) => lg.append('stop').attr('offset', o).attr('style', `stop-color:${cReal};stop-opacity:${a}`));
+    svg.append('path').datum(rows.filter((r) => r.realizado != null)).attr('fill', `url(#${grad})`).attr('d', d3.area().x((r) => x(r.n)).y0(y(0)).y1((r) => y(r.realizado)));
+    desenha('meta', cMeta, '3 4', 1.5);
+    desenha('tendencia', cTend, '6 4', 2);
+    desenha('necessario', cNec, '6 4', 2.5);
+    desenha('realizado', cReal, null, 3);
+    const fim = rows[rows.length - 1];
+    const hoje = rows.filter((r) => r.realizado != null).pop();
+    svg.append('circle').attr('cx', x(hoje.n)).attr('cy', y(hoje.realizado)).attr('r', 4.5).attr('fill', cReal);
+    // rótulos no fim das linhas, afastados para não se sobrepor
+    const ends = [['meta', fim.meta, cMeta], ['tendência', fim.tendencia, cTend], ['necessário', fim.necessario, cNec]]
+      .filter((e) => e[1] != null).sort((a, b) => b[1] - a[1]);
+    let prevY = -Infinity;
+    ends.forEach(([nome, v, c]) => {
+      let yy = Math.max(y(v), prevY + 14); prevY = yy;
+      svg.append('text').attr('x', right + 6).attr('y', yy).attr('dy', '0.32em').attr('font-size', 11).attr('fill', c).attr('font-weight', 600).text(fmtK(v));
+    });
+    // dica ao passar o mouse
+    const tip = d3.select(el).append('div').attr('class', 'pm-tip').style('display', 'none');
+    const guia = svg.append('line').attr('y1', top).attr('y2', H - bottom).attr('stroke', 'var(--cds-chart-axis)').style('display', 'none');
+    svg.append('rect').attr('x', left).attr('y', top).attr('width', right - left).attr('height', H - bottom - top).attr('fill', 'transparent')
+      .on('mousemove', (ev) => {
+        const [mx, my] = d3.pointer(ev, svg.node());
+        const n = Math.max(0, Math.min(last, Math.round(x.invert(mx))));
+        const r = rows[n];
+        guia.style('display', null).attr('x1', x(n)).attr('x2', x(n));
+        tip.style('display', null).html('');
+        tip.append('div').attr('class', 'pm-tip-h').text(n === 0 ? 'Início do mês' : 'Dia trabalhado ' + n);
+        [['Realizado', r.realizado, cReal], ['Tendência', r.tendencia, cTend], ['Necessário', r.necessario, cNec], ['Meta', r.meta, cMeta]]
+          .filter((e) => e[1] != null).forEach(([k, v, c]) => { const d = tip.append('div'); d.append('span').style('color', c).text('● '); d.append('span').text(k + ': ' + P.money(v)); });
+        const [px, py] = d3.pointer(ev, el); const tw = tip.node().offsetWidth;
+        tip.style('left', Math.max(0, Math.min(px + 12, el.clientWidth - tw)) + 'px').style('top', Math.max(0, py - 60) + 'px');
+      })
+      .on('mouseleave', () => { tip.style('display', 'none'); guia.style('display', 'none'); });
   });
 
   dash.draw('g-apps', (el) => {
@@ -313,10 +485,11 @@
     if (!apps) { el.replaceChildren(); el.textContent = '—'; return; }
     el.replaceChildren();
     const max = d3.max(apps, (a) => a.receita) || 1;
+    const paleta = ['--pm-sun', '--pm-blue', '--pm-terra', '--pm-gold', '--pm-navy'].map((v) => cor(el, v));
     apps.forEach((a, i) => {
       const row = d3.select(el).append('div').attr('class', 'pm-app');
       row.append('span').text(a.app);
-      row.append('div').attr('class', 'pm-app-track').append('div').attr('class', 'pm-app-bar').style('width', (a.receita / max) * 100 + '%').style('background', dash.colors[i % dash.colors.length]);
+      row.append('div').attr('class', 'pm-app-track').append('div').attr('class', 'pm-app-bar').style('width', (a.receita / max) * 100 + '%').style('background', paleta[i % paleta.length]);
       row.append('span').text(P.money(a.receita) + ' · ' + P.pct.format(a.parte));
     });
   });
