@@ -24,3 +24,6 @@ data;tipo;campo1;campo2;campo3;campo4
 03/11/2026;RECEITA;Atentiva;118,20;2
 03/11/2026;HORAS;11:40
 03/11/2026;FIM;34903
+# 04/11 (qua): saída 05:24 no km 34.903. Dia aberto.
+04/11/2026;INICIO;34903;05:24
+04/11/2026;PARCIAL
