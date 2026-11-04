@@ -75,6 +75,7 @@ enum class Categoria(val rotulo: String, val natureza: Natureza) {
     ESTACIONAMENTO("Estacionamento", Natureza.OPERACIONAL),
     PEDAGIO("Pedágio", Natureza.OPERACIONAL),
     MULTA("Multa", Natureza.OPERACIONAL),
+    TAXA_APP("Taxa de app", Natureza.OPERACIONAL),
     OUTROS("Outros", Natureza.OPERACIONAL),
     MANUTENCAO("Manutenção", Natureza.MANUTENCAO),
     ALUGUEL("Aluguel do carro", Natureza.FIXA),

@@ -65,8 +65,8 @@ object Exportar {
         // Combustível que está no tanque agora (o consumo medido de cada trecho vai em trechos.json)
         "combustivel_atual" to (p.combustivelAtual?.lowercase() ?: "—"),
         "preco_litro" to perfil.precoCombustivel,
-        "consumo_km_l" to perfil.consumoKmPorLitro,
-        "consumo_medido" to false,
+        "consumo_km_l" to (p.consumoAtualKmL ?: perfil.consumoKmPorLitro),
+        "consumo_medido" to p.consumoAtualMedido,
         "custo_comb_km" to p.custoCombustivelPorKmUsado,
         "atualizado_ate" to p.fim.toString(),
     )))

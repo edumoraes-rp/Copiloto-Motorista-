@@ -105,6 +105,9 @@ data class ResumoPeriodo(
     val custoCombustivelPorKmUsado: Double,
     /** Combustível do último tanque cheio (o que está no tanque agora). */
     val combustivelAtual: String? = null,
+    /** Km/L usado para o combustível que está no tanque agora (medido, se houver). */
+    val consumoAtualKmL: Double? = null,
+    val consumoAtualMedido: Boolean = false,
     // conciliações
     /** Reserva de manutenção acumulada menos o que foi gasto em manutenção. */
     val saldoReservaManutencao: Double,
@@ -233,9 +236,15 @@ class GestorDeFrota(private val perfil: PerfilVeiculo) {
     fun ultimoTanqueCheio(abastecimentos: List<Despesa>, referencias: List<TanqueCheio> = emptyList()): PontoTanqueCheio? =
         pontos(abastecimentos, referencias).lastOrNull { it.cheio }?.let { PontoTanqueCheio(it.km, it.preco, it.combustivel) }
 
+    /** Consumo para os km depois do último tanque cheio: o último trecho medido com o mesmo combustível, ou o do perfil. */
+    fun consumoAtual(consumo: ConsumoReal?, ultimo: PontoTanqueCheio?): Double =
+        consumo?.trechos?.lastOrNull { ultimo?.combustivel != null && it.combustivel == ultimo.combustivel }?.kmPorLitro
+            ?: perfil.consumoKmPorLitro
+
     /**
      * Custo do combustível de um intervalo de km: km dentro de trechos medidos pagam o custo real do trecho;
-     * km depois do último tanque cheio usam o preço desse tanque e o consumo do perfil; o resto usa o perfil.
+     * km depois do último tanque cheio usam o preço desse tanque e o último consumo medido com esse combustível
+     * (ou o do perfil); o resto usa o perfil.
      */
     fun custoCombustivel(kmInicio: Int, kmFim: Int, consumo: ConsumoReal?, ultimo: PontoTanqueCheio?): Double {
         if (kmFim <= kmInicio) return 0.0
@@ -248,7 +257,7 @@ class GestorDeFrota(private val perfil: PerfilVeiculo) {
         }
         val fimMedido = consumo?.trechos?.maxOf { it.kmFim }
         val depois = if (ultimo?.precoLitro != null) (kmFim - maxOf(kmInicio, ultimo.km, fimMedido ?: ultimo.km)).coerceAtLeast(0) else 0
-        custo += depois * (ultimo?.precoLitro ?: 0.0) / perfil.consumoKmPorLitro
+        custo += depois * (ultimo?.precoLitro ?: 0.0) / consumoAtual(consumo, ultimo)
         custo += (kmFim - kmInicio - coberto - depois).coerceAtLeast(0) * perfil.custoCombustivelPorKm
         return custo
     }
@@ -348,6 +357,8 @@ class GestorDeFrota(private val perfil: PerfilVeiculo) {
             consumoReal = consumo,
             custoCombustivelPorKmUsado = custoCombKm,
             combustivelAtual = ultimoCheio?.combustivel,
+            consumoAtualKmL = consumoAtual(consumo, ultimoCheio),
+            consumoAtualMedido = consumoAtual(consumo, ultimoCheio) != perfil.consumoKmPorLitro,
             saldoReservaManutencao = manutencao - manutencaoPaga,
             diferencaCombustivel = combustivel - combustivelPago,
             kmForaDoTrabalho = kmFora,

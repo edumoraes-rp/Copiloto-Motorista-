@@ -4,7 +4,7 @@ posse = ALUGADO
 
 # Combustível no tanque: ETANOL (tanque cheio em 03/11, R$ 3,52/L).
 # Etanol R$ 3,52 ÷ gasolina R$ 5,74 = 61%: abaixo de 70%, o etanol compensa.
-# Consumo do etanol ESTIMADO em 9,5 km/L (≈ 70% dos 13,55 km/L medidos na gasolina na cidade);
+# Consumo do etanol: 9,5 km/L era a estimativa; o motor usa o medido (9,66 km/L em 04/11) quando houver.
 # vale só até o próximo tanque cheio, quando o consumo real do etanol for medido.
 preco_combustivel = 3,52
 consumo_km_l = 9,5

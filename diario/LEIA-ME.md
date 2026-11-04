@@ -48,7 +48,7 @@ Dicas:
 | `DESPESA` | categoria ; valor ; descrição (opcional) |
 | `ABASTECIMENTO` | valor ; litros ; km do hodômetro ; `CHEIO` ou `PARCIAL` ; combustível (`ETANOL`, `GASOLINA`) |
 
-Categorias: `ALIMENTACAO`, `LAVAGEM`, `ESTACIONAMENTO`, `PEDAGIO`, `MULTA`, `OUTROS`,
+Categorias: `ALIMENTACAO`, `LAVAGEM`, `ESTACIONAMENTO`, `PEDAGIO`, `MULTA`, `TAXA_APP`, `OUTROS`,
 `MANUTENCAO`, `ALUGUEL`, `PARCELA`, `SEGURO`, `IPVA`, `CELULAR`.
 
 Gerar o relatório (na raiz do projeto):

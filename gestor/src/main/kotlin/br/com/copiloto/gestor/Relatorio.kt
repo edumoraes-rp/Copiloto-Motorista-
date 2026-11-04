@@ -108,7 +108,7 @@ object Relatorio {
                 appendLine("| ${f.num(t.kmInicio.toDouble())} → ${f.num(t.kmFim.toDouble())} | ${t.combustivel?.lowercase() ?: "—"} | ${t.km} | ${f.num(t.litros)} | ${f.num(t.kmPorLitro)} | ${f.reais(t.precoLitro)} | ${f.reais(t.custo)} | ${f.reais(t.custoPorKm)} |")
             }
             appendLine()
-            appendLine("- Km depois do último tanque cheio usam o consumo do perfil (${f.num(perfil.consumoKmPorLitro)} km/L) até a próxima medição")
+            appendLine("- Km depois do último tanque cheio usam ${f.num(p.consumoAtualKmL)} km/L (${if (p.consumoAtualMedido) "último consumo medido com ${p.combustivelAtual?.lowercase()}" else "estimativa do perfil"}) até a próxima medição")
         } else {
             appendLine("- Consumo real ainda não medido; usando o cadastrado: ${f.num(perfil.consumoKmPorLitro)} km/L a ${f.reais(perfil.precoCombustivel)}/L (${f.reais(perfil.custoCombustivelPorKm)}/km)")
         }
