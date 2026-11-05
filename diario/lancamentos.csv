@@ -35,8 +35,12 @@ data;tipo;campo1;campo2;campo3;campo4
 04/11/2026;DESPESA;TAXA_APP;52,99;99 - plano Taxa 0%
 04/11/2026;HORAS;11:00
 04/11/2026;FIM;35268
-# 05/11 (qui): saída no km 35.268 (mesmo km do fim de 04/11). Hora de saída a informar. Dia aberto.
+# 05/11 (qui): saída no km 35.268 (mesmo km do fim de 04/11); 10h24 trabalhadas; fim no km 35.514.
 05/11/2026;INICIO;35268
 # Etanol 25,189 L a R$ 3,97 com desconto de R$ 8,57 (NFC-e 161759, 15:00). Abastecimento parcial (tanque não completado).
 05/11/2026;ABASTECIMENTO;91,43;25,189;35423;PARCIAL;ETANOL
-05/11/2026;PARCIAL
+05/11/2026;RECEITA;99;120,48;10
+05/11/2026;RECEITA;Uber;138,04;13
+05/11/2026;RECEITA;Particular;15,00;1
+05/11/2026;HORAS;10:24
+05/11/2026;FIM;35514
