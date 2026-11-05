@@ -35,3 +35,6 @@ data;tipo;campo1;campo2;campo3;campo4
 04/11/2026;DESPESA;TAXA_APP;52,99;99 - plano Taxa 0%
 04/11/2026;HORAS;11:00
 04/11/2026;FIM;35268
+# 05/11 (qui): saída no km 35.268 (mesmo km do fim de 04/11). Hora de saída a informar. Dia aberto.
+05/11/2026;INICIO;35268
+05/11/2026;PARCIAL

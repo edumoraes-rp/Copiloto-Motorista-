@@ -1,31 +1,31 @@
 # Gestor de frota: HB20S 1.0 TGDI 2025/2026 flex (Movida)
 
-Período: **01/11/2026 a 04/11/2026**, 4 dia(s) trabalhado(s)
+Período: **01/11/2026 a 05/11/2026**, 5 dia(s) trabalhado(s)
 
 ## Resultado do período
 
 | | Valor |
 |---|---:|
 | Receita bruta | R$ 2.147,31 |
-| Custo real (combustível + operacionais + manutenção + fixos) | R$ 1.267,29 |
-| **Lucro real** | **R$ 880,02** |
-| Margem (lucro ÷ receita) | 40,98% |
+| Custo real (combustível + operacionais + manutenção + fixos) | R$ 1.417,29 |
+| **Lucro real** | **R$ 730,02** |
+| Margem (lucro ÷ receita) | 34% |
 | Lucro de caixa (receita − tudo que foi pago) | R$ 1.640,18 |
 
 | Indicador | Valor |
 |---|---:|
-| Km rodados | 1734 km (média 433,5 km/dia) |
+| Km rodados | 1734 km (média 346,8 km/dia) |
 | Horas trabalhadas | 41h30 (média 10h23/dia) |
 | Corridas | 90 (ticket médio R$ 23,86) |
 | Ganho por km | R$ 1,24 |
-| Custo por km | R$ 0,73 |
-| Lucro por km | R$ 0,51 |
+| Custo por km | R$ 0,82 |
+| Lucro por km | R$ 0,42 |
 | Ganho por hora | R$ 51,74 |
 | Lucro por hora | R$ 21,21 |
-| Receita média por dia | R$ 536,83 |
-| Lucro real médio por dia | R$ 220,00 |
+| Receita média por dia | R$ 429,46 |
+| Lucro real médio por dia | R$ 146,00 |
 | Melhor dia | seg 02/11/2026: R$ 523,85 |
-| Pior dia | dom 01/11/2026: R$ -86,78 |
+| Pior dia | qui 05/11/2026: R$ -150,00 |
 
 ## Receita por app
 
@@ -43,7 +43,7 @@ Período: **01/11/2026 a 04/11/2026**, 4 dia(s) trabalhado(s)
 | Combustível consumido (R$ 0,37/km) | R$ 637,18 | R$ 0,37 |
 | Despesas do dia a dia | R$ 0,00 | R$ 0,00 |
 | Taxas de app (99 8,83% da receita) | R$ 30,12 | R$ 0,02 |
-| Custos fixos rateados (R$ 150,00/dia) | R$ 600,00 | R$ 0,35 |
+| Custos fixos rateados (R$ 150,00/dia) | R$ 750,00 | R$ 0,43 |
 
 Pagamentos lançados (o que saiu do bolso):
 
@@ -69,11 +69,11 @@ Consumo medido entre tanques cheios (cada trecho paga o combustível que estava 
 ## Planejamento
 
 - Custos fixos: R$ 3.300,00/mês = R$ 150,00 por dia trabalhado (22 dias/mês)
-- **Ponto de equilíbrio:** faturar pelo menos **R$ 316,82 por dia** (rodando ~433,5 km) para não ter prejuízo
-- **Valor mínimo por km:** R$ 0,73. Abaixo disso, na média, o dia dá prejuízo
-- **Meta de receita R$ 700,00/dia:** média atual R$ 536,83 (76,69% da meta); 1 de 4 dia(s) bateram a meta
-- Batendo a meta todo dia, com o custo médio atual: lucro real de R$ 383,18/dia, **R$ 8.429,89/mês**
-- Projeção do mês no ritmo atual: receita R$ 11.810,20, lucro real **R$ 4.840,09**
+- **Ponto de equilíbrio:** faturar pelo menos **R$ 283,46 por dia** (rodando ~346,8 km) para não ter prejuízo
+- **Valor mínimo por km:** R$ 0,82. Abaixo disso, na média, o dia dá prejuízo
+- **Meta de receita R$ 700,00/dia:** média atual R$ 429,46 (61,35% da meta); 1 de 5 dia(s) bateram a meta
+- Batendo a meta todo dia, com o custo médio atual: lucro real de R$ 416,54/dia, **R$ 9.163,91/mês**
+- Projeção do mês no ritmo atual: receita R$ 9.448,16, lucro real **R$ 3.212,07**
 
 ## Dia a dia
 
@@ -83,10 +83,14 @@ Consumo medido entre tanques cheios (cada trecho paga o combustível que estava 
 | seg 02/11/2026 | 855 | 16h50 | 12 | R$ 984,26 | R$ 460,41 | R$ 523,85 | R$ 1,15 | R$ 31,12 | R$ 833,46 |
 | ter 03/11/2026 | 347 | 11h40 | 34 | R$ 527,37 | R$ 278,17 | R$ 249,20 | R$ 1,52 | R$ 21,36 | R$ 387,57 |
 | qua 04/11/2026 | 365 | 11h00 | 42 | R$ 501,48 | R$ 307,73 | R$ 193,75 | R$ 1,37 | R$ 17,61 | R$ 284,95 |
+| qui 05/11/2026 *(parcial)* | — | — | 0 | R$ 0,00 | R$ 150,00 | R$ -150,00 | — | — | R$ 0,00 |
 
 ## Alertas
 
 - 01/11/2026: Dia com prejuízo real: a receita não cobriu os custos.
 - 02/11/2026: Km rodado muito alto (855 km): confira o hodômetro.
-- Receita média de R$ 536,83/dia está abaixo da meta de R$ 700,00/dia (faltam R$ 163,17).
+- 05/11/2026: Falta o km final do dia.
+- 05/11/2026: Falta a hora de início ou de fim: sem ganho por hora.
+- 05/11/2026: Nenhuma receita lançada.
+- Receita média de R$ 429,46/dia está abaixo da meta de R$ 700,00/dia (faltam R$ 270,54).
 
