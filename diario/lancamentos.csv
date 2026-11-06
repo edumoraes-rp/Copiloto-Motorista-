@@ -44,3 +44,6 @@ data;tipo;campo1;campo2;campo3;campo4
 05/11/2026;RECEITA;Particular;15,00;1
 05/11/2026;HORAS;10:24
 05/11/2026;FIM;35514
+# 06/11 (sex): saída no km 35.514 (mesmo km do fim de 05/11). Dia aberto.
+06/11/2026;INICIO;35514
+06/11/2026;PARCIAL
