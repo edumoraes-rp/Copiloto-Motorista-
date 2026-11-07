@@ -15,13 +15,13 @@ Período: **01/11/2026 a 06/11/2026**, 6 dia(s) trabalhado(s)
 | Indicador | Valor |
 |---|---:|
 | Km rodados | 2437 km (média 406,17 km/dia) |
-| Horas trabalhadas | 51h54 (média 10h23/dia) |
+| Horas trabalhadas | 65h54 (média 10h59/dia) |
 | Corridas | 144 (ticket médio R$ 21,11) |
 | Ganho por km | R$ 1,25 |
 | Custo por km | R$ 0,75 |
 | Lucro por km | R$ 0,49 |
-| Ganho por hora | R$ 46,64 |
-| Lucro por hora | R$ 17,40 |
+| Ganho por hora | R$ 46,12 |
+| Lucro por hora | R$ 18,23 |
 | Receita média por dia | R$ 506,52 |
 | Lucro real médio por dia | R$ 200,22 |
 | Melhor dia | seg 02/11/2026: R$ 523,85 |
@@ -84,12 +84,11 @@ Consumo medido entre tanques cheios (cada trecho paga o combustível que estava 
 | ter 03/11/2026 | 347 | 11h40 | 34 | R$ 527,37 | R$ 278,17 | R$ 249,20 | R$ 1,52 | R$ 21,36 | R$ 387,57 |
 | qua 04/11/2026 | 365 | 11h00 | 42 | R$ 501,48 | R$ 307,73 | R$ 193,75 | R$ 1,37 | R$ 17,61 | R$ 284,95 |
 | qui 05/11/2026 | 246 | 10h24 | 24 | R$ 273,52 | R$ 250,24 | R$ 23,28 | R$ 1,11 | R$ 2,24 | R$ 182,09 |
-| sex 06/11/2026 | 457 | — | 30 | R$ 618,31 | R$ 320,29 | R$ 298,02 | R$ 1,35 | — | R$ 526,06 |
+| sex 06/11/2026 | 457 | 14h00 | 30 | R$ 618,31 | R$ 320,29 | R$ 298,02 | R$ 1,35 | R$ 21,29 | R$ 526,06 |
 
 ## Alertas
 
 - 01/11/2026: Dia com prejuízo real: a receita não cobriu os custos.
 - 02/11/2026: Km rodado muito alto (855 km): confira o hodômetro.
-- 06/11/2026: Falta a hora de início ou de fim: sem ganho por hora.
 - Receita média de R$ 506,52/dia está abaixo da meta de R$ 700,00/dia (faltam R$ 193,48).
 
