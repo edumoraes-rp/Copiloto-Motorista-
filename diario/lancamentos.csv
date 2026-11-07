@@ -48,4 +48,6 @@ data;tipo;campo1;campo2;campo3;campo4
 06/11/2026;INICIO;35514
 # Etanol 25,839 L a R$ 3,87 com desconto de R$ 7,75 (NFC-e 174481, 14:44, dinheiro). Abastecimento parcial (tanque não completado).
 06/11/2026;ABASTECIMENTO;92,25;25,839;35744;PARCIAL;ETANOL
+06/11/2026;FIM;35971
+# Aguardando receitas e horas de 06/11.
 06/11/2026;PARCIAL
