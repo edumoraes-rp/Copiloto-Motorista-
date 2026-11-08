@@ -20,7 +20,10 @@ object Exportar {
         File(pasta, "trechos.json").writeText(trechos(p))
     }
 
-    fun dias(p: ResumoPeriodo): String = lista(p.dias.map { d ->
+    /** Dia aberto sem receita ainda (só o km de saída) fica fora do painel até ter números. */
+    private fun noPainel(p: ResumoPeriodo) = p.dias.filterNot { it.parcial && it.receitaBruta == 0.0 }
+
+    fun dias(p: ResumoPeriodo): String = lista(noPainel(p).map { d ->
         linkedMapOf(
             "data" to d.data.toString(),
             "dia" to rotulo.format(d.data).replace(".", ""),
@@ -43,7 +46,7 @@ object Exportar {
         )
     })
 
-    fun apps(p: ResumoPeriodo): String = lista(p.dias.flatMap { d ->
+    fun apps(p: ResumoPeriodo): String = lista(noPainel(p).flatMap { d ->
         d.receitaPorApp.map { (app, valor) -> linkedMapOf<String, Any?>("data" to d.data.toString(), "app" to app, "receita" to valor) }
     })
 

@@ -55,7 +55,7 @@ data;tipo;campo1;campo2;campo3;campo4
 06/11/2026;HORAS;14:00
 06/11/2026;FIM;35971
 # 07 e 08/11: sem trabalho. 19 km entre o fim de 06/11 (35.971) e o início de 09/11 (35.990), fora do expediente.
-# Abastecimento de 08/11 às 20:21 (NFC-e 217185, dinheiro): etanol 36,41 L a R$ 3,87 com desconto de R$ 9,10. Lançado em 09/11. Tanque cheio: a confirmar.
+# Abastecimento de 08/11 às 20:21 (NFC-e 217185, dinheiro): etanol 36,41 L a R$ 3,87 com desconto de R$ 9,10. Lançado em 09/11. Tanque cheio (confirmado).
 09/11/2026;INICIO;35990
-09/11/2026;ABASTECIMENTO;131,80;36,41;35990;PARCIAL;ETANOL
+09/11/2026;ABASTECIMENTO;131,80;36,41;35990;CHEIO;ETANOL
 09/11/2026;PARCIAL
