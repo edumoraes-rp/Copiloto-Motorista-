@@ -58,4 +58,8 @@ data;tipo;campo1;campo2;campo3;campo4
 # Abastecimento de 08/11 às 20:21 (NFC-e 217185, dinheiro): etanol 36,41 L a R$ 3,87 com desconto de R$ 9,10. Lançado em 09/11. Tanque cheio (confirmado).
 09/11/2026;INICIO;35990
 09/11/2026;ABASTECIMENTO;131,80;36,41;35990;CHEIO;ETANOL
-09/11/2026;PARCIAL
+09/11/2026;RECEITA;Atentiva;248,80;2
+09/11/2026;RECEITA;99;199,53;6
+09/11/2026;RECEITA;Uber;310,29;16
+09/11/2026;HORAS;12:45
+09/11/2026;FIM;36430
