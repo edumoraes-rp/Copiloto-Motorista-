@@ -74,3 +74,5 @@ data;tipo;campo1;campo2;campo3;campo4
 10/11/2026;DESPESA;TAXA_APP;52,99;99 - plano Taxa 0% (2ª cobrança)
 10/11/2026;HORAS;12:45
 10/11/2026;FIM;36748
+# Receita extra (fora das corridas): não entra em médias nem na meta.
+10/11/2026;EXTRA;Venda de peptídeo;1000,00

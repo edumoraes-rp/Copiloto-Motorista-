@@ -27,6 +27,16 @@ Período: **01/11/2026 a 10/11/2026**, 8 dia(s) trabalhado(s)
 | Melhor dia | seg 02/11/2026: R$ 523,85 |
 | Pior dia | dom 01/11/2026: R$ -86,78 |
 
+## Receitas extras (fora das corridas)
+
+Não entram nas médias, no ganho por km/hora nem na meta.
+
+| Dia | Descrição | Valor |
+|---|---|---:|
+| 10/11/2026 | Venda de peptídeo | R$ 1.000,00 |
+
+- Lucro real das corridas R$ 1.942,67 + extras R$ 1.000,00 = **resultado total R$ 2.942,67**
+
 ## Receita por app
 
 | App | Receita | % |

@@ -58,6 +58,8 @@
   .pm-table td { text-align: right; padding: var(--cds-pad-xs) var(--cds-pad-sm); border-bottom: 1px solid var(--color-border-line); white-space: nowrap; }
   .pm-table th:first-child, .pm-table td:first-child { text-align: left; }
   .pm-pill { display: inline-block; margin-left: var(--cds-gap-xs); padding: 0 var(--cds-pad-xs); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); font-size: var(--cds-font-size-caption); color: var(--color-warn); }
+  .pm-extras { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--cds-gap-xs); font-size: var(--cds-font-size-body); font-variant-numeric: tabular-nums; }
+  .pm-extras li { display: flex; justify-content: space-between; gap: var(--cds-gap-md); border-bottom: 1px solid var(--color-border-line); padding: var(--cds-pad-xs) 0; }
   [data-dash-source-state=refreshing] { opacity: .5; transition: opacity var(--cds-dur-slow); }
   [data-dash-source-state=empty] { color: transparent; }
 </style>
@@ -101,6 +103,17 @@
       <span class="pm-tile-value" data-draw="k-gh" data-source="totais" data-field="ganho_hora">—</span>
       <span class="pm-tile-note"><span data-draw="k-horas" data-source="totais" data-field="horas">—</span> trabalhadas</span>
     </div>
+  </section>
+
+  <section class="pm-card" id="extras">
+    <h2>Receitas extras (fora das corridas)</h2>
+    <p class="pm-note">Dinheiro que entrou sem ser de corrida. Não entra nas médias, no ganho por km ou por hora, nem na meta.</p>
+    <div class="pm-plan">
+      <div><span>Receitas extras no mês</span><b data-draw="x-total" data-source="extrasTotal" data-field="extras">—</b></div>
+      <div><span>Lucro real das corridas</span><b data-draw="x-lucro" data-source="extrasTotal" data-field="lucro_corridas">—</b></div>
+      <div><span>Resultado total do mês</span><b data-draw="x-res" data-source="extrasTotal" data-field="resultado">—</b></div>
+    </div>
+    <ul class="pm-extras" data-draw="x-lista" data-source="extras"></ul>
   </section>
 
   <h2 class="pm-section">Tendência do mês</h2>
@@ -287,6 +300,17 @@
     },
   });
 
+  dash.calc('extrasTotal', {
+    title: 'Resultado total com extras',
+    description: 'Receitas extras do mês somadas ao lucro real das corridas.',
+    inputs: ['extras', 'dias'],
+    fn: (extras, dias) => {
+      const ext = extras.reduce((a, r) => a + Number(r.valor), 0);
+      const lucro = dias.reduce((a, r) => a + Number(r.lucro_real), 0);
+      return [{ extras: ext, lucro_corridas: lucro, resultado: lucro + ext }];
+    },
+  });
+
   dash.calc('porApp', {
     title: 'Receita por app',
     description: 'Receita somada por app no mês e a parte de cada um no total.',
@@ -341,6 +365,9 @@
   field('p-lucro', 'plano', 'projecao_lucro', P.money, true);
   field('p-nec', 'plano', 'necessario_dia', P.money);
   field('p-lmeta', 'plano', 'lucro_na_meta', P.money, true);
+  field('x-total', 'extrasTotal', 'extras', P.money);
+  field('x-lucro', 'extrasTotal', 'lucro_corridas', P.money, true);
+  field('x-res', 'extrasTotal', 'resultado', P.money, true);
 </script>
 
 <script>
@@ -491,6 +518,17 @@
       row.append('span').text(a.app);
       row.append('div').attr('class', 'pm-app-track').append('div').attr('class', 'pm-app-bar').style('width', (a.receita / max) * 100 + '%').style('background', paleta[i % paleta.length]);
       row.append('span').text(P.money(a.receita) + ' · ' + P.pct.format(a.parte));
+    });
+  });
+
+  dash.draw('x-lista', (el) => {
+    const rows = P.rows('extras');
+    el.replaceChildren();
+    if (!rows) return;
+    rows.forEach((r) => {
+      const li = d3.select(el).append('li');
+      li.append('span').text(String(r.data).slice(8, 10) + '/' + String(r.data).slice(5, 7) + ' · ' + r.descricao);
+      li.append('span').text(P.money(r.valor));
     });
   });
 
