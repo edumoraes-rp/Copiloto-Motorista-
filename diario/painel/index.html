@@ -107,7 +107,7 @@
 
   <section class="pm-card" id="extras">
     <h2>Receitas extras (fora das corridas)</h2>
-    <p class="pm-note">Dinheiro que entrou sem ser de corrida. Não entra nas médias, no ganho por km ou por hora, nem na meta.</p>
+    <p class="pm-note">Dinheiro que entrou sem ser de corrida. Conta para a meta do mês (reduz o necessário por dia), mas não entra na média por dia nem no ganho por km ou por hora.</p>
     <div class="pm-plan">
       <div><span>Receitas extras no mês</span><b data-draw="x-total" data-source="extrasTotal" data-field="extras">—</b></div>
       <div><span>Lucro real das corridas</span><b data-draw="x-lucro" data-source="extrasTotal" data-field="lucro_corridas">—</b></div>
@@ -119,7 +119,7 @@
   <h2 class="pm-section">Tendência do mês</h2>
   <section class="pm-card" id="tendencia">
     <h2>Se continuar assim, onde o mês fecha?</h2>
-    <p class="pm-note">Receita acumulada por dia trabalhado. A tendência repete a média atual até o fim do mês; o "necessário" é o ritmo que fecha a meta a partir de hoje.</p>
+    <p class="pm-note">Receita acumulada por dia trabalhado, com as receitas extras somadas no dia em que entraram. A tendência repete a média das corridas até o fim do mês; o "necessário" é o ritmo que fecha a meta a partir de hoje.</p>
     <div class="pm-plan">
       <div><span>Dias trabalhados</span><b><span data-draw="p-feitos" data-source="plano" data-field="dias_feitos">—</span> de <span data-draw="p-total" data-source="plano" data-field="dias_mes">—</span></b></div>
       <div><span>Meta do mês</span><b data-draw="p-meta" data-source="plano" data-field="meta_mes">—</b></div>
@@ -252,22 +252,25 @@
 
   dash.calc('plano', {
     title: 'Plano do mês',
-    description: 'Meta do mês (meta diária × dias de trabalho), tendência pela média atual e receita necessária por dia nos dias que faltam.',
-    inputs: ['dias', 'perfil'],
-    fn: (dias, perfil) => {
+    description: 'Meta do mês (meta diária × dias de trabalho); receitas extras contam para a meta. Tendência pela média das corridas e receita necessária por dia nos dias que faltam.',
+    inputs: ['dias', 'perfil', 'extras'],
+    fn: (dias, perfil, extras) => {
       const p = perfil[0] || {};
       const metaDia = Number(p.meta_receita_dia) || 0, total = Number(p.dias_mes) || 22;
       const feitos = dias.length;
-      const receita = dias.reduce((a, r) => a + Number(r.receita), 0);
-      const lucro = dias.reduce((a, r) => a + Number(r.lucro_real), 0);
+      const ext = extras.reduce((a, r) => a + Number(r.valor), 0);
+      const corridas = dias.reduce((a, r) => a + Number(r.receita), 0);
+      const receita = corridas + ext;
+      const lucro = dias.reduce((a, r) => a + Number(r.lucro_real), 0) + ext;
       const custoMedio = feitos ? dias.reduce((a, r) => a + Number(r.custo_real), 0) / feitos : 0;
       const faltam = Math.max(0, total - feitos), metaMes = metaDia * total;
       const necessario = faltam ? Math.max(0, metaMes - receita) / faltam : null;
       return [{
         dias_feitos: feitos, dias_mes: total, faltam_dias: faltam, meta_mes: metaMes, receita_feita: receita,
-        media_dia: feitos ? receita / feitos : 0,
-        projecao_receita: feitos ? receita / feitos * total : 0,
-        projecao_lucro: feitos ? lucro / feitos * total : 0,
+        extras: ext,
+        media_dia: feitos ? corridas / feitos : 0,
+        projecao_receita: feitos ? corridas / feitos * total + ext : ext,
+        projecao_lucro: feitos ? (lucro - ext) / feitos * total + ext : ext,
         necessario_dia: necessario,
         lucro_na_meta: lucro + (necessario == null ? 0 : faltam * (necessario - custoMedio)),
       }];
@@ -276,15 +279,22 @@
 
   dash.calc('tendencia', {
     title: 'Tendência da receita acumulada',
-    description: 'Por dia trabalhado: receita acumulada real, tendência pela média atual, ritmo necessário para a meta e a linha da meta.',
-    inputs: ['dias', 'perfil'],
-    fn: (dias, perfil) => {
+    description: 'Por dia trabalhado: receita acumulada (corridas + extras na data em que entraram), tendência pela média das corridas, ritmo necessário para a meta e a linha da meta.',
+    inputs: ['dias', 'perfil', 'extras'],
+    fn: (dias, perfil, extras) => {
       const p = perfil[0] || {};
       const metaDia = Number(p.meta_receita_dia) || 0, total = Math.max(Number(p.dias_mes) || 22, dias.length);
       const feitos = dias.length;
-      let acum = 0;
-      const real = dias.map((r) => (acum += Number(r.receita)));
-      const media = feitos ? acum / feitos : 0;
+      const pendentes = extras.map((e) => ({ data: String(e.data), valor: Number(e.valor) })).sort((a, b) => a.data.localeCompare(b.data));
+      let acum = 0, soCorridas = 0;
+      const real = dias.map((r) => {
+        soCorridas += Number(r.receita); acum += Number(r.receita);
+        while (pendentes.length && pendentes[0].data <= String(r.data)) acum += pendentes.shift().valor;
+        return acum;
+      });
+      acum += pendentes.reduce((a, e) => a + e.valor, 0);
+      if (feitos) real[feitos - 1] = acum;
+      const media = feitos ? soCorridas / feitos : 0;
       const nec = feitos < total ? Math.max(0, metaDia * total - acum) / (total - feitos) : 0;
       const linhas = [{ n: 0, realizado: 0, tendencia: 0, necessario: 0, meta: 0 }];
       for (let n = 1; n <= total; n++) {

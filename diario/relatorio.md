@@ -86,6 +86,7 @@ Consumo medido entre tanques cheios (cada trecho paga o combustível que estava 
 - **Valor mínimo por km:** R$ 0,74. Abaixo disso, na média, o dia dá prejuízo
 - **Meta de receita R$ 700,00/dia:** média atual R$ 537,34 (76,76% da meta); 2 de 8 dia(s) bateram a meta
 - Batendo a meta todo dia, com o custo médio atual: lucro real de R$ 405,49/dia, **R$ 8.920,84/mês**
+- **Meta do mês com as receitas extras:** feito R$ 5.298,73 de R$ 15.400,00 (corridas R$ 4.298,73 + extras R$ 1.000,00); faltam R$ 10.101,27 em 14 dias = **R$ 721,52 por dia**
 - Projeção do mês no ritmo atual: receita R$ 11.821,51, lucro real **R$ 5.342,35**
 
 ## Dia a dia

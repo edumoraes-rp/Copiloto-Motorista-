@@ -149,6 +149,14 @@ object Relatorio {
             appendLine("- **Meta de receita ${f.reais(perfil.metaReceitaDiaria)}/dia:** média atual ${f.reais(p.receitaMediaPorDia)} (${f.pct(p.receitaMediaPorDia / perfil.metaReceitaDiaria)} da meta); ${p.diasNaMetaDeReceita} de ${p.diasTrabalhados} dia(s) bateram a meta")
             appendLine("- Batendo a meta todo dia, com o custo médio atual: lucro real de ${f.reais(p.lucroRealNaMetaDia)}/dia, **${f.reais(p.lucroRealNaMetaDia!! * perfil.diasTrabalhadosPorMes)}/mês**")
         }
+        if (perfil.metaReceitaDiaria > 0 && p.receitasExtras.isNotEmpty()) {
+            val extras = p.receitasExtras.sumOf { it.valor }
+            val metaMes = perfil.metaReceitaDiaria * perfil.diasTrabalhadosPorMes
+            val feito = p.receitaBruta + extras
+            val faltam = (perfil.diasTrabalhadosPorMes - p.diasTrabalhados).coerceAtLeast(0)
+            appendLine("- **Meta do mês com as receitas extras:** feito ${f.reais(feito)} de ${f.reais(metaMes)} (corridas ${f.reais(p.receitaBruta)} + extras ${f.reais(extras)}); " +
+                if (faltam > 0) "faltam ${f.reais((metaMes - feito).coerceAtLeast(0.0))} em $faltam dias = **${f.reais((metaMes - feito).coerceAtLeast(0.0) / faltam)} por dia**" else "mês encerrado")
+        }
         appendLine("- Projeção do mês no ritmo atual: receita ${f.reais(p.projecaoReceitaMensal)}, lucro real **${f.reais(p.projecaoLucroMensal)}**")
         appendLine()
 
