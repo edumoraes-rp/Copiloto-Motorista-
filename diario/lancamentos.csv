@@ -63,8 +63,14 @@ data;tipo;campo1;campo2;campo3;campo4
 09/11/2026;RECEITA;Uber;310,29;16
 09/11/2026;HORAS;12:45
 09/11/2026;FIM;36430
-# 10/11 (ter): saída no km 36.430 (fim de 09/11). Dia aberto.
+# 10/11 (ter): saída no km 36.430 (fim de 09/11); 12h45 trabalhadas; fim no km 36.748.
 # Abastecimento de 09/11 às 20:38, após o fechamento (NFC-e 37075, dinheiro): etanol 38,959 L a R$ 3,72 com desconto de R$ 5,85, no km 36.430. Lançado em 10/11 a pedido. Tanque cheio (confirmado).
 10/11/2026;INICIO;36430
 10/11/2026;ABASTECIMENTO;139,08;38,959;36430;CHEIO;ETANOL
-10/11/2026;PARCIAL
+10/11/2026;RECEITA;99;86,50;8
+10/11/2026;RECEITA;Atentiva;91,80;1
+10/11/2026;RECEITA;Particular;15,00;1
+10/11/2026;RECEITA;Uber;307,67;22
+10/11/2026;DESPESA;TAXA_APP;52,99;99 - plano Taxa 0% (2ª cobrança)
+10/11/2026;HORAS;12:45
+10/11/2026;FIM;36748
