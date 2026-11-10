@@ -20,7 +20,8 @@ fun main(args: Array<String>) {
             println("Nenhum lançamento em ${pasta.path}/lancamentos.csv ainda.")
             return
         }
-        val resumo = GestorDeFrota(perfil).resumoDoPeriodo(jornadas)
+        val texto0 = File(pasta, "lancamentos.csv").readText()
+        val resumo = GestorDeFrota(perfil).resumoDoPeriodo(jornadas, Leitor.lerExtras(texto0))
         val texto = Relatorio.gerar(perfil, resumo)
         Exportar.paraPasta(perfil, resumo, File(pasta, "painel"))
         println(texto)
@@ -64,6 +65,20 @@ object Relatorio {
         p.melhorDia?.let { appendLine("| Melhor dia | ${f.dataComDia(it.data)}: ${f.reais(it.lucroReal)} |") }
         p.piorDia?.let { appendLine("| Pior dia | ${f.dataComDia(it.data)}: ${f.reais(it.lucroReal)} |") }
         appendLine()
+
+        if (p.receitasExtras.isNotEmpty()) {
+            val totalExtras = p.receitasExtras.sumOf { it.valor }
+            appendLine("## Receitas extras (fora das corridas)")
+            appendLine()
+            appendLine("Não entram nas médias, no ganho por km/hora nem na meta.")
+            appendLine()
+            appendLine("| Dia | Descrição | Valor |")
+            appendLine("|---|---|---:|")
+            p.receitasExtras.forEach { appendLine("| ${f.data(it.data)} | ${it.descricao} | ${f.reais(it.valor)} |") }
+            appendLine()
+            appendLine("- Lucro real das corridas ${f.reais(p.lucroReal)} + extras ${f.reais(totalExtras)} = **resultado total ${f.reais(p.lucroReal + totalExtras)}**")
+            appendLine()
+        }
 
         appendLine("## Receita por app")
         appendLine()

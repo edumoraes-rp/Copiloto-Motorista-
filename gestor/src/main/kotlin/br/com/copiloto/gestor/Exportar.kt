@@ -18,6 +18,9 @@ object Exportar {
         File(pasta, "apps.json").writeText(apps(p))
         File(pasta, "perfil.json").writeText(perfil(perfil, p))
         File(pasta, "trechos.json").writeText(trechos(p))
+        File(pasta, "extras.json").writeText(lista(p.receitasExtras.map {
+            linkedMapOf<String, Any?>("data" to it.data.toString(), "descricao" to it.descricao, "valor" to it.valor)
+        }))
     }
 
     /** Dia aberto sem receita ainda (só o km de saída) fica fora do painel até ter números. */

@@ -77,6 +77,7 @@ object Leitor {
             val c = linha.split(';').map { it.trim() }
             fun campo(n: Int) = c.getOrNull(n)?.takeIf { it.isNotEmpty() }
             fun erro(msg: String): Nothing = throw IllegalArgumentException("lancamentos.csv linha ${i + 1} ($linha): $msg")
+            if (c.getOrNull(1)?.uppercase() == "EXTRA") return@forEachIndexed // lido por lerExtras
             try {
                 val data = LocalDate.parse(c[0], formatoData)
                 val dia = dias.getOrPut(data) { Rascunho(data) }
@@ -139,4 +140,15 @@ object Leitor {
             )
         }
     }
+
+    /** Receitas extras: linhas `data;EXTRA;descrição;valor`, fora das corridas. */
+    fun lerExtras(texto: String): List<ReceitaExtra> = texto.lineSequence().mapIndexedNotNull { i, bruta ->
+        val c = bruta.trim().split(';').map { it.trim() }
+        if (c.getOrNull(1)?.uppercase() != "EXTRA") return@mapIndexedNotNull null
+        try {
+            ReceitaExtra(LocalDate.parse(c[0], formatoData), c.getOrNull(2).orEmpty(), Formato.lerNumero(c[3]))
+        } catch (e: Exception) {
+            throw IllegalArgumentException("lancamentos.csv linha ${i + 1}: use data;EXTRA;descrição;valor (${e.message})")
+        }
+    }.toList()
 }

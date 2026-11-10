@@ -44,6 +44,7 @@ Dicas:
 | `HORAS` | tempo trabalhado (HH:MM), quando não houver hora de início e fim |
 | `PARCIAL` | (sem campos) marca o dia como ainda aberto |
 | `TANQUE_CHEIO` | km do hodômetro ; preço do litro ; combustível: tanque cheio sem compra no período (ponto de partida do consumo) |
+| `EXTRA` | descrição ; valor: dinheiro fora das corridas (não entra em médias nem na meta) |
 | `RECEITA` | app ; valor ; nº de corridas (opcional) |
 | `DESPESA` | categoria ; valor ; descrição (opcional) |
 | `ABASTECIMENTO` | valor ; litros ; km do hodômetro ; `CHEIO` ou `PARCIAL` ; combustível (`ETANOL`, `GASOLINA`) |

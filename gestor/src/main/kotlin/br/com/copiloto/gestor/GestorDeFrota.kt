@@ -129,6 +129,8 @@ data class ResumoPeriodo(
     /** Custo total por km: abaixo disso a corrida dá prejuízo. */
     val valorMinimoPorKm: Double?,
     val projecaoLucroMensal: Double,
+    /** Receitas fora das corridas: não entram em médias, meta nem projeções. */
+    val receitasExtras: List<ReceitaExtra> = emptyList(),
     /** Dias em que a receita bruta bateu a meta diária (null = sem meta). */
     val diasNaMetaDeReceita: Int?,
     /** Lucro real por dia se a meta de receita for batida, com o custo médio dos dias do período. */
@@ -271,7 +273,7 @@ class GestorDeFrota(private val perfil: PerfilVeiculo) {
         return custo
     }
 
-    fun resumoDoPeriodo(jornadas: List<Jornada>): ResumoPeriodo {
+    fun resumoDoPeriodo(jornadas: List<Jornada>, extras: List<ReceitaExtra> = emptyList()): ResumoPeriodo {
         require(jornadas.isNotEmpty()) { "Nenhuma jornada no período" }
         val ordenadas = jornadas.sortedBy { it.data }
         val referencias = ordenadas.flatMap { it.tanqueCheioNoKm }
@@ -379,6 +381,7 @@ class GestorDeFrota(private val perfil: PerfilVeiculo) {
             receitaNecessariaParaMetaDia = paraMeta,
             valorMinimoPorKm = if (kmMedio > 0) equilibrio / kmMedio else null,
             projecaoLucroMensal = lucroMedio * perfil.diasTrabalhadosPorMes,
+            receitasExtras = extras.filter { it.data >= ordenadas.first().data && it.data <= ordenadas.last().data.withDayOfMonth(ordenadas.last().data.lengthOfMonth()) },
             diasNaMetaDeReceita = if (metaReceita > 0) dias.count { it.receitaBruta >= metaReceita } else null,
             lucroRealNaMetaDia = if (metaReceita > 0) metaReceita - custoTotal / n else null,
             projecaoReceitaMensal = receita / n * perfil.diasTrabalhadosPorMes,

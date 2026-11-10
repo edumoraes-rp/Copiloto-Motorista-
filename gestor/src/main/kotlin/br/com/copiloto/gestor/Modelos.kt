@@ -123,6 +123,9 @@ data class Despesa(
     val combustivel: String? = null,
 )
 
+/** Dinheiro que entrou fora das corridas (ex.: venda de um produto). Não entra em médias nem na meta. */
+data class ReceitaExtra(val data: LocalDate, val descricao: String, val valor: Double)
+
 /** Tanque cheio sem compra no período (ex.: abastecido no mês anterior): ponto de partida do consumo. */
 data class TanqueCheio(val km: Int, val precoLitro: Double? = null, val combustivel: String? = null)
 

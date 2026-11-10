@@ -69,4 +69,17 @@ class LeitorTest {
         }
         assertTrue(e.message!!.contains("linha 1"), e.message)
     }
+
+    @Test
+    fun `receita extra fica fora das jornadas`() {
+        val texto = """
+            02/11/2026;INICIO;100;06:00
+            02/11/2026;FIM;200;10:00
+            08/11/2026;EXTRA;Venda de peptídeo;350,00
+        """.trimIndent()
+        assertEquals(1, Leitor.lerLancamentos(texto).size)
+        val e = Leitor.lerExtras(texto).single()
+        assertEquals(LocalDate.of(2026, 11, 8), e.data)
+        assertEquals(350.0, e.valor, 1e-9)
+    }
 }
