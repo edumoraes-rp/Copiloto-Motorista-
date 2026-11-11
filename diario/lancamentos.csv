@@ -76,3 +76,6 @@ data;tipo;campo1;campo2;campo3;campo4
 10/11/2026;FIM;36748
 # Receita extra (fora das corridas): não entra em médias nem na meta.
 10/11/2026;EXTRA;Venda de peptídeo;1000,00
+# 11/11 (qua): saída no km 36.748 (mesmo km do fim de 10/11). Dia aberto.
+11/11/2026;INICIO;36748
+11/11/2026;PARCIAL
