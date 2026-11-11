@@ -78,4 +78,6 @@ data;tipo;campo1;campo2;campo3;campo4
 10/11/2026;EXTRA;Venda de peptídeo;1000,00
 # 11/11 (qua): saída no km 36.748 (mesmo km do fim de 10/11). Dia aberto.
 11/11/2026;INICIO;36748
+# Etanol 47,588 L a R$ 3,87 com desconto de R$ 8,57 (NFC-e 218763, 10:32, PIX). Tanque cheio (confirmado).
+11/11/2026;ABASTECIMENTO;175,59;47,588;36849;CHEIO;ETANOL
 11/11/2026;PARCIAL
