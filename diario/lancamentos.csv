@@ -81,4 +81,7 @@ data;tipo;campo1;campo2;campo3;campo4
 # 12/11 (qui): saída no km 37.100. Dia aberto.
 12/11/2026;INICIO;37100
 12/11/2026;ABASTECIMENTO;175,59;47,588;36849;CHEIO;ETANOL
+# Etanol 23,983 L a R$ 4,17 com desconto de R$ 14,39 (NFC-e 162256, 14:08, PIX). Abastecimento parcial.
+12/11/2026;ABASTECIMENTO;85,61;23,983;37254;PARCIAL;ETANOL
+# Aluguel da Movida pago em 12/11: valor a informar (diferente de R$ 3.300).
 12/11/2026;PARCIAL

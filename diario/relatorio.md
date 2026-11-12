@@ -10,7 +10,7 @@ Período: **01/11/2026 a 12/11/2026**, 9 dia(s) trabalhado(s)
 | Custo real (combustível + operacionais + manutenção + fixos) | R$ 2.534,48 |
 | **Lucro real** | **R$ 1.764,25** |
 | Margem (lucro ÷ receita) | 41,04% |
-| Lucro de caixa (receita − tudo que foi pago) | R$ 3.108,46 |
+| Lucro de caixa (receita − tudo que foi pago) | R$ 3.022,85 |
 
 | Indicador | Valor |
 |---|---:|
@@ -59,7 +59,7 @@ Pagamentos lançados (o que saiu do bolso):
 
 | Categoria | Pago |
 |---|---:|
-| Combustível | R$ 1.084,29 |
+| Combustível | R$ 1.169,90 |
 | Taxa de app | R$ 105,98 |
 
 ## Combustível
@@ -76,7 +76,7 @@ Consumo medido entre tanques cheios (cada trecho paga o combustível que estava 
 | 36.430 → 36.849 | etanol | 419 | 47,59 | 8,8 | R$ 3,57 | R$ 169,88 | R$ 0,41 |
 
 - Km depois do último tanque cheio usam 8,8 km/L (último consumo medido com etanol) até a próxima medição
-- Combustível consumido R$ 1.114,63 × pago na bomba R$ 1.084,29: o tanque gastou R$ 30,34 a mais do que foi reposto.
+- Combustível consumido R$ 1.114,63 × pago na bomba R$ 1.169,90: sobrou R$ 55,27 de combustível no tanque para os próximos dias.
 - Taxas de app: geradas pela receita R$ 69,85, debitadas R$ 105,98 (já foi debitado R$ 36,13 adiantado)
 - Km fora do expediente: 371 km (custo R$ 129,43), não entram no lucro do trabalho.
 
@@ -102,7 +102,7 @@ Consumo medido entre tanques cheios (cada trecho paga o combustível que estava 
 | sex 06/11/2026 | 457 | 14h00 | 30 | R$ 618,31 | R$ 297,21 | R$ 321,10 | R$ 1,35 | R$ 22,94 | R$ 526,06 |
 | seg 09/11/2026 | 440 | 12h45 | 24 | R$ 758,62 | R$ 308,65 | R$ 449,97 | R$ 1,72 | R$ 35,29 | R$ 626,82 |
 | ter 10/11/2026 | 318 | 12h45 | 32 | R$ 500,97 | R$ 286,57 | R$ 214,40 | R$ 1,58 | R$ 16,82 | R$ 308,90 |
-| qui 12/11/2026 *(parcial)* | — | — | 0 | R$ 0,00 | R$ 150,00 | R$ -150,00 | — | — | R$ -175,59 |
+| qui 12/11/2026 *(parcial)* | — | — | 0 | R$ 0,00 | R$ 150,00 | R$ -150,00 | — | — | R$ -261,20 |
 
 ## Alertas
 
