@@ -76,8 +76,9 @@ data;tipo;campo1;campo2;campo3;campo4
 10/11/2026;FIM;36748
 # Receita extra (fora das corridas): não entra em médias nem na meta.
 10/11/2026;EXTRA;Venda de peptídeo;1000,00
-# 11/11 (qua): saída no km 36.748 (mesmo km do fim de 10/11). Dia aberto.
-11/11/2026;INICIO;36748
-# Etanol 47,588 L a R$ 3,87 com desconto de R$ 8,57 (NFC-e 218763, 10:32, PIX). Tanque cheio (confirmado).
-11/11/2026;ABASTECIMENTO;175,59;47,588;36849;CHEIO;ETANOL
-11/11/2026;PARCIAL
+# 11/11 (qua): sem corridas, só assuntos particulares. 352 km (36.748 → 37.100) contam como km fora do expediente.
+# Abastecimento de 11/11 às 10:32 (NFC-e 218763, PIX): etanol 47,588 L a R$ 3,87 com desconto de R$ 8,57, no km 36.849. Tanque cheio (confirmado). Lançado em 12/11.
+# 12/11 (qui): saída no km 37.100. Dia aberto.
+12/11/2026;INICIO;37100
+12/11/2026;ABASTECIMENTO;175,59;47,588;36849;CHEIO;ETANOL
+12/11/2026;PARCIAL

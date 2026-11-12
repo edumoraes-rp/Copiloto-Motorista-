@@ -1,6 +1,6 @@
 # Gestor de frota: HB20S 1.0 TGDI 2025/2026 flex (Movida)
 
-Período: **01/11/2026 a 11/11/2026**, 9 dia(s) trabalhado(s)
+Período: **01/11/2026 a 12/11/2026**, 9 dia(s) trabalhado(s)
 
 ## Resultado do período
 
@@ -25,7 +25,7 @@ Período: **01/11/2026 a 11/11/2026**, 9 dia(s) trabalhado(s)
 | Receita média por dia | R$ 477,64 |
 | Lucro real médio por dia | R$ 196,03 |
 | Melhor dia | seg 02/11/2026: R$ 523,85 |
-| Pior dia | qua 11/11/2026: R$ -150,00 |
+| Pior dia | qui 12/11/2026: R$ -150,00 |
 
 ## Receitas extras (fora das corridas)
 
@@ -78,7 +78,7 @@ Consumo medido entre tanques cheios (cada trecho paga o combustível que estava 
 - Km depois do último tanque cheio usam 8,8 km/L (último consumo medido com etanol) até a próxima medição
 - Combustível consumido R$ 1.114,63 × pago na bomba R$ 1.084,29: o tanque gastou R$ 30,34 a mais do que foi reposto.
 - Taxas de app: geradas pela receita R$ 69,85, debitadas R$ 105,98 (já foi debitado R$ 36,13 adiantado)
-- Km fora do expediente: 19 km (custo R$ 6,63), não entram no lucro do trabalho.
+- Km fora do expediente: 371 km (custo R$ 129,43), não entram no lucro do trabalho.
 
 ## Planejamento
 
@@ -102,15 +102,15 @@ Consumo medido entre tanques cheios (cada trecho paga o combustível que estava 
 | sex 06/11/2026 | 457 | 14h00 | 30 | R$ 618,31 | R$ 297,21 | R$ 321,10 | R$ 1,35 | R$ 22,94 | R$ 526,06 |
 | seg 09/11/2026 | 440 | 12h45 | 24 | R$ 758,62 | R$ 308,65 | R$ 449,97 | R$ 1,72 | R$ 35,29 | R$ 626,82 |
 | ter 10/11/2026 | 318 | 12h45 | 32 | R$ 500,97 | R$ 286,57 | R$ 214,40 | R$ 1,58 | R$ 16,82 | R$ 308,90 |
-| qua 11/11/2026 *(parcial)* | — | — | 0 | R$ 0,00 | R$ 150,00 | R$ -150,00 | — | — | R$ -175,59 |
+| qui 12/11/2026 *(parcial)* | — | — | 0 | R$ 0,00 | R$ 150,00 | R$ -150,00 | — | — | R$ -175,59 |
 
 ## Alertas
 
 - 01/11/2026: Dia com prejuízo real: a receita não cobriu os custos.
 - 02/11/2026: Km rodado muito alto (855 km): confira o hodômetro.
-- 11/11/2026: Falta o km final do dia.
-- 11/11/2026: Falta a hora de início ou de fim: sem ganho por hora.
-- 11/11/2026: Nenhuma receita lançada.
-- 19 km rodados fora do expediente (entre um dia e outro): custo de R$ 6,63 que não é do trabalho.
+- 12/11/2026: Falta o km final do dia.
+- 12/11/2026: Falta a hora de início ou de fim: sem ganho por hora.
+- 12/11/2026: Nenhuma receita lançada.
+- 371 km rodados fora do expediente (entre um dia e outro): custo de R$ 129,43 que não é do trabalho.
 - Receita média de R$ 477,64/dia está abaixo da meta de R$ 700,00/dia (faltam R$ 222,36).
 
