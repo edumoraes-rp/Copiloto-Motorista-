@@ -23,5 +23,7 @@
   {"data": "2026-11-10", "app": "99", "receita": 86.50},
   {"data": "2026-11-10", "app": "Atentiva", "receita": 91.80},
   {"data": "2026-11-10", "app": "Particular", "receita": 15.00},
-  {"data": "2026-11-10", "app": "Uber", "receita": 307.67}
+  {"data": "2026-11-10", "app": "Uber", "receita": 307.67},
+  {"data": "2026-11-12", "app": "Uber", "receita": 413.84},
+  {"data": "2026-11-12", "app": "99", "receita": 65.78}
 ]

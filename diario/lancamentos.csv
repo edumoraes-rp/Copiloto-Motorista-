@@ -78,10 +78,13 @@ data;tipo;campo1;campo2;campo3;campo4
 10/11/2026;EXTRA;Venda de peptídeo;1000,00
 # 11/11 (qua): sem corridas, só assuntos particulares. 352 km (36.748 → 37.100) contam como km fora do expediente.
 # Abastecimento de 11/11 às 10:32 (NFC-e 218763, PIX): etanol 47,588 L a R$ 3,87 com desconto de R$ 8,57, no km 36.849. Tanque cheio (confirmado). Lançado em 12/11.
-# 12/11 (qui): saída no km 37.100. Dia aberto.
+# 12/11 (qui): saída no km 37.100; 8h trabalhadas (app de controle); fim no km 37.352.
 12/11/2026;INICIO;37100
 12/11/2026;ABASTECIMENTO;175,59;47,588;36849;CHEIO;ETANOL
 # Etanol 23,983 L a R$ 4,17 com desconto de R$ 14,39 (NFC-e 162256, 14:08, PIX). Abastecimento parcial.
 12/11/2026;ABASTECIMENTO;85,61;23,983;37254;PARCIAL;ETANOL
 # Aluguel da Movida pago em 12/11: valor a informar (diferente de R$ 3.300).
-12/11/2026;PARCIAL
+12/11/2026;RECEITA;Uber;413,84;33
+12/11/2026;RECEITA;99;65,78;3
+12/11/2026;HORAS;8:00
+12/11/2026;FIM;37352
