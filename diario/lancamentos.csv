@@ -88,3 +88,5 @@ data;tipo;campo1;campo2;campo3;campo4
 12/11/2026;RECEITA;99;65,78;3
 12/11/2026;HORAS;8:00
 12/11/2026;FIM;37352
+# PENDENTE de lançar (aguardando saber se houve trabalho em 13 e 14/11): abastecimento de 15/11 às 18:00 (NFC-e 197092, PIX): etanol 39,511 L a R$ 4,27 com desconto de R$ 16,99, no km 37.538. Tanque cheio (confirmado).
+# 15/11/2026;ABASTECIMENTO;151,72;39,511;37538;CHEIO;ETANOL
