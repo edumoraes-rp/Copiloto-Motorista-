@@ -10,7 +10,7 @@ Período: **01/11/2026 a 16/11/2026**, 10 dia(s) trabalhado(s)
 | Custo real (combustível + operacionais + manutenção + fixos) | R$ 2.775,97 |
 | **Lucro real** | **R$ 2.002,38** |
 | Margem (lucro ÷ receita) | 41,91% |
-| Lucro de caixa (receita − tudo que foi pago) | R$ 3.350,75 |
+| Lucro de caixa (receita − tudo que foi pago) | R$ 3.217,00 |
 
 | Indicador | Valor |
 |---|---:|
@@ -59,7 +59,7 @@ Pagamentos lançados (o que saiu do bolso):
 
 | Categoria | Pago |
 |---|---:|
-| Combustível | R$ 1.321,62 |
+| Combustível | R$ 1.455,37 |
 | Taxa de app | R$ 105,98 |
 
 ## Combustível
@@ -75,9 +75,10 @@ Consumo medido entre tanques cheios (cada trecho paga o combustível que estava 
 | 35.990 → 36.430 | etanol | 440 | 38,96 | 11,29 | R$ 3,62 | R$ 141,03 | R$ 0,32 |
 | 36.430 → 36.849 | etanol | 419 | 47,59 | 8,8 | R$ 3,57 | R$ 169,88 | R$ 0,41 |
 | 36.849 → 37.538 | etanol | 689 | 63,49 | 10,85 | R$ 3,69 | R$ 234,28 | R$ 0,34 |
+| 37.538 → 37.880 | etanol | 342 | 35,76 | 9,56 | R$ 3,84 | R$ 137,32 | R$ 0,40 |
 
-- Km depois do último tanque cheio usam 10,85 km/L (último consumo medido com etanol) até a próxima medição
-- Combustível consumido R$ 1.200,31 × pago na bomba R$ 1.321,62: sobrou R$ 121,31 de combustível no tanque para os próximos dias.
+- Km depois do último tanque cheio usam 9,56 km/L (último consumo medido com etanol) até a próxima medição
+- Combustível consumido R$ 1.200,31 × pago na bomba R$ 1.455,37: sobrou R$ 255,06 de combustível no tanque para os próximos dias.
 - Taxas de app: geradas pela receita R$ 75,66, debitadas R$ 105,98 (já foi debitado R$ 30,32 adiantado)
 - Km fora do expediente: 565 km (custo R$ 196,74), não entram no lucro do trabalho.
 
@@ -104,7 +105,7 @@ Consumo medido entre tanques cheios (cada trecho paga o combustível que estava 
 | seg 09/11/2026 | 440 | 12h45 | 24 | R$ 758,62 | R$ 308,65 | R$ 449,97 | R$ 1,72 | R$ 35,29 | R$ 626,82 |
 | ter 10/11/2026 | 318 | 12h45 | 32 | R$ 500,97 | R$ 286,57 | R$ 214,40 | R$ 1,58 | R$ 16,82 | R$ 308,90 |
 | qui 12/11/2026 | 252 | 8h00 | 36 | R$ 479,62 | R$ 241,50 | R$ 238,12 | R$ 1,90 | R$ 29,77 | R$ 218,42 |
-| seg 16/11/2026 *(parcial)* | — | — | 0 | R$ 0,00 | R$ 150,00 | R$ -150,00 | — | — | R$ -151,72 |
+| seg 16/11/2026 *(parcial)* | — | — | 0 | R$ 0,00 | R$ 150,00 | R$ -150,00 | — | — | R$ -285,47 |
 
 ## Alertas
 
