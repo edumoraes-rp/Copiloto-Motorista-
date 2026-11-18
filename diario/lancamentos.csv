@@ -101,3 +101,7 @@ data;tipo;campo1;campo2;campo3;campo4
 16/11/2026;HORAS;11:00
 # Km final não informado: usado o km do abastecimento das 20:38 (37.880), a confirmar.
 16/11/2026;FIM;37880
+# 17/11: sem fechamento informado (a confirmar). 376 km entre o fim de 16/11 (37.880, a confirmar) e o início de 18/11.
+# 18/11 (qua): saída no km 38.256. Dia aberto.
+18/11/2026;INICIO;38256
+18/11/2026;PARCIAL
