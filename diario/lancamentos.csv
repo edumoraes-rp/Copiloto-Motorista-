@@ -101,7 +101,10 @@ data;tipo;campo1;campo2;campo3;campo4
 16/11/2026;HORAS;11:00
 # Km final não informado: usado o km do abastecimento das 20:38 (37.880), a confirmar.
 16/11/2026;FIM;37880
-# 17/11: sem fechamento informado (a confirmar). 376 km entre o fim de 16/11 (37.880, a confirmar) e o início de 18/11.
+# 17/11 (ter): só Uber, R$ 68,23 em 11 corridas. Km = do fim de 16/11 (37.880) ao início de 18/11 (38.256), a confirmar; horas não informadas.
+17/11/2026;INICIO;37880
+17/11/2026;RECEITA;Uber;68,23;11
+17/11/2026;FIM;38256
 # 18/11 (qua): saída no km 38.256. Dia aberto.
 18/11/2026;INICIO;38256
 # Etanol 24,014 L a R$ 4,17 com desconto de R$ 9,60 (NFC-e 183593, 08:32, PIX). Abastecimento parcial.
