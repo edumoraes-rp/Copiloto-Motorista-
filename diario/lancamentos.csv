@@ -118,4 +118,6 @@ data;tipo;campo1;campo2;campo3;campo4
 # 19/11 (qui): saída no km 38.570 (18 km fora do expediente desde o fim de 18/11). Dia aberto.
 19/11/2026;INICIO;38570
 19/11/2026;ABASTECIMENTO;159,30;42,593;38552;CHEIO;ETANOL
+# Etanol 40,589 L a R$ 4,17 com desconto de R$ 13,40 (NFC-e 224749, 20:56, PIX). Tanque cheio (confirmado).
+19/11/2026;ABASTECIMENTO;155,86;40,589;38991;CHEIO;ETANOL
 19/11/2026;PARCIAL
