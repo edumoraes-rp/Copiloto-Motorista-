@@ -109,8 +109,10 @@ data;tipo;campo1;campo2;campo3;campo4
 18/11/2026;INICIO;38256
 # Etanol 24,014 L a R$ 4,17 com desconto de R$ 9,60 (NFC-e 183593, 08:32, PIX). Abastecimento parcial.
 18/11/2026;ABASTECIMENTO;90,53;24,014;38306;PARCIAL;ETANOL
+18/11/2026;RECEITA;99;250,00;14
+18/11/2026;RECEITA;Particular;15,00;1
+18/11/2026;RECEITA;Uber;212,75;17
 18/11/2026;FIM;38552
-# Receitas e horas de 18/11 a informar.
-18/11/2026;PARCIAL
+# Horas de 18/11 não informadas.
 # PENDENTE para o caixa de 19/11 (a pedido): abastecimento de 18/11 às 20:42 (NFC-e 38337, dinheiro): etanol 42,593 L a R$ 3,94 com desconto de R$ 8,52, no km 38.552. Tanque cheio (confirmado).
 # 19/11/2026;ABASTECIMENTO;159,30;42,593;38552;CHEIO;ETANOL
