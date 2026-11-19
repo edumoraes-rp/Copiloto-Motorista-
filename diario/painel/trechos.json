@@ -6,5 +6,6 @@
   {"trecho": "35990-36430", "km_inicio": 35990, "km_fim": 36430, "combustivel": "etanol", "km": 440, "litros": 38.96, "km_por_litro": 11.29, "preco_litro": 3.62, "custo": 141.03, "custo_km": 0.32},
   {"trecho": "36430-36849", "km_inicio": 36430, "km_fim": 36849, "combustivel": "etanol", "km": 419, "litros": 47.59, "km_por_litro": 8.80, "preco_litro": 3.57, "custo": 169.88, "custo_km": 0.41},
   {"trecho": "36849-37538", "km_inicio": 36849, "km_fim": 37538, "combustivel": "etanol", "km": 689, "litros": 63.49, "km_por_litro": 10.85, "preco_litro": 3.69, "custo": 234.28, "custo_km": 0.34},
-  {"trecho": "37538-37880", "km_inicio": 37538, "km_fim": 37880, "combustivel": "etanol", "km": 342, "litros": 35.76, "km_por_litro": 9.56, "preco_litro": 3.84, "custo": 137.32, "custo_km": 0.40}
+  {"trecho": "37538-37880", "km_inicio": 37538, "km_fim": 37880, "combustivel": "etanol", "km": 342, "litros": 35.76, "km_por_litro": 9.56, "preco_litro": 3.84, "custo": 137.32, "custo_km": 0.40},
+  {"trecho": "37880-38552", "km_inicio": 37880, "km_fim": 38552, "combustivel": "etanol", "km": 672, "litros": 66.61, "km_por_litro": 10.09, "preco_litro": 3.74, "custo": 249.12, "custo_km": 0.37}
 ]
