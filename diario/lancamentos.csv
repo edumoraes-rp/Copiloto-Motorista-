@@ -115,9 +115,13 @@ data;tipo;campo1;campo2;campo3;campo4
 18/11/2026;FIM;38552
 # Horas de 18/11 não informadas.
 # Abastecimento de 18/11 às 20:42 (NFC-e 38337, dinheiro): etanol 42,593 L a R$ 3,94 com desconto de R$ 8,52, no km 38.552. Tanque cheio (confirmado). Lançado em 19/11 a pedido.
-# 19/11 (qui): saída no km 38.570 (18 km fora do expediente desde o fim de 18/11). Dia aberto.
+# 19/11 (qui): saída no km 38.570 (18 km fora do expediente desde o fim de 18/11); fim no km 39.342.
 19/11/2026;INICIO;38570
 19/11/2026;ABASTECIMENTO;159,30;42,593;38552;CHEIO;ETANOL
 # Etanol 40,589 L a R$ 4,17 com desconto de R$ 13,40 (NFC-e 224749, 20:56, PIX). Tanque cheio (confirmado).
 19/11/2026;ABASTECIMENTO;155,86;40,589;38991;CHEIO;ETANOL
-19/11/2026;PARCIAL
+19/11/2026;RECEITA;Atentiva;711,60;3
+19/11/2026;RECEITA;Uber;60,85;3
+19/11/2026;RECEITA;99;86,73;7
+# Horas de 19/11 não informadas.
+19/11/2026;FIM;39342
