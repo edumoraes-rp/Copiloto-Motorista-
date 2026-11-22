@@ -130,3 +130,5 @@ data;tipo;campo1;campo2;campo3;campo4
 # Etanol aditivado 22,883 L a R$ 4,37, sem desconto (NFC-e 364283, 16:53, PIX). Abastecimento parcial.
 20/11/2026;ABASTECIMENTO;100,00;22,883;39453;PARCIAL;ETANOL
 20/11/2026;PARCIAL
+# PENDENTE (aguardando fechamento de 20/11 e 21/11): abastecimento de 22/11 às 07:10 em Sertãozinho (NFC-e 343123, PIX): etanol 38,842 L a R$ 4,12 com desconto de R$ 15,54, no km 39.705. Tanque cheio (confirmado).
+# xx/11/2026;ABASTECIMENTO;144,49;38,842;39705;CHEIO;ETANOL
