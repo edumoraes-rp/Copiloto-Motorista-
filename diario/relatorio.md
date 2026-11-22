@@ -10,7 +10,7 @@ Período: **01/11/2026 a 22/11/2026**, 15 dia(s) trabalhado(s)
 | Custo real (combustível + operacionais + manutenção + fixos) | R$ 4.250,83 |
 | **Lucro real** | **R$ 2.491,56** |
 | Margem (lucro ÷ receita) | 36,95% |
-| Lucro de caixa (receita − tudo que foi pago) | R$ 4.388,92 |
+| Lucro de caixa (receita − tudo que foi pago) | R$ 4.240,77 |
 
 | Indicador | Valor |
 |---|---:|
@@ -59,7 +59,7 @@ Pagamentos lançados (o que saiu do bolso):
 
 | Categoria | Pago |
 |---|---:|
-| Combustível | R$ 2.206,54 |
+| Combustível | R$ 2.354,69 |
 | Taxa de app | R$ 105,98 |
 | Alimentação | R$ 40,95 |
 
@@ -81,9 +81,10 @@ Consumo medido entre tanques cheios (cada trecho paga o combustível que estava 
 | 38.552 → 38.991 | etanol | 439 | 40,59 | 10,82 | R$ 3,74 | R$ 151,80 | R$ 0,35 |
 | 38.991 → 39.705 | etanol | 714 | 61,72 | 11,57 | R$ 3,84 | R$ 237,02 | R$ 0,33 |
 | 39.705 → 39.962 | etanol | 257 | 23 | 11,17 | R$ 3,72 | R$ 85,57 | R$ 0,33 |
+| 39.962 → 40.386 | etanol | 424 | 37,13 | 11,42 | R$ 4,39 | R$ 163,01 | R$ 0,38 |
 
-- Km depois do último tanque cheio usam 11,17 km/L (último consumo medido com etanol) até a próxima medição
-- Combustível consumido R$ 1.845,64 × pago na bomba R$ 2.206,54: sobrou R$ 360,90 de combustível no tanque para os próximos dias.
+- Km depois do último tanque cheio usam 11,42 km/L (último consumo medido com etanol) até a próxima medição
+- Combustível consumido R$ 1.845,64 × pago na bomba R$ 2.354,69: sobrou R$ 509,05 de combustível no tanque para os próximos dias.
 - Taxas de app: geradas pela receita R$ 114,24, debitadas R$ 105,98 (R$ 8,26 ainda vão ser debitados)
 - Km fora do expediente: 583 km (custo R$ 205,93), não entram no lucro do trabalho.
 
@@ -115,7 +116,7 @@ Consumo medido entre tanques cheios (cada trecho paga o combustível que estava 
 | qua 18/11/2026 | 296 | — | 32 | R$ 477,75 | R$ 281,81 | R$ 195,94 | R$ 1,61 | — | R$ 387,22 |
 | qui 19/11/2026 | 772 | — | 13 | R$ 859,18 | R$ 419,76 | R$ 439,42 | R$ 1,11 | — | R$ 544,02 |
 | sex 20/11/2026 *(parcial)* | — | — | 0 | R$ 0,00 | R$ 150,00 | R$ -150,00 | — | — | R$ -100,00 |
-| dom 22/11/2026 *(parcial)* | — | — | 0 | R$ 0,00 | R$ 190,95 | R$ -190,95 | — | — | R$ -286,43 |
+| dom 22/11/2026 *(parcial)* | — | — | 0 | R$ 0,00 | R$ 190,95 | R$ -190,95 | — | — | R$ -434,58 |
 
 ## Alertas
 

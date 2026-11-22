@@ -137,4 +137,6 @@ data;tipo;campo1;campo2;campo3;campo4
 # Uberlândia (MG): etanol 23,004 L a R$ 4,39, sem desconto (11:36, débito). Tanque cheio (confirmado).
 22/11/2026;ABASTECIMENTO;100,99;23,004;39962;CHEIO;ETANOL
 22/11/2026;DESPESA;ALIMENTACAO;40,95;Lanche na estrada, Uberlândia (11:54)
+# Luziânia (GO): etanol 37,131 L a R$ 3,99 (17:10, débito). Tanque cheio (confirmado).
+22/11/2026;ABASTECIMENTO;148,15;37,131;40386;CHEIO;ETANOL
 22/11/2026;PARCIAL
