@@ -141,4 +141,7 @@ data;tipo;campo1;campo2;campo3;campo4
 22/11/2026;ABASTECIMENTO;148,15;37,131;40386;CHEIO;ETANOL
 # Aramina (SP): etanol 36,510 L a R$ 3,87 (22:40, dinheiro). Tanque cheio (confirmado). Km informado "4861", lido como 40.861.
 22/11/2026;ABASTECIMENTO;141,29;36,510;40861;CHEIO;ETANOL
-22/11/2026;PARCIAL
+22/11/2026;DESPESA;ALIMENTACAO;45,00;Alimentação na viagem
+22/11/2026;RECEITA;Atentiva;1524,50;1
+# Viagem Atentiva Sertãozinho → Valparaíso de Goiás (GO) e volta. Horas não informadas.
+22/11/2026;FIM;40993
