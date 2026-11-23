@@ -150,3 +150,6 @@ data;tipo;campo1;campo2;campo3;campo4
 # Viagem Atentiva Sertãozinho → Valparaíso de Goiás (GO) e volta: saída 22/11 07:30, retorno 23/11 por volta de 00:19.
 22/11/2026;HORAS;16:49
 22/11/2026;FIM;40993
+# 23/11 (seg): saída no km 41.009 (16 km fora do expediente desde o fim da viagem, 40.993). Dia aberto.
+23/11/2026;INICIO;41009
+23/11/2026;PARCIAL
