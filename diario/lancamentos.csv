@@ -131,7 +131,7 @@ data;tipo;campo1;campo2;campo3;campo4
 20/11/2026;ABASTECIMENTO;100,00;22,883;39453;PARCIAL;ETANOL
 # Atentiva 19 e 20/11: 5 corridas somando R$ 928,80; 19/11 já tinha 3 (R$ 711,60), então 20/11 = 2 corridas, R$ 217,20.
 20/11/2026;RECEITA;Atentiva;217,20;2
-20/11/2026;HORAS;10:00
+20/11/2026;HORAS;3:00
 # Km final de 20/11: considerado o último km lançado (abastecimento, 39.453), a pedido.
 20/11/2026;FIM;39453
 # 21/11 (sáb): sem trabalho. 252 km (39.453 → 39.705) fora do expediente, incluindo a ida a Sertãozinho.
