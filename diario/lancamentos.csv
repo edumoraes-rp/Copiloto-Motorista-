@@ -152,4 +152,6 @@ data;tipo;campo1;campo2;campo3;campo4
 22/11/2026;FIM;40993
 # 23/11 (seg): saída no km 41.009 (16 km fora do expediente desde o fim da viagem, 40.993). Dia aberto.
 23/11/2026;INICIO;41009
+# Etanol 37,310 L a R$ 4,17 com desconto de R$ 17,54 (Posto Everest, 16:11, débito). Tanque cheio (confirmado).
+23/11/2026;ABASTECIMENTO;138,04;37,310;41258;CHEIO;ETANOL
 23/11/2026;PARCIAL
