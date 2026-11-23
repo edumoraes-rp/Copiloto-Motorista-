@@ -139,4 +139,6 @@ data;tipo;campo1;campo2;campo3;campo4
 22/11/2026;DESPESA;ALIMENTACAO;40,95;Lanche na estrada, Uberlândia (11:54)
 # Luziânia (GO): etanol 37,131 L a R$ 3,99 (17:10, débito). Tanque cheio (confirmado).
 22/11/2026;ABASTECIMENTO;148,15;37,131;40386;CHEIO;ETANOL
+# Aramina (SP): etanol 36,510 L a R$ 3,87 (22:40, dinheiro). Tanque cheio (confirmado). Km informado "4861", lido como 40.861.
+22/11/2026;ABASTECIMENTO;141,29;36,510;40861;CHEIO;ETANOL
 22/11/2026;PARCIAL
