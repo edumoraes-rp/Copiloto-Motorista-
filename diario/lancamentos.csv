@@ -131,8 +131,10 @@ data;tipo;campo1;campo2;campo3;campo4
 20/11/2026;ABASTECIMENTO;100,00;22,883;39453;PARCIAL;ETANOL
 # Atentiva 19 e 20/11: 5 corridas somando R$ 928,80; 19/11 já tinha 3 (R$ 711,60), então 20/11 = 2 corridas, R$ 217,20.
 20/11/2026;RECEITA;Atentiva;217,20;2
-20/11/2026;PARCIAL
-# 20/11 e 21/11: fechamentos a informar.
+20/11/2026;HORAS;10:00
+# Km final de 20/11: considerado o último km lançado (abastecimento, 39.453), a pedido.
+20/11/2026;FIM;39453
+# 21/11 (sáb): sem trabalho. 252 km (39.453 → 39.705) fora do expediente, incluindo a ida a Sertãozinho.
 # 22/11 (dom): viagem longa. Saída no km 39.705, logo após o abastecimento das 07:10 em Sertãozinho (NFC-e 343123, PIX): etanol 38,842 L a R$ 4,12 com desconto de R$ 15,54. Tanque cheio (confirmado).
 22/11/2026;INICIO;39705
 22/11/2026;ABASTECIMENTO;144,49;38,842;39705;CHEIO;ETANOL
