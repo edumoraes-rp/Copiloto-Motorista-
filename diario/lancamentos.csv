@@ -143,5 +143,6 @@ data;tipo;campo1;campo2;campo3;campo4
 22/11/2026;ABASTECIMENTO;141,29;36,510;40861;CHEIO;ETANOL
 22/11/2026;DESPESA;ALIMENTACAO;45,00;Alimentação na viagem
 22/11/2026;RECEITA;Atentiva;1524,50;1
-# Viagem Atentiva Sertãozinho → Valparaíso de Goiás (GO) e volta. Horas não informadas.
+# Viagem Atentiva Sertãozinho → Valparaíso de Goiás (GO) e volta: saída 22/11 07:30, retorno 23/11 por volta de 00:19.
+22/11/2026;HORAS;16:49
 22/11/2026;FIM;40993
