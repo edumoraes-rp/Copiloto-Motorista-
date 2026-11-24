@@ -154,4 +154,9 @@ data;tipo;campo1;campo2;campo3;campo4
 23/11/2026;INICIO;41009
 # Etanol 37,310 L a R$ 4,17 com desconto de R$ 17,54 (Posto Everest, 16:11, débito). Tanque cheio (confirmado).
 23/11/2026;ABASTECIMENTO;138,04;37,310;41258;CHEIO;ETANOL
+23/11/2026;FIM;41327
+# Receitas e horas de 23/11 a informar.
 23/11/2026;PARCIAL
+# 24/11 (ter): saída no km 41.327 (mesmo km do fim de 23/11). Dia aberto.
+24/11/2026;INICIO;41327
+24/11/2026;PARCIAL
