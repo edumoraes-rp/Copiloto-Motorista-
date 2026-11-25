@@ -160,3 +160,5 @@ data;tipo;campo1;campo2;campo3;campo4
 # 24/11 (ter): saída no km 41.327 (mesmo km do fim de 23/11). Dia aberto.
 24/11/2026;INICIO;41327
 24/11/2026;PARCIAL
+# PENDENTE (aguardando fechamento de 24/11 e abertura de 25/11; tanque cheio a confirmar): abastecimento de 25/11 às 11:28 (NFC-e 133748, PIX Sicredi): etanol 39,59 L a R$ 4,29 com desconto de R$ 22,57, no km 41.713.
+# 25/11/2026;ABASTECIMENTO;147,27;39,59;41713;CHEIO;ETANOL
