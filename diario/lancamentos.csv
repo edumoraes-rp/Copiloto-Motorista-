@@ -162,3 +162,5 @@ data;tipo;campo1;campo2;campo3;campo4
 24/11/2026;PARCIAL
 # PENDENTE (aguardando fechamento de 24/11 e abertura de 25/11; tanque cheio a confirmar): abastecimento de 25/11 às 11:28 (NFC-e 133748, PIX Sicredi): etanol 39,59 L a R$ 4,29 com desconto de R$ 22,57, no km 41.713.
 # 25/11/2026;ABASTECIMENTO;147,27;39,59;41713;CHEIO;ETANOL
+# PENDENTE: abastecimento de 25/11 às 20:40 (NFC-e 213941, 99Abastece PIX): etanol 38,48 L a R$ 4,19 com desconto de R$ 18,85, no km 42.200. Tanque cheio (confirmado).
+# 25/11/2026;ABASTECIMENTO;142,38;38,48;42200;CHEIO;ETANOL
