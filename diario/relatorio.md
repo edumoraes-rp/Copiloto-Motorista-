@@ -15,13 +15,13 @@ Período: **01/11/2026 a 25/11/2026**, 17 dia(s) trabalhado(s)
 | Indicador | Valor |
 |---|---:|
 | Km rodados | 7429 km (média 437 km/dia) |
-| Horas trabalhadas | 130h13 (média 10h51/dia) |
+| Horas trabalhadas | 142h13 (média 10h56/dia) |
 | Corridas | 363 (ticket médio R$ 26,52) |
 | Ganho por km | R$ 1,30 |
 | Custo por km | R$ 0,72 |
 | Lucro por km | R$ 0,58 |
-| Ganho por hora | R$ 54,36 |
-| Lucro por hora | R$ 25,30 |
+| Ganho por hora | R$ 55,82 |
+| Lucro por hora | R$ 26,26 |
 | Receita média por dia | R$ 566,27 |
 | Lucro real médio por dia | R$ 252,10 |
 | Melhor dia | dom 22/11/2026: R$ 846,29 |
@@ -118,7 +118,7 @@ Consumo medido entre tanques cheios (cada trecho paga o combustível que estava 
 | seg 16/11/2026 | 334 | 11h00 | 35 | R$ 558,88 | R$ 292,95 | R$ 265,93 | R$ 1,67 | R$ 24,18 | R$ 273,41 |
 | ter 17/11/2026 | 376 | — | 11 | R$ 68,23 | R$ 289,39 | R$ -221,16 | R$ 0,18 | — | R$ 68,23 |
 | qua 18/11/2026 | 296 | — | 32 | R$ 477,75 | R$ 281,81 | R$ 195,94 | R$ 1,61 | — | R$ 387,22 |
-| qui 19/11/2026 | 772 | — | 13 | R$ 859,18 | R$ 419,76 | R$ 439,42 | R$ 1,11 | — | R$ 544,02 |
+| qui 19/11/2026 | 772 | 12h00 | 13 | R$ 859,18 | R$ 419,76 | R$ 439,42 | R$ 1,11 | R$ 36,62 | R$ 544,02 |
 | sex 20/11/2026 | 111 | 3h00 | 2 | R$ 217,20 | R$ 186,85 | R$ 30,35 | R$ 1,96 | R$ 10,12 | R$ 117,20 |
 | dom 22/11/2026 | 1288 | 16h49 | 1 | R$ 1.524,50 | R$ 678,21 | R$ 846,29 | R$ 1,18 | R$ 50,32 | R$ 903,63 |
 | seg 23/11/2026 | 318 | — | 19 | R$ 425,07 | R$ 269,51 | R$ 155,56 | R$ 1,34 | — | R$ 287,03 |
@@ -132,7 +132,6 @@ Consumo medido entre tanques cheios (cada trecho paga o combustível que estava 
 - 17/11/2026: Dia com prejuízo real: a receita não cobriu os custos.
 - 18/11/2026: Falta a hora de início ou de fim: sem ganho por hora.
 - 19/11/2026: Km rodado muito alto (772 km): confira o hodômetro.
-- 19/11/2026: Falta a hora de início ou de fim: sem ganho por hora.
 - 22/11/2026: Km rodado muito alto (1288 km): confira o hodômetro.
 - 23/11/2026: Falta a hora de início ou de fim: sem ganho por hora.
 - 25/11/2026: Falta a hora de início ou de fim: sem ganho por hora.

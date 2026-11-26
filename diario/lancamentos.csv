@@ -124,6 +124,7 @@ data;tipo;campo1;campo2;campo3;campo4
 19/11/2026;RECEITA;Uber;60,85;3
 19/11/2026;RECEITA;99;86,73;7
 # Horas de 19/11 não informadas.
+19/11/2026;HORAS;12:00
 19/11/2026;FIM;39342
 # 20/11 (sex): saída no km 39.342 (km final de 19/11; a confirmar). Dia aberto.
 20/11/2026;INICIO;39342
