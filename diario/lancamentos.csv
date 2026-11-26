@@ -160,14 +160,14 @@ data;tipo;campo1;campo2;campo3;campo4
 23/11/2026;RECEITA;Particular;15,00;1
 # Horas de 23/11 não informadas.
 23/11/2026;FIM;41327
-# 24/11 (ter): saída no km 41.327 (mesmo km do fim de 23/11). Dia aberto.
-24/11/2026;INICIO;41327
-24/11/2026;PARCIAL
-# PENDENTE (aguardando fechamento de 24/11 e abertura de 25/11; tanque cheio a confirmar): abastecimento de 25/11 às 11:28 (NFC-e 133748, PIX Sicredi): etanol 39,59 L a R$ 4,29 com desconto de R$ 22,57, no km 41.713.
-# 25/11/2026;ABASTECIMENTO;147,27;39,59;41713;CHEIO;ETANOL
-# PENDENTE: abastecimento de 25/11 às 20:40 (NFC-e 213941, 99Abastece PIX): etanol 38,48 L a R$ 4,19 com desconto de R$ 18,85, no km 42.200. Tanque cheio (confirmado).
-# 25/11/2026;ABASTECIMENTO;142,38;38,48;42200;CHEIO;ETANOL
-# PENDENTE 25/11 (aguardando km de saída de 25/11 = km final de 24/11): Uber R$ 192,42 (12), Atentiva R$ 487,40 (1), 99 R$ 37,59 (1).
-# 25/11/2026;RECEITA;Uber;192,42;12
-# 25/11/2026;RECEITA;Atentiva;487,40;1
-# 25/11/2026;RECEITA;99;37,59;1
+# 24/11 (ter): sem trabalho. 386 km (41.327 → 41.713) fora do expediente.
+# 25/11 (qua): saída no km 41.713 (abastecimento das 11:28, a pedido); fim no km 42.200 (abastecimento das 20:40). Horas não informadas.
+# Abastecimento 11:28 (NFC-e 133748, PIX Sicredi): etanol 39,59 L a R$ 4,29 com desconto de R$ 22,57. Tanque cheio.
+# Abastecimento 20:40 (NFC-e 213941, 99Abastece PIX): etanol 38,48 L a R$ 4,19 com desconto de R$ 18,85. Tanque cheio (confirmado).
+25/11/2026;INICIO;41713
+25/11/2026;ABASTECIMENTO;147,27;39,59;41713;CHEIO;ETANOL
+25/11/2026;RECEITA;Uber;192,42;12
+25/11/2026;RECEITA;Atentiva;487,40;1
+25/11/2026;RECEITA;99;37,59;1
+25/11/2026;ABASTECIMENTO;142,38;38,48;42200;CHEIO;ETANOL
+25/11/2026;FIM;42200
