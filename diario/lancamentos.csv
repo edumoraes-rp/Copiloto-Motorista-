@@ -167,3 +167,7 @@ data;tipo;campo1;campo2;campo3;campo4
 # 25/11/2026;ABASTECIMENTO;147,27;39,59;41713;CHEIO;ETANOL
 # PENDENTE: abastecimento de 25/11 às 20:40 (NFC-e 213941, 99Abastece PIX): etanol 38,48 L a R$ 4,19 com desconto de R$ 18,85, no km 42.200. Tanque cheio (confirmado).
 # 25/11/2026;ABASTECIMENTO;142,38;38,48;42200;CHEIO;ETANOL
+# PENDENTE 25/11 (aguardando km de saída de 25/11 = km final de 24/11): Uber R$ 192,42 (12), Atentiva R$ 487,40 (1), 99 R$ 37,59 (1).
+# 25/11/2026;RECEITA;Uber;192,42;12
+# 25/11/2026;RECEITA;Atentiva;487,40;1
+# 25/11/2026;RECEITA;99;37,59;1
