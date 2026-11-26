@@ -173,3 +173,8 @@ data;tipo;campo1;campo2;campo3;campo4
 25/11/2026;ABASTECIMENTO;142,38;38,48;42200;CHEIO;ETANOL
 25/11/2026;HORAS;13:00
 25/11/2026;FIM;42200
+# 26/11 (qui): saída no km 42.200 (km final de 25/11; a confirmar). Dia aberto.
+26/11/2026;INICIO;42200
+# Etanol 39,882 L a R$ 4,17 com desconto de R$ 19,94 (NFC-e 189782, 15:00, PIX). Tanque cheio (confirmado).
+26/11/2026;ABASTECIMENTO;146,37;39,882;42653;CHEIO;ETANOL
+26/11/2026;PARCIAL
