@@ -187,4 +187,10 @@ data;tipo;campo1;campo2;campo3;campo4
 27/11/2026;INICIO;42735
 # Etanol 36,882 L a R$ 4,17 com desconto de R$ 18,44 (NFC-e 190760, 17:16, débito). Tanque cheio (confirmado).
 27/11/2026;ABASTECIMENTO;135,35;36,882;42994;CHEIO;ETANOL
-27/11/2026;PARCIAL
+27/11/2026;RECEITA;99;85,00;5
+27/11/2026;RECEITA;Particular;15,00;1
+27/11/2026;RECEITA;Atentiva;44,00;1
+# Uber: R$ 94,47 em 25 viagens, conforme informado (R$ 3,78 por viagem; a confirmar).
+27/11/2026;RECEITA;Uber;94,47;25
+# Km final de 27/11 provisório (abastecimento das 17:16, 42.994); será o km inicial de 28/11. Horas a informar.
+27/11/2026;FIM;42994
