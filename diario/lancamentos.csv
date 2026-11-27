@@ -181,5 +181,8 @@ data;tipo;campo1;campo2;campo3;campo4
 26/11/2026;RECEITA;Atentiva;409,20;1
 26/11/2026;RECEITA;99;13,77;1
 26/11/2026;HORAS;10:00
-# Km final de 26/11: provisório (abastecimento das 15:00, 42.653); será o km inicial de 27/11.
-26/11/2026;FIM;42653
+# Km final de 26/11 = km inicial de 27/11, a pedido.
+26/11/2026;FIM;42735
+# 27/11 (sex): saída no km 42.735. Dia aberto.
+27/11/2026;INICIO;42735
+27/11/2026;PARCIAL
