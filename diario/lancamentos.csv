@@ -192,5 +192,5 @@ data;tipo;campo1;campo2;campo3;campo4
 27/11/2026;RECEITA;Atentiva;44,00;1
 27/11/2026;RECEITA;Uber;294,47;25
 27/11/2026;HORAS;10:00
-# Km final de 27/11 provisório (abastecimento das 17:16, 42.994); será o km inicial de 28/11.
+# Km final de 27/11 = km do abastecimento das 17:16 (42.994), a pedido.
 27/11/2026;FIM;42994
