@@ -6,24 +6,24 @@ Período: **01/11/2026 a 26/11/2026**, 18 dia(s) trabalhado(s)
 
 | | Valor |
 |---|---:|
-| Receita bruta | R$ 9.626,57 |
-| Custo real (combustível + operacionais + manutenção + fixos) | R$ 5.490,91 |
-| **Lucro real** | **R$ 4.135,66** |
-| Margem (lucro ÷ receita) | 42,96% |
-| Lucro de caixa (receita − tudo que foi pago) | R$ 6.364,60 |
+| Receita bruta | R$ 10.256,26 |
+| Custo real (combustível + operacionais + manutenção + fixos) | R$ 5.639,69 |
+| **Lucro real** | **R$ 4.616,57** |
+| Margem (lucro ÷ receita) | 45,01% |
+| Lucro de caixa (receita − tudo que foi pago) | R$ 6.994,29 |
 
 | Indicador | Valor |
 |---|---:|
-| Km rodados | 7429 km (média 412,72 km/dia) |
+| Km rodados | 7882 km (média 437,89 km/dia) |
 | Horas trabalhadas | 165h13 (média 11h01/dia) |
-| Corridas | 363 (ticket médio R$ 26,52) |
+| Corridas | 377 (ticket médio R$ 27,20) |
 | Ganho por km | R$ 1,30 |
-| Custo por km | R$ 0,74 |
-| Lucro por km | R$ 0,56 |
+| Custo por km | R$ 0,72 |
+| Lucro por km | R$ 0,59 |
 | Ganho por hora | R$ 54,96 |
 | Lucro por hora | R$ 26,09 |
-| Receita média por dia | R$ 534,81 |
-| Lucro real médio por dia | R$ 229,76 |
+| Receita média por dia | R$ 569,79 |
+| Lucro real médio por dia | R$ 256,48 |
 | Melhor dia | dom 22/11/2026: R$ 846,29 |
 | Pior dia | ter 17/11/2026: R$ -221,16 |
 
@@ -35,25 +35,25 @@ Não entram nas médias, no ganho por km/hora nem na meta.
 |---|---|---:|
 | 10/11/2026 | Venda de peptídeo | R$ 1.000,00 |
 
-- Lucro real das corridas R$ 4.135,66 + extras R$ 1.000,00 = **resultado total R$ 5.135,66**
+- Lucro real das corridas R$ 4.616,57 + extras R$ 1.000,00 = **resultado total R$ 5.616,57**
 
 ## Receita por app
 
 | App | Receita | % |
 |---|---:|---:|
-| Atentiva | R$ 4.551,00 | 47,28% |
-| Uber | R$ 3.563,18 | 37,01% |
-| 99 | R$ 1.407,39 | 14,62% |
-| Particular | R$ 105,00 | 1,09% |
+| Atentiva | R$ 4.960,20 | 48,36% |
+| Uber | R$ 3.769,90 | 36,76% |
+| 99 | R$ 1.421,16 | 13,86% |
+| Particular | R$ 105,00 | 1,02% |
 
 ## Para onde foi o dinheiro (custo real)
 
 | Custo | Valor | Por km |
 |---|---:|---:|
-| Combustível consumido (R$ 0,35/km) | R$ 2.580,66 | R$ 0,35 |
+| Combustível consumido (R$ 0,35/km) | R$ 2.728,23 | R$ 0,35 |
 | Despesas do dia a dia | R$ 85,95 | R$ 0,01 |
-| Taxas de app (99 8,83% da receita) | R$ 124,30 | R$ 0,02 |
-| Custos fixos rateados (R$ 150,00/dia) | R$ 2.700,00 | R$ 0,36 |
+| Taxas de app (99 8,83% da receita) | R$ 125,51 | R$ 0,02 |
+| Custos fixos rateados (R$ 150,00/dia) | R$ 2.700,00 | R$ 0,34 |
 
 Pagamentos lançados (o que saiu do bolso):
 
@@ -89,19 +89,19 @@ Consumo medido entre tanques cheios (cada trecho paga o combustível que estava 
 | 42.200 → 42.653 | etanol | 453 | 39,88 | 11,36 | R$ 3,70 | R$ 147,57 | R$ 0,33 |
 
 - Km depois do último tanque cheio usam 11,36 km/L (último consumo medido com etanol) até a próxima medição
-- Combustível consumido R$ 2.580,66 × pago na bomba R$ 3.070,04: sobrou R$ 489,38 de combustível no tanque para os próximos dias.
-- Taxas de app: geradas pela receita R$ 124,30, debitadas R$ 105,98 (R$ 18,32 ainda vão ser debitados)
-- Km fora do expediente: 1237 km (custo R$ 429,70), não entram no lucro do trabalho.
+- Combustível consumido R$ 2.728,23 × pago na bomba R$ 3.070,04: sobrou R$ 341,81 de combustível no tanque para os próximos dias.
+- Taxas de app: geradas pela receita R$ 125,51, debitadas R$ 105,98 (R$ 19,53 ainda vão ser debitados)
+- Km fora do expediente: 1237 km (custo R$ 428,17), não entram no lucro do trabalho.
 
 ## Planejamento
 
 - Custos fixos: R$ 3.300,00/mês = R$ 150,00 por dia trabalhado (22 dias/mês)
-- **Ponto de equilíbrio:** faturar pelo menos **R$ 305,05 por dia** (rodando ~412,72 km) para não ter prejuízo
-- **Valor mínimo por km:** R$ 0,74. Abaixo disso, na média, o dia dá prejuízo
-- **Meta de receita R$ 700,00/dia:** média atual R$ 534,81 (76,4% da meta); 5 de 18 dia(s) bateram a meta
-- Batendo a meta todo dia, com o custo médio atual: lucro real de R$ 394,95/dia, **R$ 8.688,89/mês**
-- **Meta do mês com as receitas extras:** feito R$ 10.626,57 de R$ 15.400,00 (corridas R$ 9.626,57 + extras R$ 1.000,00); faltam R$ 4.773,43 em 4 dias = **R$ 1.193,36 por dia**
-- Projeção do mês no ritmo atual: receita R$ 11.765,81, lucro real **R$ 5.054,70**
+- **Ponto de equilíbrio:** faturar pelo menos **R$ 313,32 por dia** (rodando ~437,89 km) para não ter prejuízo
+- **Valor mínimo por km:** R$ 0,72. Abaixo disso, na média, o dia dá prejuízo
+- **Meta de receita R$ 700,00/dia:** média atual R$ 569,79 (81,4% da meta); 5 de 18 dia(s) bateram a meta
+- Batendo a meta todo dia, com o custo médio atual: lucro real de R$ 386,68/dia, **R$ 8.507,04/mês**
+- **Meta do mês com as receitas extras:** feito R$ 11.256,26 de R$ 15.400,00 (corridas R$ 10.256,26 + extras R$ 1.000,00); faltam R$ 4.143,74 em 4 dias = **R$ 1.035,93 por dia**
+- Projeção do mês no ritmo atual: receita R$ 12.535,43, lucro real **R$ 5.642,47**
 
 ## Dia a dia
 
@@ -124,7 +124,7 @@ Consumo medido entre tanques cheios (cada trecho paga o combustível que estava 
 | dom 22/11/2026 | 1288 | 16h49 | 1 | R$ 1.524,50 | R$ 678,21 | R$ 846,29 | R$ 1,18 | R$ 50,32 | R$ 903,63 |
 | seg 23/11/2026 | 318 | 10h00 | 19 | R$ 425,07 | R$ 269,51 | R$ 155,56 | R$ 1,34 | R$ 15,56 | R$ 287,03 |
 | qua 25/11/2026 | 487 | 13h00 | 14 | R$ 717,41 | R$ 296,46 | R$ 420,95 | R$ 1,47 | R$ 32,38 | R$ 427,76 |
-| qui 26/11/2026 *(parcial)* | — | — | 0 | R$ 0,00 | R$ 150,00 | R$ -150,00 | — | — | R$ -146,37 |
+| qui 26/11/2026 | 453 | — | 14 | R$ 629,69 | R$ 298,78 | R$ 330,91 | R$ 1,39 | — | R$ 483,32 |
 
 ## Alertas
 
@@ -135,9 +135,7 @@ Consumo medido entre tanques cheios (cada trecho paga o combustível que estava 
 - 18/11/2026: Falta a hora de início ou de fim: sem ganho por hora.
 - 19/11/2026: Km rodado muito alto (772 km): confira o hodômetro.
 - 22/11/2026: Km rodado muito alto (1288 km): confira o hodômetro.
-- 26/11/2026: Falta o km final do dia.
 - 26/11/2026: Falta a hora de início ou de fim: sem ganho por hora.
-- 26/11/2026: Nenhuma receita lançada.
-- 1237 km rodados fora do expediente (entre um dia e outro): custo de R$ 429,70 que não é do trabalho.
-- Receita média de R$ 534,81/dia está abaixo da meta de R$ 700,00/dia (faltam R$ 165,19).
+- 1237 km rodados fora do expediente (entre um dia e outro): custo de R$ 428,17 que não é do trabalho.
+- Receita média de R$ 569,79/dia está abaixo da meta de R$ 700,00/dia (faltam R$ 130,21).
 
